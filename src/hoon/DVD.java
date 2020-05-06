@@ -6,15 +6,15 @@ public class DVD extends RentalItemInfo{
 	int runingTime;		//상영시간
 	int limitAge;		//제한연령
 	String story;		//설명
-	int launchDate;		//출판일
+	String launchDate;	//출판일
 	String bestTitle;	//인기자료
 	int rentalCount;	//대여횟수
 	int like;			//관심수
 	int numOfItem;		//재고
-	int returnDate;		//반납예정일
+	String returnDate;	//반납예정일
 
 	//인스턴스 변수 초기화
-	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,int launchDate,String bestTitle) {
+	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,String launchDate,String bestTitle) {
 		super(title, genre, localData, rentInfo);
 		this.foreman = foreman;
 		this.rentInfo = rentInfo;
@@ -24,7 +24,7 @@ public class DVD extends RentalItemInfo{
 		this.bestTitle = bestTitle;
 	}
 	
-	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,int launchDate,String bestTitle,int rentalCount,int like,int numOfItem,int returnDate) {
+	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,String launchDate,String bestTitle,int rentalCount,int like,int numOfItem,String returnDate) {
 		super(title, genre, localData, rentInfo);
 		this.foreman = foreman;
 		this.rentInfo = rentInfo;
