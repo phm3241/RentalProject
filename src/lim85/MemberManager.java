@@ -110,12 +110,13 @@ public class MemberManager {
 		if(index<0) {	//반납실패
 			System.out.println("반납하고자하는 이름의 (책)가 없습니다.");
 		}else {
-			//반납성공 			반납했으니까 책 리스트에 플러스 시킨다?
+			//반납성공 			
 			String rentalTitle = rental.get(index).title;
 			
+			//반납했으니까 책 리스트에 플러스 시킨다?
+			numOfItem ++;
 			
-			
-			System.out.println(rentalTitle+" 정상적으로 반납되었습니다.");
+			System.out.println(rentalTitle+"이(가) 정상적으로 반납되었습니다.");
 			
 			//반납일 		// 오늘날짜 찍는다.
 			System.out.println(rentalDate);
@@ -157,13 +158,15 @@ public class MemberManager {
 		if(index<0) {	 //연장 실패
 			System.out.println("연장하고자하는 이름의 (책)가 없습니다.");
 		}else {	//연장 성공
-			String rentalTilte = rental.get(index).title; //책을 찾는다.
+			String rentalTilte = rental.get(index).title; // 책을 찾는다.
 		
-			returnDate = cal.add(Calendar.DATE, 7);		//7일 연장
+			returnDate = cal.add(Calendar.DATE, 7);		// 7일 연장
+			
+			// 책 권수는 그대로 유지.
 			
 			rentInfo = "대여중"		// 대여상태 대여중으로 바꾼다.
 			
-			System.out.println(rentalTitle + " 7일 연장되었습니다.");
+			System.out.println(rentalTitle + "이(가)  7일 연장되었습니다.");
 			System.out.println(returnDate + " 까지 반납하세요.");
 		}
 	
