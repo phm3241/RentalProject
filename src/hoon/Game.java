@@ -14,7 +14,7 @@ public class Game extends RentalItemInfo{
 	
 	//인스턴스 변수 초기화
 	Game(String title, String genre, String localData, String rentInfo,String producer,int limitAge,String story,String launchDate,String bestTitle) {
-		super(title, genre, localData, rentInfo);
+		super(title, genre, localData);
 		this.producer = producer;
 		this.limitAge = limitAge;
 		this.story = story;
@@ -23,7 +23,7 @@ public class Game extends RentalItemInfo{
 	}
 	
 	Game(String title, String genre, String localData, String rentInfo,String producer,int limitAge,String story,String launchDate,String bestTitle,int rentalCount,int like,int numOfItem,String returnDate) {
-		super(title, genre, localData, rentInfo);
+		super(title, genre, localData);
 		this.producer = producer;
 		this.limitAge = limitAge;
 		this.story = story;
@@ -45,7 +45,7 @@ public class Game extends RentalItemInfo{
 	@Override
 	void showAllinfo() {
 		super.showBasicInfo();
-		System.out.println("\t제한연령 :"+limitAge+"\t설명 :"+story+"\t출판일 :"+launchDate+"\t인기자료 :"+bestTitle);
+		System.out.println("\t제한연령 :"+limitAge+"\t출판일 :"+launchDate+"\t인기자료 :"+bestTitle+"\r\n설명 :"+story);
 		System.out.println("대여횟수 :"+rentalCount+"\t관심수 :"+like+"\t재고 :"+numOfItem+"\t반납예정일 :"+returnDate);
 	}
 	

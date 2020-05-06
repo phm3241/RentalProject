@@ -15,7 +15,7 @@ public class DVD extends RentalItemInfo{
 
 	//인스턴스 변수 초기화
 	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,String launchDate,String bestTitle) {
-		super(title, genre, localData, rentInfo);
+		super(title, genre, localData);
 		this.foreman = foreman;
 		this.rentInfo = rentInfo;
 		this.limitAge = limitAge;
@@ -25,7 +25,7 @@ public class DVD extends RentalItemInfo{
 	}
 	
 	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,String launchDate,String bestTitle,int rentalCount,int like,int numOfItem,String returnDate) {
-		super(title, genre, localData, rentInfo);
+		super(title, genre, localData);
 		this.foreman = foreman;
 		this.rentInfo = rentInfo;
 		this.limitAge = limitAge;
@@ -48,7 +48,7 @@ public class DVD extends RentalItemInfo{
 	@Override
 	void showAllinfo() {
 		super.showBasicInfo();
-		System.out.println("\t제한연령 :"+limitAge+"\t설명 :"+story+"\t출판일 :"+launchDate+"\t인기자료 :"+bestTitle+"\t상영시간 :"+runingTime);
+		System.out.println("\t제한연령 :"+limitAge+"\t출판일 :"+launchDate+"\t인기자료 :"+bestTitle+"\t상영시간 :"+runingTime+"\r\n설명 :"+story);
 		System.out.println("대여횟수 :"+rentalCount+"\t관심수 :"+like+"\t재고 :"+numOfItem+"\t반납예정일 :"+returnDate);
 	}
 	
