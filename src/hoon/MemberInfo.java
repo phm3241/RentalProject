@@ -9,7 +9,7 @@ public class MemberInfo {
 	String addr;		//주소
 	String email;		//이메일
 	
-	
+	//인스턴스 변수 초기화
 	MemberInfo(String name,int age, String phoneNum,String addr,String email){
 		this.name = name;
 		this.age = age;
@@ -26,5 +26,10 @@ public class MemberInfo {
 	void showAllInfo() {
 		
 	}
+	
+	void AllInformation() {
+		
+	}
+	
 	
 }
