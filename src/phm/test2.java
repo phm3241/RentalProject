@@ -19,7 +19,7 @@ public class test2 {
 		System.out.println(rentalDate);
 		
 		// 반납일 : 대여일+7일
-		String returnDate=cal.add(Calendar.DATE,7);
+		cal.add(Calendar.DATE,7);
 		String returnDate=format.format(cal.getTime());
 
 //		cal.add(Calendar.DATE,7);
