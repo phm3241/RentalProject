@@ -14,7 +14,7 @@ public class Game extends RentalItemInfo{
 	
 	//인스턴스 변수 초기화
 	Game(String title, String genre, String localData, String rentInfo,String producer,int limitAge,String story,String launchDate,String bestTitle) {
-		super(title, genre, localData, rentInfo);
+		super(title, genre, localData);
 		this.producer = producer;
 		this.limitAge = limitAge;
 		this.story = story;
@@ -23,7 +23,7 @@ public class Game extends RentalItemInfo{
 	}
 	
 	Game(String title, String genre, String localData, String rentInfo,String producer,int limitAge,String story,String launchDate,String bestTitle,int rentalCount,int like,int numOfItem,String returnDate) {
-		super(title, genre, localData, rentInfo);
+		super(title, genre, localData);
 		this.producer = producer;
 		this.limitAge = limitAge;
 		this.story = story;

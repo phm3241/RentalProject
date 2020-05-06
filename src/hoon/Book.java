@@ -15,7 +15,7 @@ public class Book extends RentalItemInfo{
 
 	//인스턴스 변수 초기
 	Book(String title, String genre, String localData, String rentInfo,String author,int limitAge,String story,String launchDate,String bestTitle) {
-		super(title, genre, localData, rentInfo);
+		super(title, genre, localData);
 		this.author = author;
 		this.limitAge = limitAge;
 		this.story = story;
@@ -25,7 +25,7 @@ public class Book extends RentalItemInfo{
 	}
 	
 	Book(String title, String genre, String localData, String rentInfo,String author,int limitAge,String story,String launchDate,String bestTitle,int rentalCount,int like,int numOfItem,String returnDate) {
-		super(title, genre, localData, rentInfo);
+		super(title, genre, localData);
 		this.author = author;
 		this.limitAge = limitAge;
 		this.story = story;
