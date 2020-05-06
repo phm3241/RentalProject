@@ -23,6 +23,7 @@ public class RentalItemInfo {
 	}
 	
 	void showAllinfo() {
+	
 		
 	}
 	
