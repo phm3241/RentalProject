@@ -7,8 +7,7 @@ public class Admin extends MemberInfo{
 	String adminPw;		//관리자 비번
 	
 
-	Admin(String name, int age, String phoneNum, String addr, String email,String adminId,String adminPw) {
-		super(name, age, phoneNum, addr, email);
+	Admin(String adminId, String adminPw) {
 		this.adminId = adminId;
 		this.adminPw = adminPw;
 		this.loginCheck = false;
