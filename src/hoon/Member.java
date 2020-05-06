@@ -2,6 +2,9 @@ package hoon;
 
 public class Member extends MemberInfo{
 
+	boolean loginCheck;	//로그인
+	String id;			//회원 아이디
+	String pw;			//회원 비밀번호
 	
 	
 	

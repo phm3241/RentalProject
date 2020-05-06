@@ -2,12 +2,13 @@ package hoon;
 
 public class MemberInfo {
 	
+	boolean loginCheck;	//로그인
 	String name;		//이름
 	int age;			//나이
 	String phoneNum;	//전화번호
 	String addr;		//주소
 	String email;		//이메일
-	boolean loginCheck;	//로그인
+	
 	
 	MemberInfo(String name,int age, String phoneNum,String addr,String email){
 		this.name = name;
@@ -23,8 +24,6 @@ public class MemberInfo {
 	}
 	
 	void showAllInfo() {
-		
-		
 		
 	}
 	
