@@ -18,8 +18,13 @@ public class RentalItemInfo {
 	}
 	
 	//기본정보 출력 메서드
-	void showInfo() {
+	void showBasicInfo() {
 		System.out.println("자료명 : "+title+"\t장르 :"+genre+"\t자료위치 :"+localData+"\t대여상태 :"+rentInfo);
+	}
+	
+	void showAllinfo() {
+	
+		
 	}
 	
 
