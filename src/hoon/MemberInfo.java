@@ -24,6 +24,7 @@ public class MemberInfo {
 	
 	void showAllInfo() {
 		
+		
 	}
 	
 }
