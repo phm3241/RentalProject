@@ -46,5 +46,6 @@ public class Member extends MemberInfo{
 		System.out.println("대여일 :"+rentalDate+"\t반납예정일 :"+returnData+"\t대여상태 :"+rentInfo+"연장기간 :"+dataOfExtens);
 	}	
 	
+	
 
 }

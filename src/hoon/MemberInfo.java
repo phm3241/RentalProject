@@ -29,6 +29,7 @@ public class MemberInfo {
 	
 	void AllInformation() {
 		
+		
 	}
 	
 	

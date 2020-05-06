@@ -12,14 +12,10 @@ public class Admin extends MemberInfo{
 		this.adminPw = adminPw;
 		
 	}
-
-
 	@Override
 	void AllInformation() {
 		super.AllInformation();
 	}
 
-	
-	
 
 }
