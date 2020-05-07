@@ -6,7 +6,7 @@ public class DVD extends RentalItemInfo{
 	String runingTime;	//상영시간
 	int limitAge;		//제한연령
 	String story;		//설명
-	String launchDate;	//출판일
+	String launchDate;	//출시일
 	String bestTitle;	//인기자료	null
 	int rentalCount;	//대여횟수	0
 	int like;			//관심수		0
@@ -39,8 +39,8 @@ public class DVD extends RentalItemInfo{
 	@Override
 	void showAllinfo() {
 		super.showBasicInfo();
-		System.out.println("\t제한연령 :"+limitAge+"\t출판일 :"+launchDate+"\t인기자료 :"+bestTitle+"\t상영시간 :"+runingTime+"\r\n설명 :"+story);
-		System.out.println("대여횟수 :"+rentalCount+"\t관심수 :"+like+"\t재고 :"+numOfItem+"\t반납예정일 :"+returnDate);
+		System.out.println("제한연령 :"+limitAge+"\t\t출판일 :"+launchDate+"\t\t인기자료 :"+bestTitle+"\t\t상영시간 :"+runingTime+"\r\n설명 :"+story);
+		System.out.println("대여횟수 :"+rentalCount+"\t\t관심수 :"+like+"\t\t\t\t재고 :"+numOfItem+"\t\t\t반납예정일 :"+returnDate);
 	}
 
 

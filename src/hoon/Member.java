@@ -35,15 +35,15 @@ public class Member extends MemberInfo{
 	@Override
 	void showAllInfo() {
 		super.showBasicInfo();
-		System.out.println("등급 :"+level+"\t대여권수 :"+numOfRent+"\t대여가능권수 :"+rentalAvail+"\t연장가능횟수 :"+numOfExtens+"\t연체 :"+overdue);
+		System.out.println("등급 :"+level+"\t\t\t대여권수 :"+numOfRent+"\t\t\t\t대여가능권수 :"+rentalAvail+"\t\t\t연장가능횟수 :"+numOfExtens+"\t\t\t연체 :"+overdue);
 		
 	}
 
 	@Override
 	void AllInformation() {
 		super.showBasicInfo();
-		System.out.println("등급 :"+level+"\t대여권수 :"+numOfRent+"\t대여가능권수 :"+rentalAvail+"\t연장가능횟수 :"+numOfExtens+"\t연체 :"+overdue);
-		System.out.println("대여일 :"+rentalDate+"\t반납예정일 :"+returnData+"\t대여상태 :"+rentInfo+"연장기간 :"+dataOfExtens);
+		System.out.println("등급 :"+level+"\t\t\t대여권수 :"+numOfRent+"\t\t\t\t대여가능권수 :"+rentalAvail+"\t\t\t연장가능횟수 :"+numOfExtens+"\t\t\t연체 :"+overdue);
+		System.out.println("대여일 :"+rentalDate+"\t반납예정일 :"+returnData+"\t\t\t대여상태 :"+rentInfo+"\t\t\t연장기간 :"+dataOfExtens);
 	}
 	
 	boolean checkId(String id) {
