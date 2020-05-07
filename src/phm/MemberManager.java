@@ -26,7 +26,6 @@ public class MemberManager {
 	// 시간 더하기
 	Calendar cal = Calendar.getInstance();
 	
-	
 	// 회원리스트, 자료리스트 불러오기
 	AdminManager admManager=AdminManager.getInstance();
 	
@@ -225,7 +224,7 @@ public class MemberManager {
 			
 			
 			// 대여일 생성
-			String rentalDate=format.format(cal.getTime());
+			this.rentalDate=format.format(cal.getTime());
 			System.out.println("대여일 : " + rentalDate);
 			
 			// 반납일 생성 : 대여일+7일
@@ -277,6 +276,22 @@ public class MemberManager {
 		
 		for(int i=0; i<rentalList.size(); i++) {
 			if(rentalList.get(i).id.equals(id)) {
+				searchRentalIndex=i;
+				break;
+			}
+		}
+		return searchRentalIndex;
+	}
+
+	
+//	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	// rentalList 에서 tilte로 검색하기(내 대여내역) ㅡ> 인덱스 반환
+	int searchRentalIndexTitle(String title) {
+		
+		int searchRentalIndex=-1;
+		
+		for(int i=0; i<rentalList.size(); i++) {
+			if(rentalList.get(i).title.equals(title)) {
 				searchRentalIndex=i;
 				break;
 			}
@@ -340,6 +355,7 @@ public class MemberManager {
 		int index=admManager.loginCheckIndex();
 		String reservId =admManager.getMember().get(index).id; 	// 로그인한 id
 	
+		searchRentalIndexTitle(this.title);
 		
 		// 예약일 생성
 		String reservDate=format.format(cal.getTime());
@@ -368,8 +384,81 @@ public class MemberManager {
 //			}
 //		}
 //		
-//			
+//	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	
+	// 반납
+	void itemReturn() {
+		
+		System.out.println("반납하고자하는 도서를 입력해주세요");
+		String title = admManager.sc.nextLine();
+		
+		int index = admManager.loginCheckIndex();
+		
+		if(index<0) {	//반납실패
+			System.out.println("반납하고자하는 "+ title +" 자료가 없습니다.");
+		}else {
+			//반납성공 		반납했는데 연체 or 정상.	
+			title = rentalList.get(index).title;		// 책을 찾는다.
+			
+			String today = format.format(cal.getTime());
+			//System.out.println(today);		// 오늘날짜
+		    
+			String strStartDate = this.rentalDate;	// rentalDate 로 바꿔야된다.
+	        String strEndDate = today;
+	        String strFormat = "yyyy-MM-dd";
+	        
+//	        SimpleDateFormat sdf2 = new SimpleDateFormat(strFormat);
+	        
+	        Date startDate = null;
+	        Date endDate = null;
+			try {
+				startDate = format.parse(strStartDate);
+				endDate = format.parse(strEndDate);		// today
+			} catch (ParseException e) {
+				e.printStackTrace();
+			}	// rentalDate
+            
+            long gap = (startDate.getTime() - endDate.getTime()) / (24*60*60*1000);
+            gap = Math.abs(gap);
+            //System.out.println(gap+"일");
+	        
+		    
+			
+		    
+	        
+	       
+	        if( gap > 7) {	 // 연체.
+				
+				
+	        	admManager.getMember().get(admManager.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
+				admManager.getMember().get(admManager.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
+				//numOfRent = ??		// 대여권수, 빌려간게 더 있을수도 있고 없을수도있고.	??
+			
+				System.out.println(title + "연체일수가 있습니다.");
+				System.out.println(title + "연체일수는 " + gap + " 입니다.");
+				System.out.println(overdue + "일 동안 자료를 대여하실 수 없습니다.");
+				System.out.println("처리 : " + today);	
+			}else if(gap < 7) {	// 연체 없음.
+				
+				returnDate = today;						
+					
+				System.out.println(title+"자료가 정상적으로 반납되었습니다.");
+				System.out.println("처리 : " + today);	
+				
+				admManager.getMember().get(admManager.loginCheckIndex()).numOfRent --;			// 대여권수
+				admManager.getMember().get(admManager.loginCheckIndex()).rentalAvail ++;		// 대여가능권수
+				admManager.getMember().get(admManager.loginCheckIndex()).numOfExtens = 1;		// 연장가능횟수
+				
+			}
+			
+			// 대여가능으로 바꾼다.
+			rentInfo = "대여가능";
+			
+		}	
+			
+	
+	
+	} //itemReturn끝.
 	
 	
 	
