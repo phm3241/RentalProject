@@ -100,6 +100,19 @@ public class AdminManager {
         }
     }
 
+    int loginCheckIndex() {
+    	
+    	int loginCheckIndex = -1;
+    	
+    	for(int i =0; i<this.member.size();i++) {
+    		if(!this.member.get(i).loginCheck) {
+    			loginCheckIndex = i;
+    			break;
+    		}
+    	}
+    	
+    	return loginCheckIndex;
+    }
 
     int searchIndex(String id) {
 
