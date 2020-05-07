@@ -1,6 +1,26 @@
 package jaeyoung96;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public abstract class AbsAdminManager {
+
+	private ArrayList<Member> member;
+    Scanner sc;
+
+    //아이템배열 선언
+    private ArrayList<Book> books;
+
+	private ArrayList<DVD> dvd;
+    private ArrayList<Game> game;
+    
+    private AbsAdminManager() {
+        this.member = new ArrayList<Member>();
+        this.books = new ArrayList<>();
+        this.dvd = new ArrayList<>();
+        this.game = new ArrayList<>();
+        sc = new Scanner(System.in);
+    }
 
 	//1. 회원관리
 	//1.1 회원정보보기
@@ -21,7 +41,10 @@ public abstract class AbsAdminManager {
 	void adminLogOut(){}
 	//1.7회원정보 검색
 	int searchIndex(String id) {return 0;}
-	
+	//로그인체크
+	int loginCheckIndex() {
+			return 0;
+    }
 	
 	
 	
