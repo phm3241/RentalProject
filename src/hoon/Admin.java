@@ -13,5 +13,8 @@ public class Admin{
 		this.loginCheck = false;
 		
 	}
+	boolean checkId(String adminId) {
+		return this.adminId.equals(adminId);
+	}
 
 }
