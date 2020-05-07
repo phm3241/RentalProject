@@ -16,6 +16,7 @@ public class Member extends MemberInfo{
 	int dataOfExtens;		//연장기간 7
 	
 	
+	
 	//인스턴스 변수 초기화
 	Member(String name, int age, String phoneNum, String addr, String email,String id,String pw) {
 		super(name, age, phoneNum, addr, email);
