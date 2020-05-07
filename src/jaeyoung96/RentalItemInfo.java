@@ -27,5 +27,9 @@ public class RentalItemInfo {
 		
 	}
 	
+	boolean checkTitle(String title) {
+		return this.title.equals(title);
+	}
+	
 
 }

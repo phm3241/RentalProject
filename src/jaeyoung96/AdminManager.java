@@ -100,6 +100,23 @@ public class AdminManager {
         }
     }
 
+    
+    // 로그인체크해서 로그인상태인지 아닌지 반환
+    boolean loginCheck() {
+    	
+    	boolean loginCheck = false;
+    	
+    	for(int i =0; i<this.member.size();i++) {
+    		if(!this.member.get(i).loginCheck) {
+    			loginCheck =true;
+    			break;
+    		}
+    	}
+    	
+    	return loginCheck;
+    }
+    
+ // 로그인체크해서 인덱스 반환
     int loginCheckIndex() {
     	
     	int loginCheckIndex = -1;

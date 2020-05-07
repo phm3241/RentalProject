@@ -42,6 +42,15 @@ public class DVD extends RentalItemInfo{
 		System.out.println("\t제한연령 :"+limitAge+"\t출판일 :"+launchDate+"\t인기자료 :"+bestTitle+"\t상영시간 :"+runingTime+"\r\n설명 :"+story);
 		System.out.println("대여횟수 :"+rentalCount+"\t관심수 :"+like+"\t재고 :"+numOfItem+"\t반납예정일 :"+returnDate);
 	}
+
+
+
+	@Override
+	boolean checkTitle(String title) {
+		return super.checkTitle(title);
+	}
+	
+	
 	
 	
 
