@@ -80,8 +80,37 @@ public class Gap {
 
 
 	
+		//123
 		
-		Calendar cal = Calendar.getInstance();
+//		Calendar cal = Calendar.getInstance();
+//		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+//		String today = sdf1.format(cal.getTime());
+//		System.out.println(today);		// 오늘날짜
+//		System.out.println("2020-04-01");
+//		
+//		String strStartDate = "2020-04-01";		// 빌린날짜	"2020-04-01";	rentalDate;
+//        String strEndDate = today;
+//        String strFormat = "yyyy-MM-dd";    //strStartDate 와 strEndDate 의 format
+//        
+//        //SimpleDateFormat 을 이용하여 startDate와 endDate의 Date 객체를 생성한다.
+//        SimpleDateFormat sdf2 = new SimpleDateFormat(strFormat);
+//        try{
+//            Date startDate = sdf2.parse(strStartDate);	//빌린날짜
+//            Date endDate = sdf2.parse(strEndDate);		//오늘날짜
+// 
+//            //두날짜 사이의 시간 차이(ms)를 하루 동안의 ms(24시*60분*60초*1000밀리초) 로 나눈다.
+//            long gap = (startDate.getTime() - endDate.getTime()) / (24*60*60*1000);
+//            gap = Math.abs(gap);
+//            System.out.println(gap+"일");
+//        }catch(ParseException e){
+//            e.printStackTrace();
+//        }
+
+        
+        //123
+
+	
+    	Calendar cal = Calendar.getInstance();
 		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 		String today = sdf1.format(cal.getTime());
 		System.out.println(today);		// 오늘날짜
@@ -101,11 +130,22 @@ public class Gap {
             long gap = (startDate.getTime() - endDate.getTime()) / (24*60*60*1000);
             gap = Math.abs(gap);
             System.out.println(gap+"일");
+            
+            
         }catch(ParseException e){
             e.printStackTrace();
         }
-
-
-
+        	
+        	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	}
 }

@@ -99,21 +99,43 @@ public class AdminManager {
             }
         }
     }
-
-    boolean loginCheckIndex() {
+    
+    
+    // 로그인체크해서 로그인상태인지 아닌지 반환
+    boolean loginCheck() {
     	
-    	boolean loginCheckIndex = false;
+    	boolean loginCheck = false;
     	
     	for(int i =0; i<this.member.size();i++) {
     		if(!this.member.get(i).loginCheck) {
-    			loginCheckIndex =true;
+    			loginCheck =true;
+    			break;
+    		}
+    	}
+    	
+    	return loginCheck;
+    }
+    
+    
+    // 로그인체크해서 인덱스 반환
+    int loginCheckIndex() {
+    	
+    	int loginCheckIndex = -1;
+    	
+    	for(int i =0; i<this.member.size();i++) {
+    		if(!this.member.get(i).loginCheck) {
+    			loginCheckIndex = i;
     			break;
     		}
     	}
     	
     	return loginCheckIndex;
     }
-
+    
+    
+    
+    
+    
     int searchIndex(String id) {
 
         //정상적인 index 값은 0~이상의 값, 찾지 못했을 때 구분 값 -1을 사용

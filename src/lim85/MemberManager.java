@@ -443,73 +443,73 @@ public class MemberManager {
 				
 				
 				//연장.
-				void extention() {
-					
-
-					System.out.println("연장하고자하는 도서를 입력해주세요.");
-					String title = admManager.sc.nextLine();
-					
-					int index=admManager.loginCheckIndex();
-					
-					if(index<0) {	 //연장 실패
-						System.out.println("연장하고자하는 "+ title +" 자료가 없습니다.");
-					}else {	//연장 성공
-						title = rentalList.get(index).title;	// 도서를 찾는다.
-						
-						Calendar cal = Calendar.getInstance();
-						SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-						String today = sdf1.format(cal.getTime());
-						//System.out.println(today);		// 오늘날짜
-					    
-						String strStartDate = this.rentalDate;				//"2020-04-01";????		// rentalDate 로 바꿔야된다.
-				        String strEndDate = today;
-				        String strFormat = "yyyy-MM-dd";
-				        
-				        SimpleDateFormat sdf2 = new SimpleDateFormat(strFormat);
-				        
-				        Date startDate = sdf2.parse(strStartDate);	// rentalDate
-			            Date endDate = sdf2.parse(strEndDate);		// today
-			            
-			            long gap = (startDate.getTime() - endDate.getTime()) / (24*60*60*1000);
-			            gap = Math.abs(gap);
-			            //System.out.println(gap+"일");
-						
-						if(gap > 7) { //연체 있을때.
-							System.out.println(title + "연체일수가 " + gap + " 일 입니다.");
-							System.out.println(gap + " 기간동안 연장하실 수 없습니다.");
-							System.out.println("처리 : " + today);
-							
-							admManager.getMember().get(admManager.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
-							admManager.getMember().get(admManager.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
-							
-						}else if(gap < 7) {	// 연체 없을때
-							
-							//returnDate = cal.add(Calendar.DATE, 7);		//7일 연장
-							Calendar cal = Calendar.getInstance();
-							SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-						    
-							
-							
-							returnDate = today +  cal.add(Calendar.DATE, 7);
-							
-							System.out.println(title + " 자료가 정상적으로 7일 연장되었습니다.");
-							System.out.println(returnDate + " 까지 반납하세요.");
-							System.out.println("처리 : " + today);
-							
-							//admManager.getMember().get(admManager.loginCheckIndex()).numOfRent ??? 			// 대여권수, 빌렸던 책이니까 유지	???
-							//admManager.getMember().get(admManager.loginCheckIndex()).rentalAvail ???			// 대여가능권수, ???
-							admManager.getMember().get(admManager.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수, 연장을 썼으니까 0으로 바꿔준다.
-						
-							
-						}
-						
-						rentInfo = "대여중";		// 대여상태 대여중으로 바꾼다.
-						
-						// 연장기간
-						//dateOfExtens = returnDate + 7;
-
-					
-				} //extention 끝.
+//				void extention() {
+//					
+//
+//					System.out.println("연장하고자하는 도서를 입력해주세요.");
+//					String title = admManager.sc.nextLine();
+//					
+//					int index=admManager.loginCheckIndex();
+//					
+//					if(index<0) {	 //연장 실패
+//						System.out.println("연장하고자하는 "+ title +" 자료가 없습니다.");
+//					}else {	//연장 성공
+//						title = rentalList.get(index).title;	// 도서를 찾는다.
+//						
+//						Calendar cal = Calendar.getInstance();
+//						SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+//						String today = sdf1.format(cal.getTime());
+//						//System.out.println(today);		// 오늘날짜
+//					    
+//						String strStartDate = this.rentalDate;				//"2020-04-01";????		// rentalDate 로 바꿔야된다.
+//				        String strEndDate = today;
+//				        String strFormat = "yyyy-MM-dd";
+//				        
+//				        SimpleDateFormat sdf2 = new SimpleDateFormat(strFormat);
+//				        
+//				        Date startDate = sdf2.parse(strStartDate);	// rentalDate
+//			            Date endDate = sdf2.parse(strEndDate);		// today
+//			            
+//			            long gap = (startDate.getTime() - endDate.getTime()) / (24*60*60*1000);
+//			            gap = Math.abs(gap);
+//			            //System.out.println(gap+"일");
+//						
+//						if(gap > 7) { //연체 있을때.
+//							System.out.println(title + "연체일수가 " + gap + " 일 입니다.");
+//							System.out.println(gap + " 기간동안 연장하실 수 없습니다.");
+//							System.out.println("처리 : " + today);
+//							
+//							admManager.getMember().get(admManager.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
+//							admManager.getMember().get(admManager.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
+//							
+//						}else if(gap < 7) {	// 연체 없을때
+//							
+//							//returnDate = cal.add(Calendar.DATE, 7);		//7일 연장
+//							Calendar cal = Calendar.getInstance();
+//							SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
+//						    
+//							
+//							
+//							returnDate = today +  cal.add(Calendar.DATE, 7);
+//							
+//							System.out.println(title + " 자료가 정상적으로 7일 연장되었습니다.");
+//							System.out.println(returnDate + " 까지 반납하세요.");
+//							System.out.println("처리 : " + today);
+//							
+//							//admManager.getMember().get(admManager.loginCheckIndex()).numOfRent ??? 			// 대여권수, 빌렸던 책이니까 유지	???
+//							//admManager.getMember().get(admManager.loginCheckIndex()).rentalAvail ???			// 대여가능권수, ???
+//							admManager.getMember().get(admManager.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수, 연장을 썼으니까 0으로 바꿔준다.
+//						
+//							
+//						}
+//						
+//						rentInfo = "대여중";		// 대여상태 대여중으로 바꾼다.
+//						
+//						// 연장기간
+//						//dateOfExtens = returnDate + 7;
+//
+//					
+//				} //extention 끝.
 			
 				
 				
