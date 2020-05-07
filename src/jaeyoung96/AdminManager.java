@@ -6,16 +6,17 @@ import java.util.Scanner;
 
 public class AdminManager {
 
-    private ArrayList<Member> member;
+	private ArrayList<Member> member;
     Scanner sc;
 
     //아이템배열 선언
     private ArrayList<Book> books;
-    private ArrayList<DVD> dvd;
+
+	private ArrayList<DVD> dvd;
     private ArrayList<Game> game;
 
 
-    public AdminManager() {
+    private AdminManager() {
         this.member = new ArrayList<Member>();
         this.books = new ArrayList<>();
         this.dvd = new ArrayList<>();
@@ -29,6 +30,26 @@ public class AdminManager {
     public static AdminManager getInstance() {
         return manager;
     }
+    
+
+    public ArrayList<Member> getMember() {
+		return member;
+	}
+
+
+	public ArrayList<Book> getBooks() {
+		return books;
+	}
+
+
+	public ArrayList<DVD> getDvd() {
+		return dvd;
+	}
+
+
+	public ArrayList<Game> getGame() {
+		return game;
+	}
 
 
     //회원정보보기
@@ -79,6 +100,19 @@ public class AdminManager {
         }
     }
 
+    int loginCheckIndex() {
+    	
+    	int loginCheckIndex = -1;
+    	
+    	for(int i =0; i<this.member.size();i++) {
+    		if(!this.member.get(i).loginCheck) {
+    			loginCheckIndex = i;
+    			break;
+    		}
+    	}
+    	
+    	return loginCheckIndex;
+    }
 
     int searchIndex(String id) {
 
@@ -202,9 +236,47 @@ public class AdminManager {
     }
 
     public void adminLogin() {
+    	boolean check = true;
+    	while (check) {
+    		System.out.println("아이디를 입력해 주세요.");
+
+    		String id = sc.nextLine();
+    		sc.nextLine();
+        int index = searchIndex(id);
+
+        if (index > 0) {
+            System.out.println("비밀번호를 입력해 주세요.");
+            String pw = sc.nextLine();
+            if (member.get(index).pw.equals(pw)) {
+                System.out.println("로그인이 완료되었습니다.");
+                member.get(index).loginCheck = true;
+                check = false;
+                break;
+            } else {
+                System.out.println("비밀번호를 다시 입력해 주세요.");
+                continue;
+            }
+        } else {
+            System.out.println("입력하신 아이디가 없습니다. 다시 입력해주세요.");
+            continue;
+        }
+    }
 
     }
 
+    public void adminLogOut() {
+    	for (int i = 0; i < member.size(); i++) {
+            if (member.get(i).loginCheck == true) {
+                member.get(i).loginCheck = false;
+                System.out.println("로그아웃 되었습니다.");
+                break;
+            } else {
+                System.out.println("로그인된 계정이 없습니다.");
+                break;
+            }
+        }
+
+    }
 
     //책입니다---------------------------------------------
 
