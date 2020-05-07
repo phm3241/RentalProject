@@ -28,8 +28,7 @@ public class MainLine {
                             manager.login();
                             break;
                         case 2:
-                            System.out.println("아이디를 입력해 주세요.");
-                            System.out.println("비밀번호를 입력해 주세요.");
+                            manager.login();
                             
                             break;
                     }
@@ -45,7 +44,7 @@ public class MainLine {
                             break;
                         case 2:
                             System.out.println("회원가입을 시작합시다");
-
+                            manager.addInfo();
                             System.out.println("이력쭉 후 가입 완료");
                             break;
                     }
