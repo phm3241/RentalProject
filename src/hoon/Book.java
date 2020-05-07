@@ -45,6 +45,15 @@ public class Book extends RentalItemInfo{
 		System.out.println("대여횟수 :"+rentalCount+"\t관심수 :"+like+"\t재고 :"+numOfItem+"\t반납예정일 :"+returnDate);
 		
 	}
+
+
+
+	@Override
+	boolean checkTitle(String title) {
+		return super.checkTitle(title);
+	}
+	
+	
 	
 	
 }

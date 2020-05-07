@@ -44,8 +44,9 @@ public class Member extends MemberInfo{
 		super.showBasicInfo();
 		System.out.println("등급 :"+level+"\t대여권수 :"+numOfRent+"\t대여가능권수 :"+rentalAvail+"\t연장가능횟수 :"+numOfExtens+"\t연체 :"+overdue);
 		System.out.println("대여일 :"+rentalDate+"\t반납예정일 :"+returnData+"\t대여상태 :"+rentInfo+"연장기간 :"+dataOfExtens);
-	}	
-	
-	
+	}
+	boolean checkTId(String id) {
+		return this.id.equals(id);
+	}
 
 }
