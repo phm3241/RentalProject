@@ -3,8 +3,8 @@ package hoon;
 public class Member extends MemberInfo{
 
 	boolean loginCheck;		//로그인
-	String id;				//회원 아이디
-	String pw;				//회원 비밀번호
+	private String id;		//회원 아이디
+	private String pw;		//회원 비밀번호
 	int level;				//대여 등급 1 -> 2 -> 3
 	int numOfRent;			//대여권수 0
 	int rentalAvail;		//대여가능횟수 5
@@ -45,8 +45,12 @@ public class Member extends MemberInfo{
 		System.out.println("등급 :"+level+"\t대여권수 :"+numOfRent+"\t대여가능권수 :"+rentalAvail+"\t연장가능횟수 :"+numOfExtens+"\t연체 :"+overdue);
 		System.out.println("대여일 :"+rentalDate+"\t반납예정일 :"+returnData+"\t대여상태 :"+rentInfo+"연장기간 :"+dataOfExtens);
 	}
+	
 	boolean checkId(String id) {
 		return this.id.equals(id);
+	}
+	boolean checkPw(String pw) {
+		return this.pw.equals(pw);
 	}
 
 }
