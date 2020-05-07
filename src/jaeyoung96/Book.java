@@ -13,11 +13,10 @@ public class Book extends RentalItemInfo{
 	String returnDate;		//반납예정일 	0
 	
 
-<<<<<<< HEAD
+
 	//인스턴스 변수 초기
-=======
+
 	//인스턴스 변수 초기화
->>>>>>> branch 'master' of https://github.com/young6435/RentalProject.git
 	Book(String title, String genre, String localData, String rentInfo,String author,int limitAge,String story,int launchDate) {
 		super(title, genre, localData, rentInfo);
 		this.author = author;
