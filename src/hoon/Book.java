@@ -2,19 +2,19 @@ package hoon;
 
 public class Book extends RentalItemInfo{
 	
-	String author;		//저자
-	int limitAge;		//제한연령
-	String story;		//설명
-	String launchDate;	//출판일
-	String bestTitle;	//인기자료	null
-	int rentalCount;	//대여횟수	0
-	int like;			//관심수 		0
-	int numOfItem;		//재고 		5
-	String returnDate;	//반납예정일 	0
+	public String author;		//저자
+	public int limitAge;		//제한연령
+	public String story;		//설명
+	public String launchDate;	//출판일
+	public String bestTitle;	//인기자료	null
+	public int rentalCount;	//대여횟수	0
+	public int like;			//관심수 		0
+	public int numOfItem;		//재고 		5
+	public String returnDate;	//반납예정일 	0
 	
 
 	//인스턴스 변수 초기화
-	Book(String title, String genre, String localData,String author,int limitAge,String story,String launchDate) {
+	public Book(String title, String genre, String localData,String author,int limitAge,String story,String launchDate) {
 		super(title, genre, localData);
 		this.author = author;
 		this.limitAge = limitAge;
@@ -27,7 +27,7 @@ public class Book extends RentalItemInfo{
 		this.returnDate = null;
 		
 	}
-	Book(){}
+	public Book(){}
 	
 	
 	@Override

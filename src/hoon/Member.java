@@ -2,23 +2,23 @@ package hoon;
 
 public class Member extends MemberInfo{
 
-	boolean loginCheck;		//로그인
-	private String id;		//회원 아이디
-	private String pw;		//회원 비밀번호
-	int level;				//대여 등급 1 -> 2 -> 3
-	int numOfRent;			//대여권수 0
-	int rentalAvail;		//대여가능횟수 5
-	int numOfExtens;		//연장가능횟수 1
-	int overdue;			//연체 0
-	int rentalDate;			//대여일 7
-	String returnData;		//반납예정일 
-	String rentInfo;		//대여상태 
-	int dataOfExtens;		//연장기간 7
+	public boolean loginCheck;		//로그인
+	private String id;				//회원 아이디
+	private String pw;				//회원 비밀번호
+	public int level;				//대여 등급 1 -> 2 -> 3
+	public int numOfRent;			//대여권수 0
+	public int rentalAvail;			//대여가능횟수 5
+	public int numOfExtens;			//연장가능횟수 1
+	public int overdue;				//연체 0
+	public int rentalDate;			//대여일 7
+	public String returnData;		//반납예정일 
+	public String rentInfo;			//대여상태 
+	public int dataOfExtens;		//연장기간 7
 	
 	
 	
 	//인스턴스 변수 초기화
-	Member(String name, int age, String phoneNum, String addr, String email,String id,String pw) {
+	public Member(String name, int age, String phoneNum, String addr, String email,String id,String pw) {
 		super(name, age, phoneNum, addr, email);
 		this.loginCheck = false;
 		this.id = id;
@@ -32,6 +32,10 @@ public class Member extends MemberInfo{
 		this.dataOfExtens = 7;
 	
 	}
+	public Member() {
+		
+	}
+	
 
 	@Override
 	void showAllInfo() {
@@ -65,6 +69,11 @@ public class Member extends MemberInfo{
 	public void setPw(String pw) {
 		this.pw = pw;
 	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	
+	
 	
 	
 
