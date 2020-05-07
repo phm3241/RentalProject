@@ -74,7 +74,7 @@ public class MemberManager {
          				System.out.println("검색하신 자료의 정보가 없습니다.");
          			} else {
          				System.out.println("------------------------");
-         				admManager.itemList.get(index).showBasicInfo();
+         				admManager.books.get(index).showBasicInfo();
          				System.out.println("------------------------");
          			}
                 	 

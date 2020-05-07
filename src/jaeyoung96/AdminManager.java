@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class AdminManager {
 
-    private ArrayList<Member> member;
+	private ArrayList<Member> member;
     Scanner sc;
 
     //아이템배열 선언
