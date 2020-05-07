@@ -290,6 +290,8 @@ public class AdminManager implements RentalInterface {
         return searchIndex;
 	}
 
+	//정보 입력단계------------------------------------------------------
+	//책 정보 입력
 	@Override
 	public Book createBookInfo() {
 			
@@ -334,7 +336,7 @@ public class AdminManager implements RentalInterface {
 			return info;
 	
 }
-
+	//DVD 정보 입력
 	@Override
 	public DVD createDvdInfo() {
 		DVD info =null;			
@@ -380,10 +382,11 @@ public class AdminManager implements RentalInterface {
 		//DVD 클래스로 인스턴스생성
 		info = new DVD(title, genre, localData, rentInfo, foreman, 
 				runingTime, limitAge, story, launchDate, bestTitle);
+		game.add(info);
 			
 		return info;
 	}
-
+	//Game 정보 입력
 	@Override
 	public Game CreateGameInfo() {
 		Game info =null;			
