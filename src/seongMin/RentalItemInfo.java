@@ -1,4 +1,4 @@
-package jaeyoung96;
+package seongMin;
 
 public class RentalItemInfo {
 	
@@ -9,7 +9,7 @@ public class RentalItemInfo {
 	
 	
 	//인스턴스 변수 초기화
-	RentalItemInfo(String title,String genre,String localData){
+	RentalItemInfo(String title, String genre, String localData){
 		this.title = title;
 		this.genre = genre;
 		this.localData = localData;
@@ -23,8 +23,6 @@ public class RentalItemInfo {
 	}
 	
 	void showAllinfo() {
-	
-		
 	}
 	
 

@@ -1,8 +1,9 @@
-package jaeyoung96;
+package seongMin;
 
-public class Game extends RentalItemInfo{
+public class DVD extends RentalItemInfo{
 	
-	String producer;	//제작사
+	String foreman;		//감독
+	int runingTime;		//상영시간
 	int limitAge;		//제한연령
 	String story;		//설명
 	String launchDate;	//출판일
@@ -11,11 +12,12 @@ public class Game extends RentalItemInfo{
 	int like;			//관심수		0
 	int numOfItem;		//재고		5
 	String returnDate;	//반납예정일	0
-	
+
 	//인스턴스 변수 초기화
-	Game(String title, String genre, String localData, String rentInfo,String producer,int limitAge,String story,String launchDate) {
+	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,String launchDate) {
 		super(title, genre, localData);
-		this.producer = producer;
+		this.foreman = foreman;
+		this.rentInfo = rentInfo;
 		this.limitAge = limitAge;
 		this.story = story;
 		this.launchDate = launchDate;
@@ -24,7 +26,6 @@ public class Game extends RentalItemInfo{
 		this.like = 0;
 		this.numOfItem = 5;
 		this.returnDate = null;
-		
 	}
 	
 
@@ -32,13 +33,13 @@ public class Game extends RentalItemInfo{
 	@Override
 	void showBasicInfo() {
 		super.showBasicInfo();
-		System.out.println("제작사 :"+producer);
+		System.out.println("감독 :"+foreman);
 	}
 	
 	@Override
 	void showAllinfo() {
 		super.showBasicInfo();
-		System.out.println("\t제한연령 :"+limitAge+"\t출판일 :"+launchDate+"\t인기자료 :"+bestTitle+"\r\n설명 :"+story);
+		System.out.println("\t제한연령 :"+limitAge+"\t출판일 :"+launchDate+"\t인기자료 :"+bestTitle+"\t상영시간 :"+runingTime+"\r\n설명 :"+story);
 		System.out.println("대여횟수 :"+rentalCount+"\t관심수 :"+like+"\t재고 :"+numOfItem+"\t반납예정일 :"+returnDate);
 	}
 	

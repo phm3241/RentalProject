@@ -1,4 +1,4 @@
-package jaeyoung96;
+package seongMin;
 
 public class Game extends RentalItemInfo{
 	
