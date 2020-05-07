@@ -1,4 +1,4 @@
-package jaeyoung96;
+package phm;
 
 
 import java.util.ArrayList;
@@ -100,13 +100,13 @@ public class AdminManager {
         }
     }
 
-    int loginCheckIndex() {
+    boolean loginCheckIndex() {
     	
-    	int loginCheckIndex = -1;
+    	boolean loginCheckIndex = false;
     	
     	for(int i =0; i<this.member.size();i++) {
     		if(!this.member.get(i).loginCheck) {
-    			loginCheckIndex = i;
+    			loginCheckIndex =true;
     			break;
     		}
     	}
@@ -638,5 +638,4 @@ public class AdminManager {
         game.add(info);
         return info;
     }
-    
 }
