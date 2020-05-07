@@ -104,6 +104,7 @@ public class MainLine {
                         case 2:
                             System.out.println("아이디를 입력해 주세요.");
                             System.out.println("비밀번호를 입력해 주세요.");
+                            
                             break;
                     }
                     break;

@@ -13,7 +13,7 @@ public class AdminManager implements RentalInterface {
 	//아이템배열 선언
 	private ArrayList<Book> books;
 	private ArrayList<DVD> dvd;
-	private ArrayList<RentalItemInfo> game;
+	private ArrayList<Game> game;
 	
 	//입력받을 스캐너 객체 생성
 	Scanner sc;
@@ -81,14 +81,16 @@ public class AdminManager implements RentalInterface {
 		
 		
 	}
-	@Override
+	
+	//create로 이동
+//	@Override
 	//도서 정보넣기
-	public void addBookInfo(Book info) {
-		//배열에 추가
-		books.add(info);
-		
-		
-	}
+//	public void addBookInfo(Book info) {
+//		//배열에 추가
+//		books.add(info);
+//		
+//		
+//	}
 	//도서정보수정
 	@Override
 	public void editBookInfo() {
@@ -159,12 +161,15 @@ public class AdminManager implements RentalInterface {
 		
 		
 	}
+	
+	//create로 이동
 //DVD추가
-	@Override
-	public void addDvdInfo(DVD info) {
-		dvd.add(info);
-		
-	}
+//	@Override
+//	public void addDvdInfo(DVD info) {
+//		dvd.add(info);
+//		
+//	}
+	
 //DVD수정
 	@Override
 	public void editDvdInfo() {
@@ -230,12 +235,13 @@ public class AdminManager implements RentalInterface {
 		}
 		
 	}
+	//create쪽으로 넣음
 //게임추가
-	@Override
-	public void addGameInfo(Game info) {
-		game.add(info);
-		
-	}
+//	@Override
+//	public void addGameInfo(Game info) {
+//		game.add(info);
+//		
+//	}
 //게임수정
 	@Override
 	public void editGameInfo() {
@@ -325,14 +331,14 @@ public class AdminManager implements RentalInterface {
 			String story = sc.nextLine();	//설명
 			System.out.println("출판일을 입력해주세요");
 			int launchDate= sc.nextInt();	//출판일
-			System.out.println("인기자료을 입력해주세요");
-			String bestTitle= sc.nextLine();//인기자료
+
 			
 
 			info = new Book(title, genre, localData, rentInfo,
-					author, limitAge, story, launchDate, bestTitle);
+					author, limitAge, story, launchDate);
 				
-			
+			//배열에 추가
+			books.add(info);
 			return info;
 	
 }
@@ -346,7 +352,7 @@ public class AdminManager implements RentalInterface {
 		String localData=null;
 		String rentInfo=null;
 		
-		// 기본정보 수집: 책이름, 장르, 책위치, 대여상태
+		// 기본정보 수집: DVD이름, 장르, DVD위치, 대여상태
 		
 		System.out.println("책이름을 입력해주세요.");
 		title = sc.nextLine();
@@ -376,13 +382,14 @@ public class AdminManager implements RentalInterface {
 		System.out.println("출판일을 입력해주세요");
 		int launchDate= sc.nextInt();	//출판일
 		
-		System.out.println("인기자료을 입력해주세요");
-		String bestTitle= sc.nextLine();//인기자료
+
 		
 		//DVD 클래스로 인스턴스생성
 		info = new DVD(title, genre, localData, rentInfo, foreman, 
-				runingTime, limitAge, story, launchDate, bestTitle);
-		game.add(info);
+				runingTime, limitAge, story, launchDate);
+		
+		//배열에 추가
+		dvd.add(info);
 			
 		return info;
 	}
@@ -396,7 +403,7 @@ public class AdminManager implements RentalInterface {
 		String localData=null;
 		String rentInfo=null;
 		
-		// 기본정보 수집: 책이름, 장르, 책위치, 대여상태
+		// 기본정보 수집: 게임이름, 장르, 게임위치, 대여상태
 		
 		System.out.println("책이름을 입력해주세요.");
 		title = sc.nextLine();
@@ -423,16 +430,16 @@ public class AdminManager implements RentalInterface {
 		System.out.println("출판일을 입력해주세요");
 		int launchDate= sc.nextInt();	//출판일
 		
-		System.out.println("인기자료을 입력해주세요");
-		String bestTitle= sc.nextLine();//인기자료
+
 		
 
 		
 		//2.2.3 Book 클래스로 인스턴스생성
 		info = new Game(title, genre, localData, rentInfo, 
-				producer, limitAge, story, launchDate, bestTitle);
+				producer, limitAge, story, launchDate);
 			
-		
+		//배열에 추가
+		game.add(info);
 		return info;
 	}
 	

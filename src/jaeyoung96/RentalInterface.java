@@ -23,7 +23,7 @@ public interface RentalInterface {
 	//2.1도서보기
 	void showBookInfo();
 	//2.2도서자료추가
-	void addBookInfo(Book info);
+	//void addBookInfo(Book info);
 	//2.3도서자료수정
 	void editBookInfo();
 	//2.4도서자료삭제
@@ -34,7 +34,7 @@ public interface RentalInterface {
 	//3.DVD보기
 	void showDvdInfo();
 	//3.DVD자료추가
-	void addDvdInfo(DVD info);
+	//void addDvdInfo(DVD info);
 	//3.3DVD자료수정
 	void editDvdInfo();
 	//3.4DVD자료삭제
@@ -46,7 +46,7 @@ public interface RentalInterface {
 	//4.1게임보기
 	void showGameInfo();
 	//4.2게임자료추가
-	void addGameInfo(Game info);
+	//void addGameInfo(Game info);
 	//4.3게임자료수정
 	void editGameInfo();
 	//4.4게임자료삭제

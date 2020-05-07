@@ -14,7 +14,7 @@ public class DVD extends RentalItemInfo{
 	int returnDate;		//반납예정일
 
 	//인스턴스 변수 초기화
-	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,int launchDate,String bestTitle) {
+	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,int launchDate) {
 		super(title, genre, localData, rentInfo);
 		this.foreman = foreman;
 		this.rentInfo = rentInfo;
