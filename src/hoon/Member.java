@@ -54,4 +54,13 @@ public class Member extends MemberInfo{
 		return this.pw.equals(pw);
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public String getPw() {
+		return pw;
+	}
+
+	
 }
