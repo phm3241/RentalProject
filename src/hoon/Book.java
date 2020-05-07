@@ -5,7 +5,7 @@ public class Book extends RentalItemInfo{
 	String author;		//저자
 	int limitAge;		//제한연령
 	String story;		//설명
-	int launchDate;		//출판일
+	String launchDate;	//출판일
 	String bestTitle;	//인기자료	null
 	int rentalCount;	//대여횟수	0
 	int like;			//관심수 		0
@@ -14,7 +14,7 @@ public class Book extends RentalItemInfo{
 	
 
 	//인스턴스 변수 초기화
-	Book(String title, String genre, String localData, String rentInfo,String author,int limitAge,String story,int launchDate) {
+	Book(String title, String genre, String localData, String rentInfo,String author,int limitAge,String story,String launchDate) {
 		super(title, genre, localData);
 		this.author = author;
 		this.limitAge = limitAge;
