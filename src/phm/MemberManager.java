@@ -7,10 +7,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
-import EX_Rental_phm.MemberManager;
-import EX_Rental_phm.RentalItemInfo;
-import jaeyoung96.AdminManager;
-
 public class MemberManager {
 
 	String id;      		// 회원ID
@@ -66,18 +62,18 @@ public class MemberManager {
          admManager.sc.nextLine();
 
          switch (selectNum) {
-             case 1:
+            case 1:
             	System.out.println("찾으시는 도서명을 입력해주세요.");
                 String Title = admManager.sc.nextLine();
      			
-     			int index = searchIndex(Title);
+     			int index = admManager.searchBookInfo(Title);
      			
      			if(index<0) {
      				System.out.println("검색하신 자료의 정보가 없습니다.");
      				break;
      			} else {
      				System.out.println("------------------------");
-     				admManager.books.get(index).showBasicInfo();
+     				admManager.showBookInfo();
      				System.out.println("------------------------");
      				break;
      			}
@@ -89,17 +85,17 @@ public class MemberManager {
                 switch (selectNum2) {
                         
                 	case 1:  // 상세정보 보기 
-                    		admManager.books.get(index).showAllinfo();
+                    		admManager.showBookInfo();
                              System.out.println("1. 뒤로가기");
                              selectNum = admManager.sc.nextInt();
                              // 뒤로가면 어디로가지?
                          
                     case 2:  // 대여
                             //로그인 상태일시 대여메서드 실행
+                    		if(admManager.loginCheckIndex()) {
                     		creatRentalList(); 
-                    		
+                    		} else {
                             //비로그인 시
-                    		if(admManager.member.loginCheck==false) {
                     			System.out.println("이용하시려면 로그인을 해 주세요.");
                     			admManager.login();
                     		}
@@ -107,14 +103,14 @@ public class MemberManager {
                     case 3:  // 예약 	 
                         	/* 예약 메서드 */ 
                         	 break;
+                }
                     	 
                     	 
-                    	 
-            case 1:
-            	System.out.println("찾으시는 도서명을 입력해주세요.");
-                String Title = admManager.sc.nextLine();
+            case 2:
+            	System.out.println("찾으시는 DVD명을 입력해주세요.");
+                String title = admManager.sc.nextLine();
      			
-     			int index = searchIndex(Title);
+     			int index = admManager.searchDvdInfo(title);
      			
      			if(index<0) {
      				System.out.println("검색하신 자료의 정보가 없습니다.");
@@ -157,7 +153,9 @@ public class MemberManager {
                     
             	 
             	 
-            	 
+                }    	 
+         }
+         }
             	 
             	 
             	 
@@ -193,16 +191,7 @@ public class MemberManager {
 	
 	
 	
-	
-//	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-	// 자료검색 ㅡ> 인덱스 반환
-	// 리스트 index 검색(렌탈리스트, 자료리스트) : 인스턴스의 자료명 기준
-	admin
-		
 
-	
-	
-		
 	
 	
 	
@@ -246,10 +235,22 @@ public class MemberManager {
 //			String overdue;			// 연체일#
 			
 			// 카운트 변경 
-			admManager.member.rentalAvail -= 1;    // 회원정보 : 대여가능권수 -1
-			admManager.member.numOfRent +=1;		// 회원정보 : 대여권수 +1
-			admManager.itemList.numOfItem -=1;  	// 자료정보 : 재고 -1
-			admManager.itemList.rentalCount +=1;	// 자료정보 : 대여횟수 +1
+			admManager.getMember().get(index).rentalAvail -=1;   // 회원정보 : 대여가능권수 -1
+			admManager.getMember().get(index).numOfRent +=1;		// 회원정보 : 대여권수 +1
+			
+			if(// 받은 타이틀이 )
+			admManager.getBooks().get(index).numOfItem -=1;  	// 자료정보 : 재고 -1 numOfItem
+			admManager.getBooks().get(index).rentalCount +=1;  	// 자료정보 : 대여횟수 +1 rentalCount
+
+			admManager.getDvd().get(index).numOfItem -=1;  	// 자료정보 : 재고 -1 numOfItem
+			admManager.getDvd().get(index).rentalCount +=1;  	// 자료정보 : 대여횟수 +1 rentalCount
+
+			admManager.getGame().get(index).numOfItem -=1;  	// 자료정보 : 재고 -1 numOfItem
+			admManager.getGame().get(index).rentalCount +=1;  	// 자료정보 : 대여횟수 +1 rentalCount
+			
+			
+			
+			
 		
 		// MemberManager 객체 생성
 		info=new MemberManager(id, title, rentalDate, returnDate);
