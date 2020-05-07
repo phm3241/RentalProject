@@ -3,7 +3,7 @@ package hoon;
 public class DVD extends RentalItemInfo{
 	
 	String foreman;		//감독
-	int runingTime;		//상영시간
+	String runingTime;	//상영시간
 	int limitAge;		//제한연령
 	String story;		//설명
 	String launchDate;	//출판일
@@ -14,10 +14,10 @@ public class DVD extends RentalItemInfo{
 	String returnDate;	//반납예정일	0
 
 	//인스턴스 변수 초기화
-	DVD(String title, String genre, String localData, String rentInfo,String foreman,String runingTime,int limitAge,String story,String launchDate) {
+	DVD(String title, String genre, String localData,String foreman,String runingTime,int limitAge,String story,String launchDate) {
 		super(title, genre, localData);
 		this.foreman = foreman;
-		this.rentInfo = rentInfo;
+		this.runingTime = runingTime;
 		this.limitAge = limitAge;
 		this.story = story;
 		this.launchDate = launchDate;

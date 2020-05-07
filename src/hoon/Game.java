@@ -13,7 +13,7 @@ public class Game extends RentalItemInfo{
 	String returnDate;	//반납예정일	0
 	
 	//인스턴스 변수 초기화
-	Game(String title, String genre, String localData, String rentInfo,String producer,int limitAge,String story,String launchDate) {
+	Game(String title, String genre, String localData,String producer,int limitAge,String story,String launchDate) {
 		super(title, genre, localData);
 		this.producer = producer;
 		this.limitAge = limitAge;
