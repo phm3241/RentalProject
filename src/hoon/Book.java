@@ -27,7 +27,7 @@ public class Book extends RentalItemInfo{
 		this.returnDate = null;
 		
 	}
-	
+	Book(){}
 	
 	
 	@Override

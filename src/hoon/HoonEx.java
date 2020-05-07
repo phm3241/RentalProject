@@ -1,10 +1,60 @@
 package hoon;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
+import sun.security.jca.GetInstance;
+
 public class HoonEx implements RentalInterface {
 
+	private ArrayList<Member> member;
+	Scanner sc;
+	
+	private ArrayList<Book> books;
+	private ArrayList<DVD> dvd;
+	private ArrayList<Game> game;
+	
+	private HoonEx() {
+		this.member = new ArrayList<Member>();
+		this.books = new ArrayList<Book>();
+		this.dvd = new ArrayList<DVD>();
+		this.game = new ArrayList<Game>();
+		sc = new Scanner(System.in);
+	}
+	
+	private static HoonEx manager = new HoonEx();
+	
+	public static HoonEx getInstance() {
+		return manager;
+	}
+	
+
+	
+	public ArrayList<Member> getMember() {
+		return member;
+	}
+
+	public ArrayList<Book> getBooks() {
+		return books;
+	}
+
+
+	public ArrayList<DVD> getDvd() {
+		return dvd;
+	}
+
+	public ArrayList<Game> getGame() {
+		return game;
+	}
+	
+
+	//회원정보 보기
 	@Override
 	public void showInfo() {
-		// TODO Auto-generated method stub
+		for(int i=0; i<member.size();i++) {
+			member.get(i).showAllInfo();
+			System.out.println("---------------------");
+		}
 		
 	}
 
