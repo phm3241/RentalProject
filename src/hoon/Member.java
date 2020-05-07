@@ -62,5 +62,11 @@ public class Member extends MemberInfo{
 		return pw;
 	}
 
+	public void setPw(String pw) {
+		this.pw = pw;
+	}
+	
+	
+
 	
 }
