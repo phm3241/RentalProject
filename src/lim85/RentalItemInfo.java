@@ -1,4 +1,4 @@
-package jaeyoung96;
+package lim85;
 
 public class RentalItemInfo {
 	
@@ -25,10 +25,6 @@ public class RentalItemInfo {
 	void showAllinfo() {
 	
 		
-	}
-	
-	boolean checkTitle(String title) {
-		return this.title.equals(title);
 	}
 	
 

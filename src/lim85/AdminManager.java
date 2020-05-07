@@ -1,4 +1,4 @@
-package jaeyoung96;
+package lim85;
 
 
 import java.util.ArrayList;
@@ -100,30 +100,13 @@ public class AdminManager {
         }
     }
 
-    
-    // 로그인체크해서 로그인상태인지 아닌지 반환
-    boolean loginCheck() {
+    boolean loginCheckIndex() {
     	
-    	boolean loginCheck = false;
+    	boolean loginCheckIndex = false;
     	
     	for(int i =0; i<this.member.size();i++) {
     		if(!this.member.get(i).loginCheck) {
-    			loginCheck =true;
-    			break;
-    		}
-    	}
-    	
-    	return loginCheck;
-    }
-    
- // 로그인체크해서 인덱스 반환
-    int loginCheckIndex() {
-    	
-    	int loginCheckIndex = -1;
-    	
-    	for(int i =0; i<this.member.size();i++) {
-    		if(!this.member.get(i).loginCheck) {
-    			loginCheckIndex = i;
+    			loginCheckIndex =true;
     			break;
     		}
     	}
@@ -655,5 +638,4 @@ public class AdminManager {
         game.add(info);
         return info;
     }
-    
 }
