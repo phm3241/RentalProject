@@ -8,13 +8,12 @@ public class RentalItemInfo {
 	String rentInfo;	//대여상태
 	
 	
-	
 	//인스턴스 변수 초기화
-	RentalItemInfo(String title,String genre,String localData,String rentInfo){
+	RentalItemInfo(String title,String genre,String localData){
 		this.title = title;
 		this.genre = genre;
 		this.localData = localData;
-		this.rentInfo = rentInfo;
+		this.rentInfo = "대여가능" ;
 		
 	}
 	
