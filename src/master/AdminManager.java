@@ -179,7 +179,7 @@ public class AdminManager {
         int loginCheckIndex = -1;
 
         for(int i =0; i<this.member.size();i++) {
-            if(this.member.get(i).loginCheck) {
+            if(this.member.get(i).loginCheck==true) {
                 loginCheckIndex = i;
                 break;
             }
