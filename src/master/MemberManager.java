@@ -311,6 +311,7 @@ public class MemberManager {
 	public void showMyRentalList() {
 		// 로그인 했던 아이디의 인덱스를 받아서
 		int index=admManager.loginCheckIndex();
+		System.out.println(index);
 		
 		// 그 아이디를 rentalList에서 찾고, 
 		String id =admManager.getMember().get(index).getId();
@@ -336,7 +337,7 @@ public class MemberManager {
 	
 	
 	// RentalList 기본 출력
-    public void showRentalListInfo() {
+    public void showRentalListInfo(String id, String title, ) {
 		System.out.println("대여 ID : "+id+"\t\t대여 자료명 : "+title+"\t\t대여상태 :"+rentInfo);
 		System.out.println("대여일: :"+rentalDate+"\t\t\t반납일 :"+returnDate);
 		System.out.println("예약일: :"+reservDate+"\t\t\t예약자 :"+reservId);
