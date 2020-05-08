@@ -1,6 +1,6 @@
-package data;
+package phm.data;
 
-import master.Book;
+import phm.Book;
 
 public class Bookdata extends Book {
 
