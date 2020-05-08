@@ -1,6 +1,5 @@
 package seongMin;
 
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -11,11 +10,12 @@ public class AdminManager {
 
     //아이템배열 선언
     private ArrayList<Book> books;
+
     private ArrayList<DVD> dvd;
     private ArrayList<Game> game;
 
 
-    public AdminManager() {
+    private AdminManager() {
         this.member = new ArrayList<Member>();
         this.books = new ArrayList<>();
         this.dvd = new ArrayList<>();
@@ -28,6 +28,26 @@ public class AdminManager {
 
     public static AdminManager getInstance() {
         return manager;
+    }
+
+
+    public ArrayList<Member> getMember() {
+        return member;
+    }
+
+
+    public ArrayList<Book> getBooks() {
+        return books;
+    }
+
+
+    public ArrayList<DVD> getDvd() {
+        return dvd;
+    }
+
+
+    public ArrayList<Game> getGame() {
+        return game;
     }
 
 
@@ -49,7 +69,10 @@ public class AdminManager {
 
         System.out.println("회원가입을 시작합니다.");
         System.out.println("사용하실 아이디를 입력해 주세요.");
+
         id = sc.nextLine();
+        sc.nextLine();
+
         while (checkPw) {
             System.out.println("비밀번호를 입력해 주세요.");
             pw = sc.nextLine();
@@ -71,6 +94,7 @@ public class AdminManager {
 
                 System.out.println("회원가입이 정상적으로 완료되었습니다.");
                 //저장후 무한루프를 빠져나오기 위해 checkPw를 false로 변경
+                System.out.println(member.get(0));
                 checkPw = false;
             } else {
                 System.out.println("입력하신 비밀번호가 다릅니다. 다시 입력해 주세요.");
@@ -80,6 +104,41 @@ public class AdminManager {
     }
 
 
+    // 로그인체크해서 로그인상태인지 아닌지 반환
+    boolean loginCheck() {
+
+        boolean loginCheck = false;
+
+        for(int i =0; i<this.member.size();i++) {
+            if(!this.member.get(i).loginCheck) {
+                loginCheck =true;
+                break;
+            }
+        }
+
+        return loginCheck;
+    }
+
+
+    // 로그인체크해서 인덱스 반환
+    int loginCheckIndex() {
+
+        int loginCheckIndex = -1;
+
+        for(int i =0; i<this.member.size();i++) {
+            if(!this.member.get(i).loginCheck) {
+                loginCheckIndex = i;
+                break;
+            }
+        }
+
+        return loginCheckIndex;
+    }
+
+
+
+
+
     int searchIndex(String id) {
 
         //정상적인 index 값은 0~이상의 값, 찾지 못했을 때 구분 값 -1을 사용
@@ -87,7 +146,7 @@ public class AdminManager {
 
         //배열의 반복으로 id값을 비교해서 index 값을 찾는다.
         for (int i = 0; i < member.size(); i++) {
-            if (member.get(i).id.equals(id)) {
+            if (member.get(i).checkId(id)) {
                 searchIndex = i;
                 break;
             }
@@ -118,7 +177,7 @@ public class AdminManager {
 
                     //아이디,비밀번호정보 받고 수정해야함
                     if (pw1.equals(pw2)) {
-                        member.get(index).pw = pw1;
+                        member.get(index).setPw(pw1);
                         System.out.println("비밀번호 변경이 완료되었습니다.");
                         check = false;
                         break;
@@ -166,11 +225,10 @@ public class AdminManager {
             String id = sc.nextLine();
             sc.nextLine();
             int index = searchIndex(id);
-
-            if (index > 0) {
+            if (index >= 0) {
                 System.out.println("비밀번호를 입력해 주세요.");
                 String pw = sc.nextLine();
-                if (member.get(index).pw.equals(pw)) {
+                if (member.get(index).getPw().equals(pw)) {
                     System.out.println("로그인이 완료되었습니다.");
                     member.get(index).loginCheck = true;
                     check = false;
@@ -202,9 +260,47 @@ public class AdminManager {
     }
 
     public void adminLogin() {
+        boolean check = true;
+        while (check) {
+            System.out.println("아이디를 입력해 주세요.");
+
+            String id = sc.nextLine();
+            sc.nextLine();
+            int index = searchIndex(id);
+
+            if (index > 0) {
+                System.out.println("비밀번호를 입력해 주세요.");
+                String pw = sc.nextLine();
+                if (member.get(index).getPw().equals(pw)) {
+                    System.out.println("로그인이 완료되었습니다.");
+                    member.get(index).loginCheck = true;
+                    check = false;
+                    break;
+                } else {
+                    System.out.println("비밀번호를 다시 입력해 주세요.");
+                    continue;
+                }
+            } else {
+                System.out.println("입력하신 아이디가 없습니다. 다시 입력해주세요.");
+                continue;
+            }
+        }
 
     }
 
+    public void adminLogOut() {
+        for (int i = 0; i < member.size(); i++) {
+            if (member.get(i).loginCheck == true) {
+                member.get(i).loginCheck = false;
+                System.out.println("로그아웃 되었습니다.");
+                break;
+            } else {
+                System.out.println("로그인된 계정이 없습니다.");
+                break;
+            }
+        }
+
+    }
 
     //책입니다---------------------------------------------
 
@@ -460,7 +556,7 @@ public class AdminManager {
 
 
 
-        info = new Book(title, genre, localData, rentInfo,
+        info = new Book(title, genre, localData,
                 author, limitAge, story, launchDate);
 
         //배열에 추가

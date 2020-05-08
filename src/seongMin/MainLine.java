@@ -34,7 +34,7 @@ public class MainLine {
                                     System.out.println("1.대여 | 2.예약 | 3.반납 | 연장");
                                     selectNum = manager.sc.nextInt();
                                     //비로그인 시
-                                    System.out.println("이용하시려면 로그인을 해 주세요.");                 
+                                    System.out.println("이용하시려면 로그인을 해 주세요.");
                                     break;
                                 case 2:
                                     break;
@@ -105,7 +105,7 @@ public class MainLine {
                         case 2:
                             System.out.println("아이디를 입력해 주세요.");
                             System.out.println("비밀번호를 입력해 주세요.");
-                            
+
                             break;
                     }
                     break;
@@ -119,9 +119,7 @@ public class MainLine {
                             System.out.println("이용안내 출력");
                             break;
                         case 2:
-                            System.out.println("회원가입을 시작합시다");
-
-                            System.out.println("이력쭉 후 가입 완료");
+                            manager.addInfo();
                             break;
                     }
                     break;
