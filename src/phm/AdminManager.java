@@ -1,4 +1,4 @@
-package phm;
+package master;
 
 import data.*;
 
@@ -14,7 +14,7 @@ public class AdminManager {
     private ArrayList<Book> books;
     private ArrayList<DVD> dvd;
     private ArrayList<Game> game;
-
+    
 
 
     private AdminManager() {
@@ -163,7 +163,7 @@ public class AdminManager {
         boolean loginCheck = false;
 
         for(int i =0; i<this.member.size();i++) {
-            if(!this.member.get(i).loginCheck) {
+            if((this.member.get(i).loginCheck)==true) {
                 loginCheck =true;
                 break;
             }
@@ -179,7 +179,7 @@ public class AdminManager {
         int loginCheckIndex = -1;
 
         for(int i =0; i<this.member.size();i++) {
-            if(!this.member.get(i).loginCheck) {
+            if(this.member.get(i).loginCheck) {
                 loginCheckIndex = i;
                 break;
             }
@@ -283,6 +283,7 @@ public class AdminManager {
                 if (member.get(index).getPw().equals(pw)) {
                     System.out.println("로그인이 완료되었습니다.");
                     member.get(index).loginCheck = true;
+                    System.out.println(member.get(index).loginCheck);
                     check = false;
                     break;
                 } else {
@@ -293,7 +294,7 @@ public class AdminManager {
                 System.out.println("입력하신 아이디가 없습니다. 다시 입력해주세요.");
                 continue;
             }
-        }
+        }    
     }
 
     public void logOut() {
