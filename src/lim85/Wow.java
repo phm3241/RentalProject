@@ -389,7 +389,7 @@ public class Wow {
 	// 반납
 	void itemReturn() {
 		
-		System.out.println("반납하고자하는 도서를 입력해주세요");
+		System.out.println("반납하고자하는 자료를 입력해주세요");
 		String title = admManager.sc.nextLine();
 		
 		int index = admManager.loginCheckIndex();
