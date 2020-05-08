@@ -4,7 +4,7 @@ import hoon.Member;
 
 public class MemberData3 extends Member{
 	
-	MemberData3(){
+	public MemberData3(){
 		this.name = "박혜미";
 		this.age = 22;
 		this.phoneNum ="010-6372-0908";

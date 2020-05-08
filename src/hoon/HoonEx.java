@@ -60,7 +60,36 @@ public class HoonEx implements RentalInterface {
 
 	@Override
 	public void addInfo() {
-		// TODO Auto-generated method stub
+		String id = null, pw=null, pw2 = null, name = null,phoneNum= null,email=null,addr=null;
+		int age = 0;
+		
+		boolean checkPw=true;
+		System.out.println("회원가입을 시작합니다.");
+		System.out.println("사용하실 아이디를 입력해 주세요");
+		id = sc.nextLine();
+		while(checkPw) {
+			System.out.println("비밀번호를 입력해 주세요");
+			pw = sc.nextLine();
+			System.out.println("다시 한번 입력해주세요");
+			pw2 = sc.nextLine();
+			if(pw.equals(pw2)) {
+				System.out.println("이름을 입력해 주세요");
+				name = sc.nextLine();
+				System.out.println("전화번호를 입력해 주세요");
+				phoneNum = sc.nextLine();
+				System.out.println("주소를 입력해주세요");
+				addr = sc.nextLine();
+				System.out.println("이메일을 입력해 주세요");
+				email = sc.next();
+				
+				//입력받은 데이터 저장
+				Member info = new Member(name, age, phoneNum, addr, email, id, pw2);
+				member.add(info);
+			}
+		}
+		
+		
+		
 		
 	}
 
