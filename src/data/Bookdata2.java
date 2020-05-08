@@ -1,6 +1,6 @@
 package data;
 
-import hoon.Book;
+import master.Book;
 
 public class Bookdata2 extends Book {
 

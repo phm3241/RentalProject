@@ -1,6 +1,6 @@
 package data;
 
-import hoon.DVD;
+import master.DVD;
 
 public class DVDData extends DVD{
 	

@@ -1,6 +1,6 @@
 package data;
 
-import hoon.Member;
+import master.Member;
 
 public class MemberData5 extends Member{
 	

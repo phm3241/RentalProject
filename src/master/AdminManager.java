@@ -31,12 +31,25 @@ public class AdminManager {
         Bookdata4 book4 = new Bookdata4();
         Bookdata5 book5 = new Bookdata5();
 
+        this.books.add(book1);
+        this.books.add(book2);
+        this.books.add(book3);
+        this.books.add(book4);
+        this.books.add(book5);
+
+
         //DVD데이터 객체
         DVDData dvd1 = new DVDData();
         DVDData2 dvd2 = new DVDData2();
         DVDData3 dvd3 = new DVDData3();
         DVDData4 dvd4 = new DVDData4();
         DVDData5 dvd5 = new DVDData5();
+
+        this.dvd.add(dvd1);
+        this.dvd.add(dvd2);
+        this.dvd.add(dvd3);
+        this.dvd.add(dvd4);
+        this.dvd.add(dvd5);
 
         //game데이터 객체
         GameData game1 = new GameData();
@@ -45,6 +58,12 @@ public class AdminManager {
         GameData4 game4 = new GameData4();
         GameData5 game5 = new GameData5();
 
+        this.game.add(game1);
+        this.game.add(game2);
+        this.game.add(game3);
+        this.game.add(game4);
+        this.game.add(game5);
+
         //mamber데이터 객체
         MemberData mem1 = new MemberData();
         MemberData2 mem2 = new MemberData2();
@@ -52,6 +71,11 @@ public class AdminManager {
         MemberData4 mem4 = new MemberData4();
         MemberData5 mem5 = new MemberData5();
 
+        this.member.add(mem1);
+        this.member.add(mem2);
+        this.member.add(mem3);
+        this.member.add(mem4);
+        this.member.add(mem5);
     }
 
     //어드민매니저 객체 싱글톤 구현

@@ -1,6 +1,6 @@
 package data;
 
-import hoon.Game;
+import master.Game;
 
 public class GameData4 extends Game{
 	
