@@ -1,4 +1,4 @@
-package seongMin;
+package master;
 
 import data.*;
 
@@ -559,7 +559,6 @@ public class AdminManager {
         String title=null;
         String genre=null;
         String localData=null;
-        String rentInfo=null;
 
         // 기본정보 수집: 책이름, 장르, 책위치, 대여상태
 
@@ -571,10 +570,6 @@ public class AdminManager {
 
         System.out.println("자료위치를 입력해주세요.");
         localData = sc.nextLine();
-
-        System.out.println("대여상태를 입력해주세요.");
-        rentInfo = sc.nextLine();
-
 
         System.out.println("저자를 입력해주세요");
         String author = sc.nextLine();
@@ -602,7 +597,6 @@ public class AdminManager {
         String title=null;
         String genre=null;
         String localData=null;
-        String rentInfo=null;
 
         // 기본정보 수집: DVD이름, 장르, DVD위치, 대여상태
 
@@ -614,10 +608,6 @@ public class AdminManager {
 
         System.out.println("자료위치를 입력해주세요.");
         localData = sc.nextLine();
-
-        System.out.println("대여상태를 입력해주세요.");
-        rentInfo = sc.nextLine();
-
 
         System.out.println("감독를 입력해주세요");
         String foreman = sc.nextLine();
@@ -637,7 +627,7 @@ public class AdminManager {
 
 
         //DVD 클래스로 인스턴스생성
-        info = new DVD(title, genre, localData, rentInfo, foreman,
+        info = new DVD(title, genre, localData, foreman,
                 runingTime, limitAge, story, launchDate);
 
         //배열에 추가
@@ -652,7 +642,6 @@ public class AdminManager {
         String title=null;
         String genre=null;
         String localData=null;
-        String rentInfo=null;
 
         // 기본정보 수집: 게임이름, 장르, 게임위치, 대여상태
 
@@ -664,10 +653,6 @@ public class AdminManager {
 
         System.out.println("자료위치를 입력해주세요.");
         localData = sc.nextLine();
-
-        System.out.println("대여상태를 입력해주세요.");
-        rentInfo = sc.nextLine();
-
 
         System.out.println("제작자를 입력해주세요");
         String producer = sc.nextLine();
@@ -686,7 +671,7 @@ public class AdminManager {
 
 
         //2.2.3 Book 클래스로 인스턴스생성
-        info = new Game(title, genre, localData, rentInfo,
+        info = new Game(title, genre, localData,
                 producer, limitAge, story, launchDate);
 
         //배열에 추가
