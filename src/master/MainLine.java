@@ -58,7 +58,7 @@ public class MainLine {
                     }
                     break;
                 case 4:
-
+                	adm.logOut();
                     System.out.println("로그아웃 되었습니다. /n 프로그램 종료");
                     break;
             }
