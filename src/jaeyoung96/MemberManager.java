@@ -337,7 +337,7 @@ public class MemberManager {
 	
 	
 	// RentalList 기본 출력
-    public void showRentalListInfo(String id, String title, ) {
+    public void showRentalListInfo( ) {
 		System.out.println("대여 ID : "+id+"\t\t대여 자료명 : "+title+"\t\t대여상태 :"+rentInfo);
 		System.out.println("대여일: :"+rentalDate+"\t\t\t반납일 :"+returnDate);
 		System.out.println("예약일: :"+reservDate+"\t\t\t예약자 :"+reservId);

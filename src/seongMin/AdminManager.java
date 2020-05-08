@@ -1,6 +1,7 @@
 package seongMin;
 
-import data.*;
+
+import seongMin.data.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -31,12 +32,25 @@ public class AdminManager {
         Bookdata4 book4 = new Bookdata4();
         Bookdata5 book5 = new Bookdata5();
 
+        this.books.add(book1);
+        this.books.add(book2);
+        this.books.add(book3);
+        this.books.add(book4);
+        this.books.add(book5);
+
+
         //DVD데이터 객체
         DVDData dvd1 = new DVDData();
         DVDData2 dvd2 = new DVDData2();
         DVDData3 dvd3 = new DVDData3();
         DVDData4 dvd4 = new DVDData4();
         DVDData5 dvd5 = new DVDData5();
+
+        this.dvd.add(dvd1);
+        this.dvd.add(dvd2);
+        this.dvd.add(dvd3);
+        this.dvd.add(dvd4);
+        this.dvd.add(dvd5);
 
         //game데이터 객체
         GameData game1 = new GameData();
@@ -45,6 +59,12 @@ public class AdminManager {
         GameData4 game4 = new GameData4();
         GameData5 game5 = new GameData5();
 
+        this.game.add(game1);
+        this.game.add(game2);
+        this.game.add(game3);
+        this.game.add(game4);
+        this.game.add(game5);
+
         //mamber데이터 객체
         MemberData mem1 = new MemberData();
         MemberData2 mem2 = new MemberData2();
@@ -52,6 +72,11 @@ public class AdminManager {
         MemberData4 mem4 = new MemberData4();
         MemberData5 mem5 = new MemberData5();
 
+        this.member.add(mem1);
+        this.member.add(mem2);
+        this.member.add(mem3);
+        this.member.add(mem4);
+        this.member.add(mem5);
     }
 
     //어드민매니저 객체 싱글톤 구현
@@ -100,9 +125,7 @@ public class AdminManager {
 
         System.out.println("회원가입을 시작합니다.");
         System.out.println("사용하실 아이디를 입력해 주세요.");
-
         id = sc.nextLine();
-        sc.nextLine();
 
         while (checkPw) {
             System.out.println("비밀번호를 입력해 주세요.");
@@ -141,7 +164,7 @@ public class AdminManager {
         boolean loginCheck = false;
 
         for(int i =0; i<this.member.size();i++) {
-            if(!this.member.get(i).loginCheck) {
+            if((this.member.get(i).loginCheck)==true) {
                 loginCheck =true;
                 break;
             }
@@ -157,7 +180,7 @@ public class AdminManager {
         int loginCheckIndex = -1;
 
         for(int i =0; i<this.member.size();i++) {
-            if(!this.member.get(i).loginCheck) {
+            if(this.member.get(i).loginCheck==true) {
                 loginCheckIndex = i;
                 break;
             }
@@ -254,7 +277,6 @@ public class AdminManager {
             System.out.println("아이디를 입력해 주세요.");
 
             String id = sc.nextLine();
-            sc.nextLine();
             int index = searchIndex(id);
             if (index >= 0) {
                 System.out.println("비밀번호를 입력해 주세요.");
@@ -262,6 +284,7 @@ public class AdminManager {
                 if (member.get(index).getPw().equals(pw)) {
                     System.out.println("로그인이 완료되었습니다.");
                     member.get(index).loginCheck = true;
+                    System.out.println(member.get(index).loginCheck);
                     check = false;
                     break;
                 } else {
@@ -338,7 +361,7 @@ public class AdminManager {
     //자료관리
     //도서 정보보기
     public void showBookInfo() {
-        System.out.println("책정보 출력");
+        System.out.println("책 전체정보 출력");
         for(int i=0;i<books.size();i++) {
             books.get(i).showAllinfo();
             System.out.println("-------------");
@@ -347,6 +370,13 @@ public class AdminManager {
 
     }
 
+    public void showBookBasic() {
+    	System.out.println("책 기본 정보 출력");
+    	for(int i=0; i<books.size();i++) {
+    		books.get(i).showBasicInfo();
+    		System.out.println("---------------------");
+    	}
+    }
     //create로 이동
 //	@Override
     //도서 정보넣기
@@ -418,11 +448,15 @@ public class AdminManager {
             dvd.get(i).showAllinfo();
             System.out.println("-------------");
         }
-
-
-
     }
 
+    public void showDvdBasic() {
+    	System.out.println("책 기본 정보 출력");
+    	for(int i=0; i<dvd.size();i++) {
+    		dvd.get(i).showBasicInfo();
+    		System.out.println("---------------------");
+    	}
+    }
     //create로 이동
 //DVD추가
 //	@Override
@@ -492,6 +526,13 @@ public class AdminManager {
         }
 
     }
+    public void showGameBasic() {
+    	System.out.println("책 기본 정보 출력");
+    	for(int i=0; i<game.size();i++) {
+    		game.get(i).showBasicInfo();
+    		System.out.println("---------------------");
+    	}
+    }
     //create쪽으로 넣음
 //게임추가
 //	@Override
@@ -559,7 +600,6 @@ public class AdminManager {
         String title=null;
         String genre=null;
         String localData=null;
-        String rentInfo=null;
 
         // 기본정보 수집: 책이름, 장르, 책위치, 대여상태
 
@@ -571,10 +611,6 @@ public class AdminManager {
 
         System.out.println("자료위치를 입력해주세요.");
         localData = sc.nextLine();
-
-        System.out.println("대여상태를 입력해주세요.");
-        rentInfo = sc.nextLine();
-
 
         System.out.println("저자를 입력해주세요");
         String author = sc.nextLine();
@@ -602,7 +638,6 @@ public class AdminManager {
         String title=null;
         String genre=null;
         String localData=null;
-        String rentInfo=null;
 
         // 기본정보 수집: DVD이름, 장르, DVD위치, 대여상태
 
@@ -614,10 +649,6 @@ public class AdminManager {
 
         System.out.println("자료위치를 입력해주세요.");
         localData = sc.nextLine();
-
-        System.out.println("대여상태를 입력해주세요.");
-        rentInfo = sc.nextLine();
-
 
         System.out.println("감독를 입력해주세요");
         String foreman = sc.nextLine();
@@ -637,7 +668,7 @@ public class AdminManager {
 
 
         //DVD 클래스로 인스턴스생성
-        info = new DVD(title, genre, localData, rentInfo, foreman,
+        info = new DVD(title, genre, localData, foreman,
                 runingTime, limitAge, story, launchDate);
 
         //배열에 추가
@@ -652,7 +683,6 @@ public class AdminManager {
         String title=null;
         String genre=null;
         String localData=null;
-        String rentInfo=null;
 
         // 기본정보 수집: 게임이름, 장르, 게임위치, 대여상태
 
@@ -664,10 +694,6 @@ public class AdminManager {
 
         System.out.println("자료위치를 입력해주세요.");
         localData = sc.nextLine();
-
-        System.out.println("대여상태를 입력해주세요.");
-        rentInfo = sc.nextLine();
-
 
         System.out.println("제작자를 입력해주세요");
         String producer = sc.nextLine();
@@ -686,7 +712,7 @@ public class AdminManager {
 
 
         //2.2.3 Book 클래스로 인스턴스생성
-        info = new Game(title, genre, localData, rentInfo,
+        info = new Game(title, genre, localData,
                 producer, limitAge, story, launchDate);
 
         //배열에 추가
