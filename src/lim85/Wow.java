@@ -470,7 +470,7 @@ public class Wow {
 		
 		int index = admManager.loginCheckIndex();
 		
-		if(index<0) {	 //연장 실패
+		if(index < 0) {	 //연장 실패
 			System.out.println("연장하고자하는 "+ title +" 자료가 없습니다.");
 		}else {	//연장 성공
 			title = rentalList.get(index).title;	// 도서를 찾는다.
@@ -478,22 +478,28 @@ public class Wow {
 			//Calendar cal = Calendar.getInstance();
 			//SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
 			String today = format.format(cal.getTime());
-			//System.out.println(today);		// 오늘날짜
-		    
-			//String strStartDate = "2020-04-01";	// rentalDate 로 바꿔야된다.
-	        String strEndDate = today;
-	        //String strFormat = "yyyy-MM-dd";
-	        
-	        //SimpleDateFormat format = new SimpleDateFormat(strFormat);
-	        
-	        Date startDate = format.parse(strStartDate);	// rentalDate
-            Date endDate = parse(strEndDate);		// today
-            
-            long gap = (startDate.getTime() - endDate.getTime()) / (24*60*60*1000);
-            gap = Math.abs(gap);
-            //System.out.println(gap+"일");
+			cal.add(Calendar.DATE,7);
+			String returnDate = format.format(cal.getTime());		// 7일 연장.
 			
-			if(gap > 7) { //연체 있을때.
+			String startDate = rentalDate; 
+	        String endDate = today;
+	       
+	        Date startDate1 = null;
+	        Date endDate1 = null;
+	        
+	        try {
+		        
+	        	startDate1 = format.parse(startDate);	// rentalDate
+	            endDate1 = format.parse(endDate);		// today
+		        
+	        } catch(ParseException e) {
+	        	e.printStackTrace();
+	        }
+	        
+	        long gap = startDate1.getTime() - endDate1.getTime() / (24*60*60*1000);
+            gap = Math.abs(gap);
+	        
+	        if((int)gap > 7) { //연체 있을때.
 				System.out.println(title + "연체일수가 " + gap + " 일 입니다.");
 				System.out.println(gap + " 기간동안 연장하실 수 없습니다.");
 				System.out.println("처리 : " + today);
@@ -501,16 +507,9 @@ public class Wow {
 				admManager.getMember().get(admManager.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
 				admManager.getMember().get(admManager.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
 				
-			}else if(gap < 7) {	// 연체 없을때
+			}else if((int)gap < 7) {	// 연체 없을때
 				
-				//cal.add(Calendar.DATE, 7);		//7일 연장
-				//Calendar cal = Calendar.getInstance();
-				//SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-			    
-				
-				
-				//returnDate = returnDate + 7일
-				String returnDate = rentalList.get(1).returnDate;
+			    returnDate = format.format(cal.getTime());
 				cal.add(Calendar.DATE, 7);
 				String extenDate = format.format(cal.getTime());
 				
