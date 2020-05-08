@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
-public class MemberManager {
+public class MemberManager2 {
 
 	String id;      		// 회원ID
 	String title;			// 자료명
@@ -16,7 +16,7 @@ public class MemberManager {
 	String returnDate;		// 반납예정일#
 	String reservDate;		// 예약일#
 	String reservId;		// 예약자
-	String extenDate;		// 연장일#
+	String dateOfExtens;	// 연장기간#
 	String overdue;			// 연체일#
 	 
 	
@@ -31,23 +31,33 @@ public class MemberManager {
 	
 	
 	// 대여 - 리스트 생성자 (회원ID, 자료 title)
-	MemberManager(String id, String title, String rentalDate, String returnDate) {
+	MemberManager2(String id, String title, String rentalDate, String returnDate) {
+
+//		this.id=id;      				// 대여한 회원ID
+//		this.title=title;				// 대여한 자료명
+//		this.rentInfo="대여중";			// 대여상태
+//		this.rentalDate=null; 			// 대여일
+//		this.returnDate=null;			// 반납일
+//		this.reservDate=null;			// 예약일
+//		this.reservId=null;				// 예약자
+//		this.dateOfExtens=null;			// 연장기간
+//		this.overdue=null;				// 연체기간
 
 		this.id=id;      				// 대여한 회원ID
 		this.title=title;				// 대여한 자료명
 		this.rentInfo="대여중";			// 대여상태
-		this.rentalDate=null; 			// 대여일
+		admManager.getBooks().get(1).returnDate=null; 			// 대여일
 		this.returnDate=null;			// 반납일
 		this.reservDate=null;			// 예약일
 		this.reservId=null;				// 예약자
-		this.extenDate=null;			// 연장일
+		this.dateOfExtens=null;			// 연장기간
 		this.overdue=null;				// 연체기간
 	}		
 		
 
 		
 	// 대여 리스트 생성	
-	ArrayList<MemberManager> rentalList=new ArrayList<>();
+	ArrayList<MemberManager2> rentalList=new ArrayList<>();
 	
 	
 	
@@ -200,7 +210,7 @@ public class MemberManager {
 	
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList에 인스턴스 추가 
-	void addRental(MemberManager info) {
+	void addRental(MemberManager2 info) {
 		rentalList.add(info);
 		
 	}
@@ -212,7 +222,7 @@ public class MemberManager {
 	// rentalList 인스턴스 생성
 	void creatRentalList() {
 		
-		MemberManager info = null;
+		MemberManager2 info = null;
 		
 			int index=admManager.loginCheckIndex();
 		
@@ -253,7 +263,7 @@ public class MemberManager {
 			}
 		
 		// MemberManager 객체 생성
-		info=new MemberManager(id, title, rentalDate, returnDate);
+		info=new MemberManager2(id, title, rentalDate, returnDate);
 		
 		
 		// MemberManager 객체 ㅡ> 대여리스트에 추가 메서드 1-1. 호출.
@@ -336,7 +346,7 @@ public class MemberManager {
 		System.out.println("대여 ID : "+id+"\t\t대여 자료명 : "+title+"\t\t대여상태 :"+rentInfo);
 		System.out.println("대여일: :"+rentalDate+"\t\t\t반납일 :"+returnDate);
 		System.out.println("예약일: :"+reservDate+"\t\t\t예약자 :"+reservId);
-		System.out.println("연장일 : "+extenDate+"\t\t연체기간: :"+overdue);
+		System.out.println("연장기간 : "+dateOfExtens+"\t\t연체기간: :"+overdue);
 		System.out.println("--------------------------------------------------------------");  
 
     }
@@ -463,82 +473,7 @@ public class MemberManager {
 	
 	
 	
-	
-//	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-//	// 연장.
-//	void extention() {
-//		
-//
-//		System.out.println("연장하고자하는 자료를 입력해주세요.");
-//		String title = admManager.sc.nextLine();
-//		
-//		int index = admManager.loginCheckIndex();
-//		
-//		if(index<0) {	 //연장 실패
-//			System.out.println("연장하고자하는 "+ title +" 자료가 없습니다.");
-//		}else {	//연장 성공
-//			title = rentalList.get(index).title;	// 도서를 찾는다.
-//			
-//			//Calendar cal = Calendar.getInstance();
-//			//SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-//			String today = format.format(cal.getTime());
-//			//System.out.println(today);		// 오늘날짜
-//		    
-//			//String strStartDate = "2020-04-01";	// rentalDate 로 바꿔야된다.
-//	        String strEndDate = today;
-//	        //String strFormat = "yyyy-MM-dd";
-//	        
-//	        //SimpleDateFormat format = new SimpleDateFormat(strFormat);
-//	        
-//	        Date startDate = format.parse(strStartDate);	// rentalDate
-//            Date endDate = parse(strEndDate);		// today
-//            
-//            long gap = (startDate.getTime() - endDate.getTime()) / (24*60*60*1000);
-//            gap = Math.abs(gap);
-//            //System.out.println(gap+"일");
-//			
-//			if(gap > 7) { //연체 있을때.
-//				System.out.println(title + "연체일수가 " + gap + " 일 입니다.");
-//				System.out.println(gap + " 기간동안 연장하실 수 없습니다.");
-//				System.out.println("처리 : " + today);
-//				
-//				admManager.getMember().get(admManager.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
-//				admManager.getMember().get(admManager.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
-//				
-//			}else if(gap < 7) {	// 연체 없을때
-//				
-//				//cal.add(Calendar.DATE, 7);		//7일 연장
-//				//Calendar cal = Calendar.getInstance();
-//				//SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd");
-//			    
-//				
-//				
-//				//returnDate = returnDate + 7일
-//				String returnDate = rentalList.get(1).returnDate;
-//				cal.add(Calendar.DATE, 7);
-//				String extenDate = format.format(cal.getTime());
-//				
-//	
-//				System.out.println(title + "자료가 정상적으로 7일 연장되었습니다.");
-//				System.out.println(returnDate + " 까지 반납하세요.");
-//				System.out.println("처리 : " + today);
-//				
-//				//admManager.getMember().get(admManager.loginCheckIndex()).numOfRent ??? 			// 대여권수, 빌렸던 책이니까 유지	???
-//				//admManager.getMember().get(admManager.loginCheckIndex()).rentalAvail ???			// 대여가능권수, ???
-//				admManager.getMember().get(admManager.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수, 연장을 썼으니까 0으로 바꿔준다.
-//			
-//				
-//			}
-//		}
-//			rentInfo = "대여중";		// 대여상태 대여중으로 바꾼다.
-//			
-//			// 연장기간
-//			//dateOfExtens = returnDate + 7;
-//
-//		
-//	} //extention 끝.
-//	
-//		
+		
 	
 	
 	

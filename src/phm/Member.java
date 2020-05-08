@@ -11,7 +11,7 @@ public class Member extends MemberInfo{
 	int numOfExtens = 1;	//연장가능횟수 1
 	int overdue = 0;		//연체 0
 	int rentalDate = 7;		//대여일 7
-	String returnData;		//반납예정일 
+	String returnDate;		//반납예정일 
 	String rentInfo;		//대여상태 
 	int dataOfExtens = 7;	//연장기간 7
 	
@@ -22,6 +22,15 @@ public class Member extends MemberInfo{
 		this.loginCheck = false;
 		this.id = id;
 		this.pw = pw;
+		level = 2;
+		numOfRent = 0;
+		rentalAvail = 5;
+		numOfExtens = 1;
+		overdue = 0;
+		rentalDate = 7;
+		returnDate = "0";
+		rentInfo = "없음";
+		dataOfExtens = 7;
 	
 	}
 
@@ -32,6 +41,9 @@ public class Member extends MemberInfo{
 		
 	}
 	
+	
+	
+//	Member member1=new Member("박명훈",20,"010-1234-3210","서울시 종로구 숭인동","qkraudgns@naver.com","qkraudgns","qkraudgns111");
 	
 
 }

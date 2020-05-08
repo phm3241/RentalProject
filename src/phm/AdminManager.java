@@ -50,7 +50,8 @@ public class AdminManager {
 	public ArrayList<Game> getGame() {
 		return game;
 	}
-
+	
+	
 
     //회원정보보기
     //객체 전체 목록 출력
@@ -61,6 +62,13 @@ public class AdminManager {
         }
     }
 
+    public void addInfo(Member info) {
+        String id = null, pw = null, pw2 = null, name = null, phoneNum = null, addr = null, email = null;
+        int age = 0;
+    	info= new Member(name, age, phoneNum, addr, email, id, pw);
+    	member.add(info);
+    }
+    
     public void addInfo() {
         String id = null, pw = null, pw2 = null, name = null, phoneNum = null, addr = null, email = null;
         int age = 0;
@@ -662,4 +670,18 @@ public class AdminManager {
         game.add(info);
         return info;
     }
+    
+    
+//
+////		Member info=null;
+//		Member info=new Member("박명훈",20,"010-1234-3210","서울시 종로구 숭인동","qkraudgns@naver.com","qkraudgns","qkraudgns111");
+//		addInfo(info);
+//		Member info2=new Member("박훈",10,"010-1234-3210","서울시 종로구 숭인동","qkraudgns@naver.com","qkraudgns","qkraudgns111");
+//		addInfo(info2);
+//		for(int i=0; i<member.size(); i++) {			member.get(i).showAllInfo();
+//		}	}
+//    
+//	
+	
+	
 }
