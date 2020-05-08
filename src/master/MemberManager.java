@@ -57,6 +57,7 @@ public class MemberManager {
 	// 자료검색 ㅡ> 결과출력
 	void showInfo() {
 		
+		 while (true) {
 		 System.out.println("1.도서 | 2.DVD | 3. 게임");
 
          int selectNum = admManager.sc.nextInt();
@@ -65,7 +66,7 @@ public class MemberManager {
          switch (selectNum) {
             case 1:		// Book 선택시
             	System.out.println("------------------------");
-            	admManager.showBookInfo();
+            	admManager.showBookBasic();
             	System.out.println("------------------------");
 
             	System.out.println("찾으시는 도서명을 입력해주세요.");
@@ -93,21 +94,23 @@ public class MemberManager {
 	                            //비로그인 시
 	                    			System.out.println("이용하시려면 로그인을 해 주세요.");
 	                    			admManager.login();
+			                    	creatRentalList(); 
 	                    			break;
 	                    		}
+		                    	
 	                        
 	                    case 2:  // 예약 	 
 	                        	/* 예약 메서드 */ 
 	                        	 break;
                 
      					} //switch : case1(Book) : switch end
-                    	 
+     				break; 
      			}  //switch : case1(Book) : else end   	  
      			
      			
             case 2:		// DVD 선택시   
             	System.out.println("------------------------");
-            	admManager.showDvdInfo();
+            	admManager.showDvdBasic();
             	System.out.println("------------------------");
 
             	System.out.println("찾으시는 DVD명을 입력해주세요.");
@@ -150,7 +153,7 @@ public class MemberManager {
      			
             case 3:		// Game 선택시   
             	System.out.println("------------------------");
-            	admManager.showDvdInfo();
+            	admManager.showGameBasic();
             	System.out.println("------------------------");
 
             	System.out.println("찾으시는 DVD명을 입력해주세요.");
@@ -191,6 +194,7 @@ public class MemberManager {
             	 
          } //switch end
 	} //showInfo() end
+}//while end
             	 
             	 
             	 

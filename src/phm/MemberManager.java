@@ -5,7 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Scanner;
 
 public class MemberManager {
 
@@ -42,11 +41,12 @@ public class MemberManager {
 		this.reservId=null;				// 예약자
 		this.extenDate=null;			// 연장일
 		this.overdue=null;				// 연체기간
-	}		
-		
+	}
 
-		
-	// 대여 리스트 생성	
+	public MemberManager() {
+	}
+
+	// 대여 리스트 생성
 	ArrayList<MemberManager> rentalList=new ArrayList<>();
 	
 	
@@ -217,7 +217,7 @@ public class MemberManager {
 			int index=admManager.loginCheckIndex();
 		
 			// 대여할 때 받을 정보 ㅡ> 로그인한 회원 Id, 대여할 자료명
-			String id =admManager.getMember().get(index).id; 	// 로그인한 id
+			String id =admManager.getMember().get(index).getId(); 	// 로그인한 id
 			// 회원 카운트 변경 
 			admManager.getMember().get(index).rentalAvail -=1;   // 회원정보 : 대여가능권수 -1
 			admManager.getMember().get(index).numOfRent +=1;		// 회원정보 : 대여권수 +1
@@ -310,7 +310,7 @@ public class MemberManager {
 		int index=admManager.loginCheckIndex();
 		
 		// 그 아이디를 rentalList에서 찾고, 
-		String id =admManager.getMember().get(index).id; 
+		String id =admManager.getMember().get(index).getId();
 		
 		int rentalIndex=searchRentalIndex(id);
 		
@@ -353,7 +353,7 @@ public class MemberManager {
 		
 		// 예약할 때 받을 정보 ㅡ> 로그인한 회원 Id, 대여할 자료명
 		int index=admManager.loginCheckIndex();
-		String reservId =admManager.getMember().get(index).id; 	// 로그인한 id
+		String reservId =admManager.getMember().get(index).getId(); 	// 로그인한 id
 	
 		searchRentalIndexTitle(this.title);
 		

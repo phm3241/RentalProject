@@ -293,7 +293,7 @@ public class AdminManager {
                 System.out.println("입력하신 아이디가 없습니다. 다시 입력해주세요.");
                 continue;
             }
-        }
+        }    
     }
 
     public void logOut() {
