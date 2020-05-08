@@ -57,7 +57,7 @@ public class MemberManager {
 	// 자료검색 ㅡ> 결과출력
 	void showInfo() {
 		
-		 while (true) {
+//		 while (true) {
 		 System.out.println("1.도서 | 2.DVD | 3. 게임");
 
          int selectNum = admManager.sc.nextInt();
@@ -194,7 +194,7 @@ public class MemberManager {
             	 
          } //switch end
 	} //showInfo() end
-}//while end
+//}//while end
             	 
             	 
             	 
@@ -229,12 +229,12 @@ public class MemberManager {
 			
 			// 대여일 생성
 			String rentalDate=format.format(cal.getTime());
-			System.out.println("대여일 : " + rentalDate);
+//			System.out.println("대여일 : " + rentalDate);
 			
 			// 반납일 생성 : 대여일+7일
 			cal.add(Calendar.DATE,7);
 			String returnDate=format.format(cal.getTime());
-			System.out.println("반납일 : "+returnDate);
+//			System.out.println("반납일 : "+returnDate);
 
 
 			// 자료 카운트 변경
@@ -262,7 +262,7 @@ public class MemberManager {
 		
 		// MemberManager 객체 ㅡ> 대여리스트에 추가 메서드 1-1. 호출.
 		addRental(info); 
-		System.out.println(id+"님 "+title+"자료가 대여가 완료되었습니다. ");
+		System.out.println(id+"님 < "+title+" > 자료가 대여가 완료되었습니다. ");
 		System.out.println("대여일 : "+rentalDate+" | 반납예정일 : "+returnDate);
 		
 		
@@ -393,7 +393,7 @@ public class MemberManager {
 	// 반납
 	void itemReturn() {
 		
-		System.out.println("반납하고자하는 도서를 입력해주세요");
+		System.out.println("반납하고자하는 자료를 입력해주세요");
 		String title = admManager.sc.nextLine();
 		
 		int index = admManager.loginCheckIndex();

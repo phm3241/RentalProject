@@ -23,20 +23,24 @@ public class MainLine {
                     mem.showInfo();
                     break;
                 case 2:
+                	if(adm.loginCheck()) {
+                		break;
+                	}else {
+                		System.out.println("1. 회원 | 2.관리자");
+                		
+                		selectNum = sc.nextInt();
 
-                    System.out.println("1. 회원 | 2.관리자");
-                    selectNum = sc.nextInt();
-
-                    switch (selectNum){
-                        case 1:
-                            adm.login();
-                            break;
-                        case 2:
-                            System.out.println("아이디를 입력해 주세요.");
-                            System.out.println("비밀번호를 입력해 주세요.");
-                                adm.showInfo();
-                            break;
-                    }
+	                    switch (selectNum){
+	                        case 1:
+	                            adm.login();
+	                            break;
+	                        case 2:
+	                            System.out.println("아이디를 입력해 주세요.");
+	                            System.out.println("비밀번호를 입력해 주세요.");
+	                                adm.showInfo();
+	                            break;
+	                    	}
+                	}
                     break;
                 case 3:
 
