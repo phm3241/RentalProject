@@ -19,7 +19,7 @@ public class MemberData3 extends Member{
 		this.numOfExtens = 1;
 		this.overdue = 0;
 		this.rentalDate = 7;
-		this.returnData = "0";
+		this.returnDate = "0";
 		this.rentInfo = "없음";
 		this.dataOfExtens = 7;
 		

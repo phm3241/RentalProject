@@ -11,7 +11,7 @@ public class Member extends MemberInfo{
 	public int numOfExtens;			//연장가능횟수 1
 	public int overdue;				//연체 0
 	public int rentalDate;			//대여일 7
-	public String returnData;		//반납예정일 
+	public String returnDate;		//반납예정일 
 	public String rentInfo;			//대여상태 
 	public int dataOfExtens;		//연장기간 7
 	
@@ -48,7 +48,7 @@ public class Member extends MemberInfo{
 	void AllInformation() {
 		super.showBasicInfo();
 		System.out.println("등급 :"+level+"\t\t\t대여권수 :"+numOfRent+"\t\t\t\t대여가능권수 :"+rentalAvail+"\t\t\t연장가능횟수 :"+numOfExtens+"\t\t\t연체 :"+overdue);
-		System.out.println("대여일 :"+rentalDate+"\t반납예정일 :"+returnData+"\t\t\t대여상태 :"+rentInfo+"\t\t\t연장기간 :"+dataOfExtens);
+		System.out.println("대여일 :"+rentalDate+"\t반납예정일 :"+returnDate+"\t\t\t대여상태 :"+rentInfo+"\t\t\t연장기간 :"+dataOfExtens);
 	}
 	
 	boolean checkId(String id) {
