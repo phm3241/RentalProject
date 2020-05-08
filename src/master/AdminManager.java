@@ -359,7 +359,7 @@ public class AdminManager {
     //자료관리
     //도서 정보보기
     public void showBookInfo() {
-        System.out.println("책정보 출력");
+        System.out.println("책 전체정보 출력");
         for(int i=0;i<books.size();i++) {
             books.get(i).showAllinfo();
             System.out.println("-------------");
@@ -368,6 +368,13 @@ public class AdminManager {
 
     }
 
+    public void showBookBasic() {
+    	System.out.println("책 기본 정보 출력");
+    	for(int i=0; i<books.size();i++) {
+    		books.get(i).showBasicInfo();
+    		System.out.println("---------------------");
+    	}
+    }
     //create로 이동
 //	@Override
     //도서 정보넣기
@@ -439,11 +446,15 @@ public class AdminManager {
             dvd.get(i).showAllinfo();
             System.out.println("-------------");
         }
-
-
-
     }
 
+    public void showDvdBasic() {
+    	System.out.println("책 기본 정보 출력");
+    	for(int i=0; i<dvd.size();i++) {
+    		dvd.get(i).showBasicInfo();
+    		System.out.println("---------------------");
+    	}
+    }
     //create로 이동
 //DVD추가
 //	@Override
@@ -512,6 +523,13 @@ public class AdminManager {
             System.out.println("-------------");
         }
 
+    }
+    public void showGameBasic() {
+    	System.out.println("책 기본 정보 출력");
+    	for(int i=0; i<game.size();i++) {
+    		game.get(i).showBasicInfo();
+    		System.out.println("---------------------");
+    	}
     }
     //create쪽으로 넣음
 //게임추가

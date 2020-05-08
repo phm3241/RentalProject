@@ -193,7 +193,7 @@ public class MemberManager {
 		// MemberManager 객체 생성
 		info=new MemberManager(id, title, rentalDate, returnDate);
 		
-		
+			
 		// MemberManager 객체 ㅡ> 대여리스트에 추가 메서드 1-1. 호출.
 		addRental(info); 
 		System.out.println(id+"님 "+title+"자료가 대여가 완료되었습니다. ");
