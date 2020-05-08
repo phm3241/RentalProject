@@ -14,7 +14,7 @@ public class AdminManager {
     private ArrayList<Book> books;
     private ArrayList<DVD> dvd;
     private ArrayList<Game> game;
-
+    
 
 
     private AdminManager() {
@@ -163,7 +163,7 @@ public class AdminManager {
         boolean loginCheck = false;
 
         for(int i =0; i<this.member.size();i++) {
-            if(!this.member.get(i).loginCheck) {
+            if((this.member.get(i).loginCheck)==true) {
                 loginCheck =true;
                 break;
             }
@@ -283,6 +283,7 @@ public class AdminManager {
                 if (member.get(index).getPw().equals(pw)) {
                     System.out.println("로그인이 완료되었습니다.");
                     member.get(index).loginCheck = true;
+                    System.out.println(member.get(index).loginCheck);
                     check = false;
                     break;
                 } else {

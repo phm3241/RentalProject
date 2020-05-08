@@ -24,6 +24,7 @@ public class MainLine {
                     break;
                 case 2:
                 	if(adm.loginCheck()) {
+                		System.out.println("이미 로그인 중입니다.");
                 		break;
                 	}else {
                 		System.out.println("1. 회원 | 2.관리자");
