@@ -21,6 +21,7 @@ public class MainLine {
 
                 case 1:
                     mem.showInfo();
+                    break;
                 case 2:
 
                     System.out.println("1. 회원 | 2.관리자");
