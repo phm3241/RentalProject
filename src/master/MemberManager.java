@@ -309,7 +309,6 @@ public class MemberManager {
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 내 대여내역 보기 : id로 받아서 ㅡ> rentalList 검색 ㅡ> 해당 리스트 반환
 	public void showMyRentalList() {
-		
 		// 로그인 했던 아이디의 인덱스를 받아서
 		int index=admManager.loginCheckIndex();
 		
@@ -319,6 +318,7 @@ public class MemberManager {
 		int rentalIndex=searchRentalIndex(id);
 		
 		// rentalList에서 해당 id의 대여내역만 출력
+		System.out.println("======"+id+"님의 대여내역=====");
 		rentalList.get(rentalIndex).showRentalListInfo();
 		
 	}
