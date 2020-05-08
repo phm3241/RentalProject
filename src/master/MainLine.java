@@ -13,7 +13,7 @@ public class MainLine {
 
         while (true) {
             System.out.println("메인메뉴");
-            System.out.println("1. 검색/대여 | 2.로그인 | 3.이용안내/회원가입 | 4.로그아웃");
+            System.out.println("1. 검색/대여 | 2.로그인/내 대여내역 | 3.이용안내/회원가입 | 4.로그아웃");
 
             int selectNum = sc.nextInt();
 
