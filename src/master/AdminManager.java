@@ -124,9 +124,7 @@ public class AdminManager {
 
         System.out.println("회원가입을 시작합니다.");
         System.out.println("사용하실 아이디를 입력해 주세요.");
-
         id = sc.nextLine();
-        sc.nextLine();
 
         while (checkPw) {
             System.out.println("비밀번호를 입력해 주세요.");
@@ -278,7 +276,6 @@ public class AdminManager {
             System.out.println("아이디를 입력해 주세요.");
 
             String id = sc.nextLine();
-            sc.nextLine();
             int index = searchIndex(id);
             if (index >= 0) {
                 System.out.println("비밀번호를 입력해 주세요.");

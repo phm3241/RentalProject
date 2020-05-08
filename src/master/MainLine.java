@@ -6,6 +6,8 @@ public class MainLine {
 
     public static void main(String[] args) {
 
+        AdminManager adm = AdminManager.getInstance();
+        MemberManager mem = new MemberManager();
         Scanner sc = new Scanner(System.in);
         boolean loginCheck = false;
 
@@ -18,82 +20,7 @@ public class MainLine {
             switch (selectNum) {
 
                 case 1:
-                    System.out.println("1.도서 | 2.DVD | 3. 게임");
-
-                    selectNum = sc.nextInt();
-
-                    switch (selectNum) {
-                        case 1:
-                            System.out.println("도서 대여 가능 목록");
-                            System.out.println("이곳에 자료 현황 목록 출력하면됨");
-                            System.out.println("1.검색 2.뒤로가기");
-                            selectNum = sc.nextInt();
-                            switch (selectNum) {
-                                case 1:
-                                    System.out.println("이곳에 상세 내역 출력");
-                                    //로그인 됬을시
-                                    System.out.println("1.대여 | 2.예약 | 3.반납 | 연장");
-                                    selectNum = sc.nextInt();
-                                    //비로그인 시
-                                    System.out.println("이용하시려면 로그인을 해 주세요.");
-                                    break;
-                                case 2:
-                                    break;
-                            }
-                            break;
-                        case 2:
-                            System.out.println("DVD 대여 가능 목록");
-                            System.out.println("이곳에 자료 현황 목록 출력하면됨");
-                            System.out.println("1.검색 2.뒤로가기");
-                            selectNum = sc.nextInt();
-                            switch (selectNum) {
-                                case 1:
-                                    System.out.println("이곳에 상세 내역 출력");
-                                    //로그인 됬을시
-                                    System.out.println("1.대여 | 2.예약 | 3.반납 | 연장");
-                                    selectNum = sc.nextInt();
-                                    if(loginCheck) {
-                                        switch (selectNum) {
-                                            case 1:
-                                                System.out.println("대여란입니다.");
-                                                break;
-                                            case 2:
-                                                System.out.println("예약란입니다.");
-                                                break;
-                                            case 3:
-                                                System.out.println("반납란입니다.");
-                                                break;
-                                            case 4:
-                                                System.out.println("연장란입니다.");
-                                                break;
-                                        }
-                                    }else {
-                                        //비로그인 시
-                                        System.out.println("이용하시려면 로그인을 해 주세요.");
-                                        break;
-                                    }
-                                case 2:
-                                    break;
-                            }
-                            break;
-                        case 3:
-                            System.out.println("게임 대여 가능 목록");
-                            System.out.println("이곳에 자료 현황 목록 출력하면됨");
-                            System.out.println("1.검색 2.뒤로가기");
-                            selectNum = sc.nextInt();
-                            switch (selectNum) {
-                                case 1:
-                                    System.out.println("이곳에 상세 내역 출력");
-                                    //로그인 됬을시
-                                    System.out.println("1.대여 | 2.예약 | 3.반납 | 연장");
-                                    //비로그인 시
-                                    System.out.println("이용하시려면 로그인을 해 주세요.");
-                                    break;
-                                case 2:
-                                    break;
-                            }
-                            break;
-                    }
+                    mem.showInfo();
                 case 2:
 
                     System.out.println("1. 회원 | 2.관리자");
@@ -101,12 +28,12 @@ public class MainLine {
 
                     switch (selectNum){
                         case 1:
-                            System.out.println("아이디를 입력해 주세요.");
-                            System.out.println("비밀번호를 입력해 주세요.");
+                            adm.login();
                             break;
                         case 2:
                             System.out.println("아이디를 입력해 주세요.");
                             System.out.println("비밀번호를 입력해 주세요.");
+                                adm.showInfo();
                             break;
                     }
                     break;
@@ -120,9 +47,7 @@ public class MainLine {
                             System.out.println("이용안내 출력");
                             break;
                         case 2:
-                            System.out.println("회원가입을 시작합시다");
-
-                            System.out.println("이력쭉 후 가입 완료");
+                            adm.addInfo();
                             break;
                     }
                     break;
