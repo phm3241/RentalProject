@@ -1,6 +1,6 @@
-package master;
+package phm;
 
-import data.*;
+import phm.data.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
