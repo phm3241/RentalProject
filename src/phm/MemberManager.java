@@ -363,15 +363,7 @@ public class MemberManager {
 		
 		
 		
-//		
-//			날짜생성 고민..
-//			try {
-//				reservDate=format.parse("2020/ 05/ 05");
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			}
-//		}
-//		
+
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	
 	// 반납

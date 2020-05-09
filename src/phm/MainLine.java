@@ -13,7 +13,7 @@ public class MainLine {
 
         while (true) {
             System.out.println("메인메뉴");
-            System.out.println("1. 검색/대여 | 2.로그인  | 3. 내 대여내역  | 4.이용안내/회원가입 | 5.로그아웃");
+            System.out.println("1. 검색/대여 | 2.로그인  | 3. 이용안내/회원가입  | 4.내 대여내역 | 5.로그아웃 | 6.관리자");
 
             int selectNum = sc.nextInt();
 
@@ -45,7 +45,7 @@ public class MainLine {
                     
                 case 3:
                 	if(adm.loginCheck()) {
-                		mem.showMyRentalList();  // 나의 대여내역출력
+                		mem.showAllRentalListInfo();  // 나의 대여내역출력
                 		break;
                 	}else {
                         System.out.println("먼저 로그인 해주세요.");
