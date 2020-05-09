@@ -1,6 +1,8 @@
 package data;
 
-public class UserList2 {
+import master.RentalList;
+
+public class UserList2 extends RentalList {
 	
 	String id;      		// 회원ID
 	String title;			// 자료명
@@ -13,7 +15,7 @@ public class UserList2 {
 	String extendDate;		// 연장된 반납일#
 	String overdue;			// 연체일
 	
-	UserList2(){
+	public UserList2(){
 		this.id="qkraudgns";  				// 대여한 회원ID
 		this.title="자리의 힘";					// 대여한 자료명
 		this.rentInfo="대여중";				// 대여상태

@@ -6,10 +6,23 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
-import data.UserList;
+//import data.UserList;
+//import data.UserList10;
+//import data.UserList11;
+//import data.UserList12;
+//import data.UserList13;
+//import data.UserList14;
+//import data.UserList15;
+//import data.UserList16;
+//import data.UserList2;
+//import data.UserList3;
+//import data.UserList4;
+//import data.UserList5;
+//import data.UserList6;
+//import data.UserList7;
+//import data.UserList8;
+//import data.UserList9;
 
 public class MemberManager {
 
@@ -17,13 +30,6 @@ public class MemberManager {
 //	String rentalDate=null; 	// 대여일#
 //	String returnDate=null;		// 반납일#
 	private ArrayList<RentalList> rentalList;
-
-	// 날짜포멧
-	SimpleDateFormat format= new SimpleDateFormat ("yyyy-MM-dd");
-	Date today= new Date();
-	
-	// 시간 더하기
-	Calendar cal = Calendar.getInstance();
 
 	// 회원리스트, 자료리스트 불러오기
 	AdminManager adm = AdminManager.getInstance();
@@ -33,9 +39,40 @@ public class MemberManager {
 	public MemberManager() {
 		rentalList = new ArrayList<>();
 		
-		UserList uList=new UserList();
-		rentalList.add(uList);
-		
+		// 대여리스트 항목 추가
+//		UserList uList=new UserList();
+//		UserList2 uList2=new UserList2();
+//		UserList3 uList3=new UserList3();
+//		UserList4 uList4=new UserList4();
+//		UserList5 uList5=new UserList5();
+//		UserList6 uList6=new UserList6();
+//		UserList7 uList7=new UserList7();
+//		UserList8 uList8=new UserList8();
+//		UserList9 uList9=new UserList9();
+//		UserList10 uList10=new UserList10();
+//		UserList11 uList11=new UserList11();
+//		UserList12 uList12=new UserList12();
+//		UserList13 uList13=new UserList13();
+//		UserList14 uList14=new UserList14();
+//		UserList15 uList15=new UserList15();
+//		UserList16 uList16=new UserList16();
+//		
+//		rentalList.add(uList);
+//		rentalList.add(uList2);
+//		rentalList.add(uList3);
+//		rentalList.add(uList4);
+//		rentalList.add(uList5);
+//		rentalList.add(uList6);
+//		rentalList.add(uList7);
+//		rentalList.add(uList8);
+//		rentalList.add(uList9);
+//		rentalList.add(uList10);
+//		rentalList.add(uList11);
+//		rentalList.add(uList12);
+//		rentalList.add(uList13);
+//		rentalList.add(uList14);
+//		rentalList.add(uList15);
+//		rentalList.add(uList16);
 		
 		
 		
@@ -216,17 +253,17 @@ public class MemberManager {
 
 		// 자료 카운트 변경
 		// 만약에 선택한 타이틀이 book이면...book 카운트변경
-		if (adm.searchBookInfo(this.title) > 0) {
+		if (adm.searchBookInfo(this.title) >= 0) {
 			adm.getBooks().get(index).numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
 			adm.getBooks().get(index).rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
 
 			// 만약에 선택한 타이틀이 DVD이면...DVD 카운트변경
-		} else if (adm.searchDvdInfo(this.title) > 0) {
+		} else if (adm.searchDvdInfo(this.title) >= 0) {
 			adm.getDvd().get(index).numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
 			adm.getDvd().get(index).rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
 
 			// 만약에 선택한 타이틀이 Game이면...Game 카운트변경
-		} else if (adm.searchGameInfo(this.title) > 0) {
+		} else if (adm.searchGameInfo(this.title) >= 0) {
 			adm.getGame().get(index).numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
 			adm.getGame().get(index).rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
 		}
@@ -243,7 +280,7 @@ public class MemberManager {
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 메인에서 4번 눌렀을 떄! ㅡ> 내 대여내역 자동출력, 반납 연장 선택 ㅡ> 반납. 연장 기능
-	void returnExten() {
+	void returnExtends() {
 		
 		// 내 대여내역 자동출력
 		showMyRentalList();
@@ -257,7 +294,6 @@ public class MemberManager {
 		int index=checkTitle(title);
 //		rentalList.get(index).showRentalListInfo();  // 확인용. 선택한 타이틀이 있는 나의 대여내역 출력 
 		
-		itemReturn(index);
 		
 		// 반납 연장 기능선택
 		System.out.println("1. 반납 | 2.연장");
@@ -272,7 +308,7 @@ public class MemberManager {
 	        	break;
 	        	
 	        case 2:		// 연장 선택시
-//	        	extention();
+	        	extention(index);
 	        	break;
 	        }
 		
@@ -366,9 +402,6 @@ public class MemberManager {
 	// 반납
 	void itemReturn(int index) {
 			
-//			RentalList info=null;
-//			rentalList.get(index).showRentalListInfo();
-			
 			// 반납일 = 현재날짜로 생성
 			LocalDateTime today=LocalDateTime.now();
 			String returnDate=today.toString();
@@ -378,33 +411,13 @@ public class MemberManager {
 			rentalList.get(index).returnDate=returnDate;
 			rentalList.get(index).rentInfo="반납완료";
 			
+			// 대여하고 반납한 자료의 유형찾기 : 책인지. DVD인지. 게임인지.
+			// 찾아서 해당 자료의 rentInfo를 대여가능으로 변경.
+			adm.getBooks().get(index).rentInfo="대여가능";
+			
 			
 			// 나의 대여리스트 중 해당 인덱스 출력. 확인. 
 			rentalList.get(index).showRentalListInfo();
-
-			
-//		
-//			String today = format.format(cal.getTime());
-//			// System.out.println(today); // 오늘날짜
-//
-//			String strStartDate = rentalList.get(index).rentalDate;
-//			String strEndDate = today;
-//			String strFormat = "yyyy-MM-dd";
-//
-////	        SimpleDateFormat sdf2 = new SimpleDateFormat(strFormat);
-//
-//			Date startDate = null;
-//			Date endDate = null;
-//			try {
-//				startDate = format.parse(strStartDate);
-//				endDate = format.parse(strEndDate); // today
-//			} catch (ParseException e) {
-//				e.printStackTrace();
-//			} // rentalDate
-//
-//			long gap = (startDate.getTime() - endDate.getTime()) / (24 * 60 * 60 * 1000);
-//			gap = Math.abs(gap);
-			
 	
 	} // itemReturn(int index) end
 	
@@ -444,20 +457,24 @@ public class MemberManager {
 //	} // itemReturn끝.
 
 	
-//	
-//	// 연장.
-//	void extention() {
-//		
-//
-//		System.out.println("연장하고자하는 자료를 입력해주세요.");
-//		String title = adm.sc.nextLine();
-//		
-//		int index = adm.loginCheckIndex();
-//		
-//		if(index < 0) {	 //연장 실패
-//			System.out.println("연장하고자하는 "+ title +" 자료가 없습니다.");
-//		}else {	//연장 성공
-//			title = adm.get(index).title;	// 도서를 찾는다.
+	
+	// 연장.
+	void extention(int index) {
+		
+		// 연장된 반납일 생성 : 나의 대여리스트 중 해당 인덱스의 반납예정일 + 7
+		LocalDateTime returnLimit0=LocalDateTime.parse(rentalList.get(index).returnLimit);
+		LocalDateTime extendDate1 = returnLimit0.plusDays(7);
+		String extendDate = extendDate1.toString();
+		
+		// 나의 대여리스트 중 해당 인덱스의 연장된 반납일 ㅡ > 연장된 반납일로 수정 
+		rentalList.get(index).extendDate=extendDate;
+		rentalList.get(index).rentInfo="연장완료";
+				
+		// 나의 대여리스트 중 해당 인덱스 출력. 확인. 
+		rentalList.get(index).showRentalListInfo();
+	}
+		
+
 //			
 //			//Calendar cal = Calendar.getInstance();
 //			//SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");

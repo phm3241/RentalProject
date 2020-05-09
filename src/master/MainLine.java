@@ -53,7 +53,7 @@ public class MainLine {
                 //4. 내 대여내역-----------------------------
                 case 4:
                 	if (adm.loginCheck()) {
-    					mem.returnExten();
+    					mem.returnExtends();
     					break;
     				} else {
     					System.out.println("먼저 로그인 해주세요.");
