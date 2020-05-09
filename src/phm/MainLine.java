@@ -35,9 +35,9 @@ public class MainLine {
 	                            adm.login();
 	                            break;
 	                        case 2:
-	                            System.out.println("아이디를 입력해 주세요.");
-	                            System.out.println("비밀번호를 입력해 주세요.");
-	                                adm.showInfo();
+	                        	adm.login();
+	                            System.out.println("1. 회원관리 | 2.자료관리 | 3. 대여관리 ");
+	                                
 	                            break;
 	                    	}
                 	}

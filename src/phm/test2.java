@@ -25,46 +25,51 @@ public class test2 {
 //		// 결과 : 2019-11-12
 //		LocalDate endDate = LocalDate.of(2019,12,13);
 //		// 결과 : 2019-12-13
-//
 //		ChronoUnit.DAYS.between(startDate, endDate); 
 //		// 결과 : 31 (1개월 1일)
 		
-		
 //		문법! String -> LocalDate
 //		LocalDate re=LocalDate.parse("2002-05-09");
-		
 		
 //		문법! LocalDate -> String
 //		LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 		
 		
+		
+		
 		// 현재날짜
 		LocalDate currentDate = LocalDate.now();
-		System.out.println("currentDate:"+currentDate);
-		// 현재날짜
-//		LocalDateTime -> String
-		String localString=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss"));
-		System.out.println("localString : "+localString);
+		System.out.println("currentDate :"+currentDate);
+		
+		// 현재날짜 : 	LocalDateTime -> String ... String으로 바꿔서 저장해보기..
+		String currentString=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss"));
+		System.out.println("currentString : "+currentString);
 		
 		
+		// String으로 바꾸고 int로 타입바꿔서 저장해보기..
+		// int로 바꾸기 전에 날짜형식의 -하으픈 빼기..
+		String currentString2=currentString.replace("-", "");
+		System.out.println("currentString2 : "+currentString2);
 		
-		String slocalString=localString.replace("-", "");
-		System.out.println("slocalString : "+slocalString);
-//		int intLocalString=Integer.valueOf(slocalString);
-		Integer intLocalString = Integer.parseInt(slocalString+" ");
-		System.out.println("intLocalString : "+intLocalString);
+		// int로 바꿔보기.. 방법1. valueOf.. 오류로 변환안됨..
+		int currentInt1=Integer.valueOf(currentString2);
+		System.out.println("currentInt : "+currentInt1);
+
+		// int로 바꿔보기.. 방법2. Integer.parseInt(String).. 오류로 변환안됨..
+		Integer currentInt2 = Integer.parseInt(currentString2);
+		System.out.println("currentInt : "+currentInt2);
 
 		
 		LocalDate myDate = LocalDate.of(2020,5,5); //년,월,일
 		System.out.println("myDate:"+myDate);
 		
-		
+		// 문법 ! 반납일은 대여일 +7
 		LocalDate returnDate=currentDate.plusDays(7);
 		System.out.println("returnDate:"+returnDate);
 
 		
 		
-		
+//		 ========아래는 Calendar랑 Date 클래스로 해본건데..복잡해서 위에 있는 LocalDate써서 해보려는중==== 
 
 		
 		
