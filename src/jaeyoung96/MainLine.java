@@ -64,11 +64,12 @@ public class MainLine {
                     break;
                 //4. 내 대여내역-----------------------------
                 case 4:
-                	adm.logOut();
-                    System.out.println("로그아웃 되었습니다. /n 프로그램 종료");
+                	mem.showMyRentalList();
                     break;
                 //5.로그아웃-----------------------------
                 case 5:
+                	adm.logOut();
+                    System.out.println("로그아웃 되었습니다.");
                 	break;
                 	
             	//6.관리자페이지-----------------------------
@@ -86,8 +87,7 @@ public class MainLine {
 					case 4:
 						RentalMenu.gameView();
 						break;
-					default:
-						break;
+
 					}
                 	
             }
