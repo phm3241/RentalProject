@@ -29,6 +29,9 @@ public class MemberManager {
 	// 기본생성자, 대여리스트 생성
 	public MemberManager() {
 		rentalList = new ArrayList<>();
+//		UserList uList=new UserList<>;
+		
+//		rentalList.add(uList);
 	}
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
