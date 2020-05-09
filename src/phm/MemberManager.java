@@ -2,6 +2,7 @@ package phm;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -216,6 +217,7 @@ public class MemberManager {
 //			System.out.println("대여일 : " + rentalDate);
 			
 			// 반납일 생성 : 대여일+7일
+			String returnDate=rentalDate.plusDays(7);
 			cal.add(Calendar.DATE,7);
 			String returnDate=format.format(cal.getTime());
 //			System.out.println("반납일 : "+returnDate);
