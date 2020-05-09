@@ -18,10 +18,12 @@ public class AdminManager {
 
 
     private AdminManager() {
+    
         this.member = new ArrayList<>();
         this.books = new ArrayList<>();
         this.dvd = new ArrayList<>();
         this.game = new ArrayList<>();
+
         sc = new Scanner(System.in);
 
         //book데이터 객체
@@ -105,6 +107,7 @@ public class AdminManager {
         return game;
     }
 
+	
 
     //회원정보보기
     //객체 전체 목록 출력
@@ -718,4 +721,16 @@ public class AdminManager {
         game.add(info);
         return info;
     }
+    
+    
+    
+    
+    
+    
+ 
+
+
+
+
+
 }
