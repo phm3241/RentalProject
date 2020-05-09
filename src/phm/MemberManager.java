@@ -140,7 +140,7 @@ public class MemberManager {
             	adm.showGameInfo();
             	System.out.println("------------------------");
 
-            	System.out.println("찾으시는 DVD명을 입력해주세요.");
+            	System.out.println("찾으시는 Game명을 입력해주세요.");
             	this.title = adm.sc.nextLine();
      			
      			index = adm.searchGameInfo(title);
@@ -216,13 +216,11 @@ public class MemberManager {
 //			String rentalDate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss"));
 			System.out.println();
 			String start=rentalDate.toString();
-			System.out.println("대여일 : " + rentalDate);
 //			LocalDate.parse(rentalDate);
 			
 			// 반납일 생성 : 대여일+7일
 			LocalDateTime returnDate=rentalDate.plusDays(7);
 			String end=returnDate.toString();
-			System.out.println("반납일 : "+returnDate);
 			
 			
 
@@ -262,23 +260,6 @@ public class MemberManager {
 	
 
 
-
-
-//	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-	// rentalList 에서 id로 검색하기(내 대여내역) ㅡ> 인덱스 반환
-	int searchRentalIndex(String id) {
-		
-		int searchRentalIndex=-1;
-		
-		for(int i=0; i<rentalList.size(); i++) {
-			if(rentalList.get(i).id.equals(id)) {
-				searchRentalIndex=i;
-				break;
-			}
-		}
-		return searchRentalIndex;
-	}
-
 	
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList 에서 tilte로 검색하기(내 대여내역) ㅡ> 인덱스 반환
@@ -296,24 +277,42 @@ public class MemberManager {
 	}
 	
 	
-	
-	
+
+
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-	// 내 대여내역 보기 : id로 받아서 ㅡ> rentalList 검색 ㅡ> 해당 리스트 반환
-	public void showMyRentalList() {
+	// rentalList 에서 id로 검색하기(내 대여내역) ㅡ> 인덱스 반환
+	void showMyRentalList() {
 		
-		// 로그인 했던 아이디의 인덱스를 받아서
+		int searchRentalIndex= -1;
 		int index=adm.loginCheckIndex();
-		
-		// 그 아이디를 rentalList에서 찾고, 
+
 		String id =adm.getMember().get(index).getId();
+
+		for(int i=0; i<rentalList.size(); i++) {
+			if(rentalList.get(i).id.equals(id)) {
+				
+				rentalList.get(i).showRentalListInfo();
+			}
+		}
+        int selectNum = adm.sc.nextInt();
+        adm.sc.nextLine();
+
+        switch (selectNum) {
+           case 1:		// Book 선택시
+           	System.out.println("------------------------");
+           	adm.showBookBasic();
+           	System.out.println("------------------------");
+
+           	System.out.println("찾으시는 도서명을 입력해주세요.");
+           	this.title = adm.sc.nextLine();
 		
-		int rentalIndex=searchRentalIndex(id);
 		
-		// rentalList에서 해당 id의 대여내역만 출력
-		rentalList.get(rentalIndex).showRentalListInfo();
-		
+		System.out.println("1. 반납 | 2.연장");
+		selectNum = sc.nextInt();
 	}
+
+	
+	
 	
 	
 	
