@@ -6,10 +6,10 @@ public class Admin{
 	private String adminId;		//관리자 아이디
 	private String adminPw;		//관리자 비번
 	
-	Admin(String adminId,String adminPw){
+	Admin(){
 		
-		this.adminId = adminId;
-		this.adminPw = adminPw;
+		this.adminId = "adminId";
+		this.adminPw = "adminPw";
 		this.loginCheck = false;
 		
 	}

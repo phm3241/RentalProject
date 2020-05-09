@@ -7,7 +7,7 @@ public class Book extends RentalItemInfo{
 	public String story;		//설명
 	public String launchDate;	//출판일
 	public String bestTitle;	//인기자료	null
-	public int rentalCount;	//대여횟수	0
+	public int rentalCount;		//대여횟수	0
 	public int like;			//관심수 		0
 	public int numOfItem;		//재고 		5
 	public String returnDate;	//반납예정일 	0
