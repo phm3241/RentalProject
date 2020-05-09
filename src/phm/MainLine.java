@@ -47,10 +47,7 @@ public class MainLine {
 
 			case 4:
 				if (adm.loginCheck()) {
-					mem.showMyRentalList(); // 나의 대여내역출력
-					System.out.println("1. 반납 | 2.연장");
-					selectNum = sc.nextInt();
-					
+					mem.returnExten();
 					break;
 				} else {
 					System.out.println("먼저 로그인 해주세요.");

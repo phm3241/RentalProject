@@ -21,14 +21,14 @@ public class RentalList {
 		
 		this.id=id;      				// 대여한 회원ID
 		this.title=title;				// 대여한 자료명
-		this.rentInfo="대여중";			// 대여상태
+		this.rentInfo="대여중";			// 대여상태-----------
 		this.rentalDate=start; 			// 대여일#
 		this.returnLimit=end;			// 반납예정일#
-		this.returnDate=" ";			// 반납일#
+		this.returnDate=" ";			// 반납일#-------------
 		this.reservDate=" ";			// 예약일#
 		this.reservId=" ";				// 예약자
 		this.extendDate=" ";			// 연장된 반납일#
-		this.overdue=" ";				// 연체기간#
+		this.overdue=" ";				// 연체기간#----------------
 	
 	}
 	
