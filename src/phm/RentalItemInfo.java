@@ -14,7 +14,7 @@ public class RentalItemInfo {
 		this.genre = genre;
 		this.localData = localData;
 		this.rentInfo = "대여가능" ;
-		
+
 	}
 	
 	public RentalItemInfo() {
