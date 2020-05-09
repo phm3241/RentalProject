@@ -1,5 +1,7 @@
 package phm;
 
+import java.time.LocalDateTime;
+
 public class RentalList {
 	
 	String id;      		// 회원ID
@@ -14,13 +16,13 @@ public class RentalList {
 	
 	AdminManager admManager=AdminManager.getInstance();
 	
-	RentalList(String id, String title, String rentalDate, String returnDate){
+	RentalList(String id, String title, String start, String end){
 		
 		this.id=id;      				// 대여한 회원ID
 		this.title=title;				// 대여한 자료명
 		this.rentInfo="대여중";			// 대여상태
-		this.rentalDate=" "; 			// 대여일#
-		this.returnDate=" ";			// 반납일#
+		this.rentalDate=start; 			// 대여일#
+		this.returnDate=end;			// 반납일#
 		this.reservDate=" ";			// 예약일#
 		this.reservId=" ";				// 예약자
 		this.extendDate=" ";			// 연장된 반납일#

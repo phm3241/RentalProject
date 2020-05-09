@@ -12,8 +12,8 @@ import java.util.Date;
 public class MemberManager {
 	
 	String title=null;			// 자료명
-	String rentalDate=null; 	// 대여일#
-	String returnDate=null;		// 반납일#
+//	String rentalDate=null; 	// 대여일#
+//	String returnDate=null;		// 반납일#
 	private ArrayList<RentalList> rentalList;
 	
 //	// 날짜포멧
@@ -137,19 +137,19 @@ public class MemberManager {
      			
             case 3:		// Game 선택시   
             	System.out.println("------------------------");
-            	adm.showDvdInfo();
+            	adm.showGameInfo();
             	System.out.println("------------------------");
 
             	System.out.println("찾으시는 DVD명을 입력해주세요.");
             	this.title = adm.sc.nextLine();
      			
-     			index = adm.searchDvdInfo(title);
+     			index = adm.searchGameInfo(title);
      			
      			if(index<0) {
      				System.out.println("검색하신 자료의 정보가 없습니다.");
      				break;
      			} else {
-     				adm.getDvd().get(index).showAllinfo();
+     				adm.getGame().get(index).showAllinfo();
      				System.out.println("1.대여 | 2.예약");
      				selectNum = adm.sc.nextInt();
      				adm.sc.nextLine();
@@ -212,16 +212,22 @@ public class MemberManager {
 			
 			
 			// 대여일 생성
-			String rentalDate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss"));;
-//			String rentalDate=format.format(cal.getTime());
-//			System.out.println("대여일 : " + rentalDate);
+			LocalDateTime rentalDate=LocalDateTime.now();
+//			String rentalDate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss"));
+			System.out.println();
+			String start=rentalDate.toString();
+			System.out.println("대여일 : " + rentalDate);
+//			LocalDate.parse(rentalDate);
 			
 			// 반납일 생성 : 대여일+7일
-			String returnDate=rentalDate.plusDays(7);
-			cal.add(Calendar.DATE,7);
-			String returnDate=format.format(cal.getTime());
-//			System.out.println("반납일 : "+returnDate);
+			LocalDateTime returnDate=rentalDate.plusDays(7);
+			String end=returnDate.toString();
+			System.out.println("반납일 : "+returnDate);
+			
+			
 
+		
+			
 
 			// 자료 카운트 변경
 			// 만약에 선택한 타이틀이 book이면...book 카운트변경
@@ -243,7 +249,7 @@ public class MemberManager {
 			}
 		
 		// MemberManager 객체 생성
-		info=new RentalList(id, title, rentalDate, returnDate);
+		info=new RentalList(id, title, start, end);
 		
 		
 		// MemberManager 객체 ㅡ> 대여리스트에 추가 메서드 1-1. 호출.
