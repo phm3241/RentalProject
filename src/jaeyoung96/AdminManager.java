@@ -1,12 +1,10 @@
 package jaeyoung96;
 
 
+import jaeyoung96.jy.*;
 
 import java.util.ArrayList;
 import java.util.Scanner;
-
-import jaeyoung96.jy.*;
-
 
 public class AdminManager {
 
@@ -17,7 +15,7 @@ public class AdminManager {
     private ArrayList<Book> books;
     private ArrayList<DVD> dvd;
     private ArrayList<Game> game;
-    
+
 
 
     private AdminManager() {
@@ -297,7 +295,7 @@ public class AdminManager {
                 System.out.println("입력하신 아이디가 없습니다. 다시 입력해주세요.");
                 continue;
             }
-        }    
+        }
     }
 
     public void logOut() {
@@ -681,7 +679,6 @@ public class AdminManager {
     //Game 정보 입력
     public Game CreateGameInfo() {
         Game info =null;
-
         String title=null;
         String genre=null;
         String localData=null;
