@@ -17,7 +17,6 @@ public class AdminManager {
     private ArrayList<Game> game;
 
 
-
     private AdminManager() {
         this.member = new ArrayList<>();
         this.books = new ArrayList<>();
@@ -163,9 +162,9 @@ public class AdminManager {
 
         boolean loginCheck = false;
 
-        for(int i =0; i<this.member.size();i++) {
-            if((this.member.get(i).loginCheck)==true) {
-                loginCheck =true;
+        for (int i = 0; i < this.member.size(); i++) {
+            if ((this.member.get(i).loginCheck) == true) {
+                loginCheck = true;
                 break;
             }
         }
@@ -179,8 +178,8 @@ public class AdminManager {
 
         int loginCheckIndex = -1;
 
-        for(int i =0; i<this.member.size();i++) {
-            if(this.member.get(i).loginCheck==true) {
+        for (int i = 0; i < this.member.size(); i++) {
+            if (this.member.get(i).loginCheck == true) {
                 loginCheckIndex = i;
                 break;
             }
@@ -188,9 +187,6 @@ public class AdminManager {
 
         return loginCheckIndex;
     }
-
-
-
 
 
     int searchIndex(String id) {
@@ -220,12 +216,14 @@ public class AdminManager {
         System.out.println("1. 비밀번호 | 2. 전화번호 | 3.주소 | 4. 이메일");
 
         int selectNum = sc.nextInt();
+        sc.nextLine();
         switch (selectNum) {
             case 1:
                 boolean check = true;
                 while (check) {
                     System.out.println("변경하실 비밀번호를 입력해 주세요.");
                     String pw1 = sc.nextLine();
+                    
                     System.out.println("다시 입력해주세요.");
                     String pw2 = sc.nextLine();
 
@@ -240,23 +238,27 @@ public class AdminManager {
                         continue;
                     }
                 }
+                break;
             case 2:
                 System.out.println("변경하실 전화번호를 입력해 주세요.");
                 String phoneNumber = sc.nextLine();
 
                 member.get(index).phoneNum = phoneNumber;
+                System.out.println("전화번호 변경이 완료되었습니다.");
                 break;
             case 3:
                 System.out.println("변경하실 주소를 입력해 주세요.");
                 String addr = sc.nextLine();
 
                 member.get(index).addr = addr;
+                System.out.println("주소 변경이 완료되었습니다.");
                 break;
             case 4:
                 System.out.println("변경하실 이메일을 입력해 주세요.");
                 String email = sc.nextLine();
 
                 member.get(index).email = email;
+                System.out.println("이메일 변경이 완료되었습니다.");
                 break;
         }
     }
@@ -266,11 +268,13 @@ public class AdminManager {
         String id = sc.nextLine();
 
         int index = searchIndex(id);
-
+        System.out.println("아이디가 삭제되었습니다.");
         member.remove(index);
 
     }
 
+
+    //로그인
     public void login() {
         boolean check = true;
         while (check) {
@@ -298,6 +302,39 @@ public class AdminManager {
         }
     }
 
+    //관리자 로그인
+    public void AdminLogin() {
+        int loginPw = 0000;
+        boolean loginCheck = true;
+        int failCnt = 0;
+        
+        System.out.println("관리자 페이지 입니다.");
+        System.out.println("");
+    	
+
+        while (loginCheck) {
+        	System.out.println("비밀번호를 입력해주세요");
+        	int adminPw = sc.nextInt();
+        	sc.nextLine();
+
+            if (loginPw == adminPw) {
+                System.out.println("관리자로 로그인 하였습니다.");
+                loginCheck = false;
+                break;
+            } else {
+                System.out.println("비밀번호가 틀립니다. 다시 입력해 주세요.");
+                failCnt++;
+                
+                if(failCnt == 3){
+                    System.out.println("너무 많이 틀리셨습니다. 메인 페이지로 돌아갑니다.");
+                    break;
+                }
+                    continue;
+                
+            }
+        }
+    }
+
     public void logOut() {
 
         for (int i = 0; i < member.size(); i++) {
@@ -313,34 +350,9 @@ public class AdminManager {
 
     }
 
-    public void adminLogin() {
-        boolean check = true;
-        while (check) {
-            System.out.println("아이디를 입력해 주세요.");
+    
 
-            String id = sc.nextLine();
-            sc.nextLine();
-            int index = searchIndex(id);
 
-            if (index > 0) {
-                System.out.println("비밀번호를 입력해 주세요.");
-                String pw = sc.nextLine();
-                if (member.get(index).getPw().equals(pw)) {
-                    System.out.println("로그인이 완료되었습니다.");
-                    member.get(index).loginCheck = true;
-                    check = false;
-                    break;
-                } else {
-                    System.out.println("비밀번호를 다시 입력해 주세요.");
-                    continue;
-                }
-            } else {
-                System.out.println("입력하신 아이디가 없습니다. 다시 입력해주세요.");
-                continue;
-            }
-        }
-
-    }
 
     public void adminLogOut() {
         for (int i = 0; i < member.size(); i++) {
@@ -362,7 +374,7 @@ public class AdminManager {
     //도서 정보보기
     public void showBookInfo() {
         System.out.println("책 전체정보 출력");
-        for(int i=0;i<books.size();i++) {
+        for (int i = 0; i < books.size(); i++) {
             books.get(i).showAllinfo();
             System.out.println("-------------");
         }
@@ -371,12 +383,13 @@ public class AdminManager {
     }
 
     public void showBookBasic() {
-    	System.out.println("책 기본 정보 출력");
-    	for(int i=0; i<books.size();i++) {
-    		books.get(i).showBasicInfo();
-    		System.out.println("---------------------");
-    	}
+        System.out.println("책 기본 정보 출력");
+        for (int i = 0; i < books.size(); i++) {
+            books.get(i).showBasicInfo();
+            System.out.println("---------------------");
+        }
     }
+
     //create로 이동
 //	@Override
     //도서 정보넣기
@@ -395,14 +408,13 @@ public class AdminManager {
         int index = searchBookInfo(title);
 
 
-        if(index<0) {
+        if (index < 0) {
             System.out.println("찾으시는 책의 정보가 존재하지 않습니다.");
-        }
-        else {
+        } else {
             String editTitle = books.get(index).title;
 
             System.out.println("수정 사항을 입력합니다");
-            System.out.println("책 이름은: "+editTitle+"입니다");
+            System.out.println("책 이름은: " + editTitle + "입니다");
             System.out.println("자료위치는");
             String localData = sc.nextLine();
 
@@ -411,15 +423,16 @@ public class AdminManager {
 
         }
     }
+
     //도서정보삭제
     public void deleteBookInfo() {
         System.out.println("삭제하고자 하는 책 이름을 선택하여주세요");
         String title = sc.nextLine();
         int index = searchBookInfo(title);
 
-        if(index<0) {
+        if (index < 0) {
             System.out.println("삭제하고자 하는 책이 존재하지 않습니다.");
-        }else {
+        } else {
             books.remove(index);
         }
 
@@ -444,18 +457,18 @@ public class AdminManager {
     //DVD정보출력
     public void showDvdInfo() {
         System.out.println("DVD정보 출력");
-        for(int i=0;i<dvd.size();i++) {
+        for (int i = 0; i < dvd.size(); i++) {
             dvd.get(i).showAllinfo();
             System.out.println("-------------");
         }
     }
 
     public void showDvdBasic() {
-    	System.out.println("책 기본 정보 출력");
-    	for(int i=0; i<dvd.size();i++) {
-    		dvd.get(i).showBasicInfo();
-    		System.out.println("---------------------");
-    	}
+        System.out.println("책 기본 정보 출력");
+        for (int i = 0; i < dvd.size(); i++) {
+            dvd.get(i).showBasicInfo();
+            System.out.println("---------------------");
+        }
     }
     //create로 이동
 //DVD추가
@@ -472,35 +485,36 @@ public class AdminManager {
 
         int index = searchDvdInfo(title);
 
-        if(index<0) {
+        if (index < 0) {
             System.out.println("찾으시는 책의 정보가 존재하지 않습니다.");
-        }
-        else {
+        } else {
             String editTitle = dvd.get(index).title;
 
             System.out.println("수정 사항을 입력합니다");
-            System.out.println("DVD 이름은: "+editTitle+"입니다");
+            System.out.println("DVD 이름은: " + editTitle + "입니다");
             System.out.println("자료위치는");
             String localData = sc.nextLine();
 
-            dvd.get(index).localData=localData;
+            dvd.get(index).localData = localData;
         }
 
     }
+
     //DVD삭제
     public void deleteDvdInfo() {
         System.out.println("삭제하고자 하는 DVD 이름을 선택하여주세요");
         String title = sc.nextLine();
         int index = searchDvdInfo(title);
 
-        if(index<0) {
+        if (index < 0) {
             System.out.println("삭제하고자 하는 DVD가 존재하지 않습니다.");
-        }else {
+        } else {
             dvd.remove(index);
         }
 
 
     }
+
     //DVD검색
     public int searchDvdInfo(String title) {
         //정상적인 index 값은 0~이상의 값, 찾지 못했을 때 구분 값 -1을 사용
@@ -520,19 +534,21 @@ public class AdminManager {
     //게임보기
     public void showGameInfo() {
         System.out.println("게임정보 출력");
-        for(int i=0;i<game.size();i++) {
+        for (int i = 0; i < game.size(); i++) {
             game.get(i).showAllinfo();
             System.out.println("-------------");
         }
 
     }
+
     public void showGameBasic() {
-    	System.out.println("책 기본 정보 출력");
-    	for(int i=0; i<game.size();i++) {
-    		game.get(i).showBasicInfo();
-    		System.out.println("---------------------");
-    	}
+        System.out.println("책 기본 정보 출력");
+        for (int i = 0; i < game.size(); i++) {
+            game.get(i).showBasicInfo();
+            System.out.println("---------------------");
+        }
     }
+
     //create쪽으로 넣음
 //게임추가
 //	@Override
@@ -548,34 +564,35 @@ public class AdminManager {
         int index = searchGameInfo(title);
 
 
-        if(index<0) {
+        if (index < 0) {
             System.out.println("찾으시는 게임의 정보가 존재하지 않습니다.");
-        }
-        else {
+        } else {
             String editTitle = game.get(index).title;
 
             System.out.println("수정 사항을 입력합니다");
-            System.out.println("게임 이름은: "+editTitle+"입니다");
+            System.out.println("게임 이름은: " + editTitle + "입니다");
             System.out.println("자료위치는");
             String localData = sc.nextLine();
-            game.get(index).localData=localData;
+            game.get(index).localData = localData;
 
         }
 
     }
+
     //게임삭제
     public void deleteGameInfo() {
         System.out.println("삭제하고자 하는 게임 이름을 선택하여주세요");
         String title = sc.nextLine();
         int index = searchDvdInfo(title);
 
-        if(index<0) {
+        if (index < 0) {
             System.out.println("삭제하고자 하는 게임이 존재하지 않습니다.");
-        }else {
+        } else {
             dvd.remove(index);
         }
 
     }
+
     //게임검색
     public int searchGameInfo(String title) {
         //정상적인 index 값은 0~이상의 값, 찾지 못했을 때 구분 값 -1을 사용
@@ -595,11 +612,11 @@ public class AdminManager {
     //책 정보 입력
     public Book createBookInfo() {
 
-        Book info =null;
+        Book info = null;
 
-        String title=null;
-        String genre=null;
-        String localData=null;
+        String title = null;
+        String genre = null;
+        String localData = null;
 
         // 기본정보 수집: 책이름, 장르, 책위치, 대여상태
 
@@ -616,11 +633,11 @@ public class AdminManager {
         String author = sc.nextLine();
         System.out.println("연령제한 입력해주세요");
         int limitAge = sc.nextInt();
+        sc.nextLine();
         System.out.println("설명을 입력해주세요");
-        String story = sc.nextLine();	//설명
+        String story = sc.nextLine();    //설명
         System.out.println("출판일을 입력해주세요");
-        String launchDate= sc.nextLine();	//출판일
-
+        String launchDate = sc.nextLine();    //출판일
 
 
         info = new Book(title, genre, localData,
@@ -631,13 +648,14 @@ public class AdminManager {
         return info;
 
     }
+
     //DVD 정보 입력
     public DVD createDvdInfo() {
-        DVD info =null;
+        DVD info = null;
 
-        String title=null;
-        String genre=null;
-        String localData=null;
+        String title = null;
+        String genre = null;
+        String localData = null;
 
         // 기본정보 수집: DVD이름, 장르, DVD위치, 대여상태
 
@@ -658,13 +676,12 @@ public class AdminManager {
 
         System.out.println("연령제한 입력해주세요");
         int limitAge = sc.nextInt();
-
+        sc.nextLine();
         System.out.println("설명을 입력해주세요");
-        String story = sc.nextLine();	//설명
+        String story = sc.nextLine();    //설명
 
         System.out.println("출판일을 입력해주세요");
-        String launchDate= sc.nextLine();	//출판일
-
+        String launchDate = sc.nextLine();    //출판일
 
 
         //DVD 클래스로 인스턴스생성
@@ -676,12 +693,14 @@ public class AdminManager {
 
         return info;
     }
+
     //Game 정보 입력
     public Game CreateGameInfo() {
-        Game info =null;
-        String title=null;
-        String genre=null;
-        String localData=null;
+        Game info = null;
+
+        String title = null;
+        String genre = null;
+        String localData = null;
 
         // 기본정보 수집: 게임이름, 장르, 게임위치, 대여상태
 
@@ -699,15 +718,12 @@ public class AdminManager {
 
         System.out.println("연령제한 입력해주세요");
         int limitAge = sc.nextInt();
-
+        sc.nextLine();
         System.out.println("설명을 입력해주세요");
-        String story = sc.nextLine();	//설명
+        String story = sc.nextLine();    //설명
 
         System.out.println("출판일을 입력해주세요");
-        String launchDate= sc.nextLine();	//출판일
-
-
-
+        String launchDate = sc.nextLine();    //출판일
 
 
         //2.2.3 Book 클래스로 인스턴스생성

@@ -1,4 +1,4 @@
-package jaeyoung96;
+package master;
 
 
 public class RentalMenu {

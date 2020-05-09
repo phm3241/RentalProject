@@ -74,6 +74,10 @@ public class MainLine {
                 	
             	//6.관리자페이지-----------------------------
                 case 6:
+                	
+                	adm.AdminLogin();
+                	System.out.println("1. 회원관리 | 2. 도서관리 | 3. DVD관리 | 4. 게임관리 | 5. 로그아웃");
+                	selectNum = sc.nextInt();
                 	switch (selectNum) {
 					case 1:
 						RentalMenu.memeberView();
@@ -87,9 +91,11 @@ public class MainLine {
 					case 4:
 						RentalMenu.gameView();
 						break;
+					case 5:
+						break;
 
 					}
-                	
+                	break;
             }
             
             
