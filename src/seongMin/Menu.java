@@ -5,8 +5,6 @@ public class Menu {
 
     public static AdminManager adm = AdminManager.getInstance();
 
-
-
     public static void memeberView() {
 
         System.out.println("회원관리페이지입니다.");

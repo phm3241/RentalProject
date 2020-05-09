@@ -6,6 +6,7 @@ public class MainLine {
 
     public static void main(String[] args) {
 
+
         AdminManager adm = AdminManager.getInstance();
         MemberManager mem = new MemberManager();
         Scanner sc = new Scanner(System.in);
