@@ -513,45 +513,49 @@ public class MemberManager {
 		rentalList.get(index).rentInfo = "반납완료";
 
 
-
-		// 나의 대여리스트 중 해당 인덱스 출력. 확인.
+		
+		// 나의 대여리스트 중 해당 인덱스 출력. 확인. 
 		rentalList.get(index).showRentalListInfo();
+		
+		
+		RentalItemInfo itemIndex=checkTypeIndex();
+		itemIndex.numOfItem += 1; // 자료정보 : 재고 += numOfItem
+		//itemIndex.rentalCount -= 1; // 자료정보 : 대여횟수 -= rentalCount	반납이랑 상관없음.
+		
+
+	 System.out.println(gap+"일");
+
+	        if( gap > 7) {	 // 연체.
+				
+				
+	        	adm.getMember().get(adm.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
+	        	adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
+				//numOfRent = ??		// 대여권수, 빌려간게 더 있을수도 있고 없을수도있고.	??
+			
+				System.out.println(title + "연체일수가 있습니다.");
+				System.out.println(title + "연체일수는 " + gap + " 입니다.");
+				System.out.println(overdue + "일 동안 자료를 대여하실 수 없습니다.");
+				System.out.println("처리 : " + today);	
+			}else if(gap < 7) {	// 연체 없음.
+				
+				returnDate = today;						
+					
+				System.out.println(title+"자료가 정상적으로 반납되었습니다.");
+				System.out.println("처리 : " + today);	
+				
+				adm.getMember().get(adm.loginCheckIndex()).numOfRent --;			// 대여권수
+				adm.getMember().get(adm.loginCheckIndex()).rentalAvail ++;		// 대여가능권수
+				adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 1;		// 연장가능횟수
+				
+			}
+			
+			// 대여가능으로 바꾼다.
+			rentalList.get(index).title
+			rentInfo = "대여가능";
+
+		}
 
 	} // itemReturn(index) end
-
-	// System.out.println(gap+"일");
-
-//	        if( gap > 7) {	 // 연체.
-//				
-//				
-//	        	adm.getMember().get(adm.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
-//	        	adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
-//				//numOfRent = ??		// 대여권수, 빌려간게 더 있을수도 있고 없을수도있고.	??
-//			
-//				System.out.println(title + "연체일수가 있습니다.");
-//				System.out.println(title + "연체일수는 " + gap + " 입니다.");
-//				System.out.println(overdue + "일 동안 자료를 대여하실 수 없습니다.");
-//				System.out.println("처리 : " + today);	
-//			}else if(gap < 7) {	// 연체 없음.
-//				
-//				returnDate = today;						
-//					
-//				System.out.println(title+"자료가 정상적으로 반납되었습니다.");
-//				System.out.println("처리 : " + today);	
-//				
-//				adm.getMember().get(adm.loginCheckIndex()).numOfRent --;			// 대여권수
-//				adm.getMember().get(adm.loginCheckIndex()).rentalAvail ++;		// 대여가능권수
-//				adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 1;		// 연장가능횟수
-//				
-//			}
-//			
-//			// 대여가능으로 바꾼다.
-//			rentalList.get(index).title
-//			rentInfo = "대여가능";
-
-//		}
-//
-//	} // itemReturn끝.
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 연장.
@@ -574,26 +578,6 @@ public class MemberManager {
 	}
 
 //			
-//			//Calendar cal = Calendar.getInstance();
-//			//SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-//			String today = format.format(cal.getTime());
-//			cal.add(Calendar.DATE,7);
-//			String returnDate = format.format(cal.getTime());		// 7일 연장.
-//			
-//			String startDate = rentalDate; 
-//	        String endDate = today;
-//	       
-//	        Date startDate1 = null;
-//	        Date endDate1 = null;
-//	        
-//	        try {
-//		        
-//	        	startDate1 = format.parse(startDate);	// rentalDate
-//	            endDate1 = format.parse(endDate);		// today
-//		        
-//	        } catch(ParseException e) {
-//	        	e.printStackTrace();
-//	        }
 //	        
 //	        long gap = startDate1.getTime() - endDate1.getTime() / (24*60*60*1000);
 //            gap = Math.abs(gap);
