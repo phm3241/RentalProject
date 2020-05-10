@@ -1,17 +1,15 @@
 package master;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
-public class ReturnExtends extends MemberManager0 {
+public class ReturnManager extends MemberManager {
 
 	// 메인에서 4번 눌렀을 떄!
 	// ㅡ> 내 대여내역 자동출력, 반납 연장 선택 ㅡ> 반납. 연장 기능
-	void returnExtends() {
+	public void returnExtends() {
 
 		// 내 대여내역 자동출력
-		showMyRentalList();
+//		showMyRentalList();
 
 		// 내 대여내역에서 반납하거나 연장할 자료를 검색입력
 		System.out.println("반납이나 연장하실 자료명을 입력해주세요.");
@@ -19,8 +17,8 @@ public class ReturnExtends extends MemberManager0 {
 
 		// 검색입력 받은 타이틀이 있는 rentalList의 인덱스
 		int index = checkTitle(title);
-//			rentalList.get(index).showRentalListInfo();  // 확인용. 선택한 타이틀이 있는 나의 대여내역 출력 
-
+		System.out.println("index : "+index);
+		System.out.println(searchRentalIndexTitle(title));
 		// 반납 연장 기능선택
 		System.out.println("1. 반납 | 2.연장");
 
@@ -34,7 +32,7 @@ public class ReturnExtends extends MemberManager0 {
 			break;
 
 		case 2: // 연장 선택시
-//			extention(index);
+			extention(index);
 			break;
 		}
 
@@ -42,28 +40,45 @@ public class ReturnExtends extends MemberManager0 {
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 반납
-	void itemReturn(int index) {
+	public void itemReturn(int index) {
 		
 		// 반납일 = 현재날짜로 생성
 		LocalDateTime today = LocalDateTime.now();
 		String returnDate = today.toString();
 		System.out.println("returnDate" + returnDate);
+		System.out.println("반납 index : "+index);
 
+		rentalList.get(index).showRentalListInfo();
 		// 나의 대여리스트 중 해당 인덱스의 반납일이 변경됨.
-		rentalList.get(index).returnDate = returnDate;
+		rentalList.get(index).returnDate= returnDate;
 		rentalList.get(index).rentInfo = "반납완료";
 
 		// 나의 대여리스트 중 해당 인덱스 출력. 확인. 
-		rentalList.get(index).showRentalListInfo();
+		
+		// 회원 카운트 변경 : 로그인한 아이디로 회원정보 받아서 카운트 변경
+		Member loginIdInfo = getloginIdInfo();
+		loginIdInfo.numOfRent -= 1; // 회원정보 : 대여권수 -1
 		
 		// 자료 카운트 변경
-		RentalItemInfo itemIndex=checkTypeIndex();
-		itemIndex.numOfItem += 1; // 자료정보 : 재고 += numOfItem
+		int itemIndex=0;
 		
-		// 회원 카운트 변경
-		Member loginIdInfo =getloginIdInfo();
-		loginIdInfo.numOfRent -= 1;
-		loginIdInfo.rentalAvail += 1;
+		// 자료가 책이면, 
+		if (adm.searchBookInfo(this.title) >= 0) { 
+			itemIndex = adm.searchBookInfo(this.title);
+			adm.getBooks().get(itemIndex).numOfItem += 1;
+		
+		// 자료가 DVD면,
+		}else if (adm.searchDvdInfo(this.title) >= 0) {
+			itemIndex = adm.searchDvdInfo(this.title);
+			adm.getDvd().get(itemIndex).numOfItem += 1;
+		
+		
+		// 자료가 Game이면,
+		} else if (adm.searchGameInfo(this.title) >= 0) {
+			itemIndex = adm.searchGameInfo(this.title);
+			adm.getGame().get(itemIndex).numOfItem -= 1;
+		}
+	}
 		
 		
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -107,23 +122,25 @@ public class ReturnExtends extends MemberManager0 {
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 연장.
-//	void extention(int index) {
-//
-//		// 만약에 연장하려는 내 대여내역에 예약자가 있으면, 연장불가.
-//		// 만약에 내 연장횟수가 0이면, 연장불가
-//
-//		// 연장된 반납일 생성 : 나의 대여리스트 중 해당 인덱스의 반납예정일 + 7
-//		LocalDateTime returnLimit0 = LocalDateTime.parse(rentalList.get(index).returnLimit);
-//		LocalDateTime extendDate1 = returnLimit0.plusDays(7);
-//		String extendDate = extendDate1.toString();
-//
-//		// 나의 대여리스트 중 해당 인덱스의 연장된 반납일 ㅡ > 연장된 반납일로 수정
-//		rentalList.get(index).extendDate = extendDate;
-//		rentalList.get(index).rentInfo = "연장완료";
-//
-//		// 나의 대여리스트 중 해당 인덱스 출력. 확인.
-//		rentalList.get(index).showRentalListInfo();
-//	}
+	public void extention(int index) {
+
+		// 만약에 연장하려는 내 대여내역에 예약자가 있으면, 연장불가.
+		// 만약에 내 연장횟수가 0이면, 연장불가
+
+		// 연장된 반납일 생성 : 나의 대여리스트 중 해당 인덱스의 반납예정일 + 7
+		LocalDateTime returnLimit0 = LocalDateTime.parse(rentalList.get(index).returnLimit);
+		LocalDateTime extendDate1 = returnLimit0.plusDays(7);
+		String extendDate = extendDate1.toString();
+
+		// 나의 대여리스트 중 해당 인덱스의 연장된 반납일 ㅡ > 연장된 반납일로 수정
+		rentalList.get(index).extendDate = extendDate;
+		rentalList.get(index).rentInfo = "연장완료";
+
+		// 나의 대여리스트 중 해당 인덱스 출력. 확인.
+		rentalList.get(index).showRentalListInfo();
+	}
+
+
 
 //				
 //		        
@@ -163,9 +180,8 @@ public class ReturnExtends extends MemberManager0 {
 	//
 //			
 //		} //extention 끝.
-	//
-	//
+	
+	
 
 } // class end
 
-}

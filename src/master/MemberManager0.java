@@ -19,32 +19,8 @@ public class MemberManager0 {
 	
 		
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-	// 선택한 자료의 타입을 확인하고 아이템인덱스 반환
-	RentalItemInfo checkTypeIndex() {
-
-		int index = 0;
-		RentalItemInfo itemIndex = null;
-
-		if (adm.searchBookInfo(this.title) >= 0) {
-			index = adm.searchBookInfo(this.title);
-			itemIndex = adm.getBooks().get(index);
-			return itemIndex;
-
-		} else if (adm.searchDvdInfo(this.title) >= 0) {
-			index = adm.searchDvdInfo(this.title);
-			itemIndex = adm.getDvd().get(index);
-			return itemIndex;
-
-		} else if (adm.searchGameInfo(this.title) >= 0) {
-			index = adm.searchGameInfo(this.title);
-			itemIndex = adm.getGame().get(index);
-			return itemIndex;
-		}
-		return itemIndex;
-	}
-
 	// 로그인한 id의 정보를 반환하는 메서드
-	Member getloginIdInfo() {
+	public Member getloginIdInfo() {
 
 		// 로그인한 회원 Id의 인덱스 찾고,
 		int index = adm.loginCheckIndex();
@@ -59,7 +35,7 @@ public class MemberManager0 {
 	
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 전체 rentalList 에서 title로 검색하기 ㅡ> 인덱스 반환
-	int searchRentalIndexTitle(String title) {
+	public int searchRentalIndexTitle(String title) {
 
 		int searchRentalIndex = -1;
 
@@ -73,29 +49,28 @@ public class MemberManager0 {
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 나의 rentalList 에서 title로 검색하기(내 대여내역) ㅡ> 인덱스 반환
-	protected int checkTitle(String title) {
-
-		int index = adm.loginCheckIndex();
-
-		String id = adm.getMember().get(index).getId();
-
-		int index2 = -1;
+	public int checkTitle(String title) {
+		String id = getloginIdInfo().getId();
+		System.out.println(title);
+		System.out.println(id);
+		
+		int index = 1;
 		for (int i = 0; i < rentalList.size(); i++) {
-			if (rentalList.get(i).id.equals(id) && rentalList.get(i).title.equals(title)) {
-				index2 = i;
-				break;
-			}
+			if (rentalList.get(i).title.equals(title)) {
+
+				rentalList.get(i).showRentalListInfo();
+				index=i;
+
+				}
 		}
-		return index2;
+		return index;
 	}
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList 에서 id로 검색하기(내 대여내역) ㅡ> 인덱스 반환
-	protected void showMyRentalList() {
+	public void showMyRentalList() {
 
-		int index = adm.loginCheckIndex();
-
-		String id = adm.getMember().get(index).getId();
+		String id = getloginIdInfo().getId();
 
 		for (int i = 0; i < rentalList.size(); i++) {
 			if (rentalList.get(i).id.equals(id)) {
@@ -109,7 +84,7 @@ public class MemberManager0 {
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList 에서 title로 검색하기(관리자사용) ㅡ> 인덱스 반환
-	void showTitleRentalList() {
+	public void showTitleRentalList() {
 
 		System.out.println("찾아보실 자료명을 입력해주세요.");
 		String title = adm.sc.nextLine();
@@ -133,8 +108,46 @@ public class MemberManager0 {
 		}
 	}
 	
+//	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	public void showGuide() {
+		System.out.println("=====이용안내=====");
+		System.out.println();
+		System.out.println("대여자료 : 도서 / DVD / 게임");
+		System.out.println("대여가능 자료수 : id당 5개");
+		System.out.println("대여기간 : 자료당 7일");
+		System.out.println();
+		System.out.println("연장가능 횟수 : id당 1회");
+		System.out.println("연장가능 일수 : 7일");
+		System.out.println("연체시 연체일수만큼 대여불가");
+
+	}
 	
+//	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+//	// 작업하려다 못한 메서드.. 선택한 자료의 타입을 확인하고 아이템인덱스 반환.. 
+//	// RentalItemInfo를 상속받아 작성된 Books, Dvd, Game이 ArrayList로 되어 있을 때, 다형성이 어떻게 되는지..
 	
+//	RentalItemInfo checkTypeIndex() {
+//
+//		int index = 0;
+//		RentalItemInfo itemIndex = null;
+//
+//		if (adm.searchBookInfo(this.title) >= 0) {
+//			index = adm.searchBookInfo(this.title);
+//			itemIndex = adm.getBooks().get(index);
+//			return itemIndex;
+//
+//		} else if (adm.searchDvdInfo(this.title) >= 0) {
+//			index = adm.searchDvdInfo(this.title);
+//			itemIndex = adm.getDvd().get(index);
+//			return itemIndex;
+//
+//		} else if (adm.searchGameInfo(this.title) >= 0) {
+//			index = adm.searchGameInfo(this.title);
+//			itemIndex = adm.getGame().get(index);
+//			return itemIndex;
+//		}
+//		return itemIndex;
+//	}
 	
 	
 } //class end

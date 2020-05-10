@@ -5,7 +5,9 @@ public class MainLine {
 	public static void main(String[] args) {
 
 		AdminManager adm = AdminManager.getInstance();
-		MemberManager mem = new MemberManager();
+//		MemberManager mem = new MemberManager();
+		RentManager mem = new RentManager();
+		ReturnManager mem2 = new ReturnManager();
 
 		while (true) {
 			System.out.println("메인메뉴");
@@ -54,7 +56,8 @@ public class MainLine {
 			// 4. 내 대여내역-----------------------------
 			case 4:
 				if (adm.loginCheck()) {
-					mem.returnExtends();
+					mem.showMyRentalList();
+					mem2.returnExtends();
 					break;
 				} else {
 					System.out.println("먼저 로그인 해주세요.");

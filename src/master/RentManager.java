@@ -1,16 +1,14 @@
 package master;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 
 
-public class SearchRnetalReserv extends MemberManager0 {
+public class RentManager extends MemberManager {
 	
 	
 	// 메인에서 1번 눌렀을 떄!
 	// ㅡ> 도서/DVD/게임 선택 ㅡ> 기본정보출력, 대여 예약 선택 ㅡ> 대여 예약 기능
-	void showInfo() {
+	public void showInfo() {
 
 		System.out.println("1.도서 | 2.DVD | 3. 게임");
 
@@ -149,14 +147,14 @@ public class SearchRnetalReserv extends MemberManager0 {
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList에 인스턴스 추가
-	void addRental(RentalList info) {
+	public void addRental(RentalList info) {
 		rentalList.add(info);
 
 	}
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList 인스턴스 생성
-	void creatRentalList() {
+	public void creatRentalList() {
 
 		// rentalList 객체 생성
 		RentalList info = null;
@@ -165,29 +163,19 @@ public class SearchRnetalReserv extends MemberManager0 {
 		Member loginIdInfo = getloginIdInfo();
 		String id = loginIdInfo.getId();
 
-		// 선택한 자료정보 가져오기.
-		RentalItemInfo itemIndex = checkTypeIndex();
-
 		// 1. 대여불가여부 확인 : 만약에 회원의 자료 대여개수가 5개일 때
 		if (loginIdInfo.numOfRent == 5) {
 			System.out.println("자료 대여가능개수(5개)를 모두 사용중입니다. 자료를 반납하신 후 대여를 이용해 주세요.");
 
-			// 2. 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
-		} else if (itemIndex.numOfItem == 0) {
-			System.out.println("선택하신 자료가 현재 모두 대여중입니다. 대여예약을 진행해주세요.");
 
-			// 3. 대여가능일때
+		// 2. 대여가능일때
 		} else {
 
-			// 회원 카운트 변경
-			// 로그인한 아이디로 회원정보 받아서 카운트 변경
-			loginIdInfo.rentalAvail -= 1; // 회원정보 : 대여가능권수 -1
-			loginIdInfo.numOfRent += 1; // 회원정보 : 대여권수 +1
-
 			// 자료 카운트 변경
-			// 자료의 타입을 체크해서 해당 아이템리스트 인덱스 반환해주는 메서드 사용하고, 재고변경
-			itemIndex.numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
-			itemIndex.rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
+			itemRentalCount();
+
+			// 회원 카운트 변경 : 로그인한 아이디로 회원정보 받아서 카운트 변경
+			loginIdInfo.numOfRent += 1; // 회원정보 : 대여권수 +1
 
 			// 대여일 생성
 			LocalDateTime rentalDate = LocalDateTime.now();
@@ -210,12 +198,64 @@ public class SearchRnetalReserv extends MemberManager0 {
 
 	} // creatRentalList() end
 	
-	
+//	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	// 선택한 자료의 타입을 확인하고 카운트변경 (대여횟수, 재고수, 재고수확인후 대여불가처리)
+	public void itemRentalCount() {
+
+		int index = 0;
+
+		// 입력받은 title이 Book일때!
+		if (adm.searchBookInfo(this.title) >= 0) {
+			
+			// 재고가 있으면, 재고수 -1, 대여횟수 +1
+			if(adm.getBooks().get(index).numOfItem > 0) {
+				index = adm.searchBookInfo(this.title);
+				adm.getBooks().get(index).numOfItem -= 1;
+				adm.getBooks().get(index).rentalCount += 1;
+			
+			// 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
+			}else if(adm.searchBookInfo(this.title)==0) {
+				System.out.println("선택하신 자료가 현재 모두 대여중입니다. 대여예약을 진행해주세요.");
+				showInfo();
+			}
+				
+		// 입력받은 title이 Dvd일때!	
+		}else if (adm.searchDvdInfo(this.title) >= 0) {
+			
+			// 재고가 있으면, 재고수 -1, 대여횟수 +1
+			if(adm.getDvd().get(index).numOfItem > 0) {
+				index = adm.searchDvdInfo(this.title);
+				adm.getDvd().get(index).numOfItem -= 1;
+				adm.getDvd().get(index).rentalCount += 1;
+			
+			// 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
+			}else if(adm.searchDvdInfo(this.title)==0) {
+				System.out.println("선택하신 자료가 현재 모두 대여중입니다. 대여예약을 진행해주세요.");
+				showInfo();
+			}	
+				
+		// 입력받은 title이 Game일때!	
+		} else if (adm.searchGameInfo(this.title) >= 0) {
+			
+			// 재고가 있으면, 재고수 -1, 대여횟수 +1
+			if(adm.getGame().get(index).numOfItem > 0) {
+				index = adm.searchGameInfo(this.title);
+				adm.getGame().get(index).numOfItem -= 1;
+				adm.getGame().get(index).rentalCount += 1;
+			
+			// 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
+			}else if(adm.searchDvdInfo(this.title)==0) {
+				System.out.println("선택하신 자료가 현재 모두 대여중입니다. 대여예약을 진행해주세요.");
+				showInfo();
+				
+			}
+		}
+	}
 	
 	
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 예약
-//	void reserve() {
+	public void reserve() {
 
 		
 		// 반납일 = 현재날짜로 생성
@@ -281,6 +321,13 @@ public class SearchRnetalReserv extends MemberManager0 {
 //	} 
 //
 //	
-//	} // reserve() end
+		
+		
+	} // reserve() end
+
+	@Override
+	public void showGuide() {
+		super.showGuide();
+	}
 
 }
