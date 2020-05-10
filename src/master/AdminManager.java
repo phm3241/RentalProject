@@ -521,7 +521,7 @@ public class AdminManager {
         int searchIndex = -1;
 
         //배열의 반복으로 title값을 비교해서 index 값을 찾는다.
-        for (int i = 0; i < game.size(); i++) {
+        for (int i = 0; i < dvd.size(); i++) {
             if (dvd.get(i).title.equals(title)) {
                 searchIndex = i;
                 break;
