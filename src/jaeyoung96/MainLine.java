@@ -88,6 +88,7 @@ public class MainLine {
 					}
 					break;
 				} // while end
+				continue;
 			case 7:
 				System.out.println("프로그램이 종료됩니다.");
 				System.exit(0);
