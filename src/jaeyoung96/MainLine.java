@@ -11,8 +11,17 @@ public class MainLine {
 			System.out.println("메인메뉴");
 			System.out.println("1. 검색/대여 | 2.로그인 | 3.이용안내/회원가입 | 4.내 대여내역(반납/연장) | 5.로그아웃 | 6.관리자페이지 | 7.프로그램 종료");
 
-			int selectNum = adm.sc.nextInt();
-			adm.sc.nextLine();
+			int selectNum;
+			
+			try {
+				selectNum = adm.sc.nextInt();
+				adm.sc.nextLine();
+				
+			} catch (Exception e) {
+				System.out.println("1~7사이 숫자를 입력해 주세요.");
+				adm.sc.nextLine();
+				continue;
+			}
 
 			switch (selectNum) {
 
@@ -31,7 +40,7 @@ public class MainLine {
 
 				System.out.println("1. 이용안내 | 2.회원가입");
 				selectNum = adm.sc.nextInt();
-
+				adm.sc.nextLine();
 				switch (selectNum) {
 				case 1:
 					mem.showGuide();
@@ -93,7 +102,7 @@ public class MainLine {
 				System.out.println("프로그램이 종료됩니다.");
 				System.exit(0);
 			default:
-				System.out.println("잘못된 입력입니다.");
+				System.out.println("1~7사이 숫자를 입력해 주세요.");
 				continue;
 
 			} // switch end

@@ -1,12 +1,11 @@
 package jaeyoung96;
 
 
+import jaeyoung96.jy.*;
+
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import jaeyoung96.jy.*;
-
 
 public class AdminManager {
 
@@ -137,31 +136,46 @@ public class AdminManager {
                 System.out.println("이름을 입력해 주세요.");
                 name = sc.nextLine();
 
-                System.out.println("나이를 입력 해주세요.");
-                age = sc.nextInt();
+                while (true) {
+                   
+                        System.out.println("나이를 입력 해주세요.");
+                        try {
+                        	
+                        age = sc.nextInt();
+                        sc.nextLine();
 
-                System.out.println("전화번호를 입력해 주세요.");
-                phoneNum = sc.nextLine();
+                    } catch (InputMismatchException e) {
+                        System.out.println("숫자를 입력해 주세요.");
+                        sc.nextLine();
+                        continue;
+                    }
 
-                System.out.println("주소를 입력해 주세요.");
-                addr = sc.nextLine();
 
-                System.out.println("이메일을 입력해 주세요.");
-                email = sc.nextLine();
+                    System.out.println("전화번호를 입력해 주세요.");
+                    phoneNum = sc.nextLine();
 
-                //입력받은 데이터 저장
-                Member info = new Member(name, age, phoneNum, addr, email, id, pw);
-                member.add(info);
+                    System.out.println("주소를 입력해 주세요.");
+                    addr = sc.nextLine();
 
-                System.out.println("회원가입이 정상적으로 완료되었습니다.");
-                //저장후 무한루프를 빠져나오기 위해 checkPw를 false로 변경
-                System.out.println(member.get(0));
-                checkPw = false;
+                    System.out.println("이메일을 입력해 주세요.");
+                    email = sc.nextLine();
+
+                    //입력받은 데이터 저장
+                    Member info = new Member(name, age, phoneNum, addr, email, id, pw);
+                    member.add(info);
+
+                    System.out.println("회원가입이 정상적으로 완료되었습니다.");
+                    //저장후 무한루프를 빠져나오기 위해 checkPw를 false로 변경
+                    //System.out.println(member.get(0));
+                    checkPw = false;
+                    break;
+                }
             } else {
                 System.out.println("입력하신 비밀번호가 다릅니다. 다시 입력해 주세요.");
                 continue;
             }
         }
+               
     }
 
 
@@ -299,7 +313,7 @@ public class AdminManager {
                     if (member.get(index).getPw().equals(pw)) {
                         System.out.println("로그인이 완료되었습니다.");
                         member.get(index).loginCheck = true;
-                        System.out.println(member.get(index).loginCheck);
+                        //System.out.println(member.get(index).loginCheck);
                         check = false;
                         break;
                     } else {
@@ -318,7 +332,7 @@ public class AdminManager {
 
     //관리자 로그인
     public void AdminLogin() {
-        int loginPw = 0000;
+        String loginPw = "0000";
         boolean loginCheck = true;
         int failCnt = 0;
 
@@ -328,10 +342,10 @@ public class AdminManager {
 
         while (loginCheck) {
             System.out.println("비밀번호를 입력해주세요");
-            int adminPw = sc.nextInt();
-            sc.nextLine();
+            String adminPw = sc.nextLine();
+            
 
-            if (loginPw == adminPw) {
+            if (loginPw.equals(adminPw)) {
                 System.out.println("관리자로 로그인 하였습니다.");
                 loginCheck = false;
                 break;
@@ -350,7 +364,7 @@ public class AdminManager {
     }
 
     public void logOut() {
-        if(loginCheck()) {
+        if (loginCheck()) {
             for (int i = 0; i < member.size(); i++) {
                 if (member.get(i).loginCheck == true) {
                     member.get(i).loginCheck = false;
@@ -358,8 +372,8 @@ public class AdminManager {
                     break;
                 }
             }
-        }else{
-                System.out.println("로그인된 계정이 없습니다.");
+        } else {
+            System.out.println("로그인된 계정이 없습니다.");
         }
     }
 
@@ -627,12 +641,12 @@ public class AdminManager {
         String genre = null;
         String localData = null;
         String author = null;
-        int limitAge=0;
-        String story=null;
+        int limitAge = 0;
+        String story = null;
         String launchDate = null;
         // 기본정보 수집: 책이름, 장르, 책위치, 저자, 연령제한, 설명, 출판일
-        
-       
+
+
         System.out.println("책이름을 입력해주세요.");
         title = sc.nextLine();
 
@@ -644,30 +658,30 @@ public class AdminManager {
 
         System.out.println("저자를 입력해주세요");
         author = sc.nextLine();
-        while(true) {
-        try {
-        	System.out.println("연령제한 입력해주세요");
-        	limitAge = sc.nextInt();
-        	sc.nextLine();
-			
-		} catch (InputMismatchException e) {
-			System.out.println("연령제한을 잘못입력했습니다. \n다시 입력해주세요.(숫자입력)");
-			sc.nextLine();
-			continue;
-		}
-        
-        System.out.println("설명을 입력해주세요");
-        story = sc.nextLine();    //설명
-        System.out.println("출판일을 입력해주세요");
-        launchDate = sc.nextLine();    //출판일
+        while (true) {
+            try {
+                System.out.println("연령제한 입력해주세요");
+                limitAge = sc.nextInt();
+                sc.nextLine();
+
+            } catch (InputMismatchException e) {
+                System.out.println("연령제한을 잘못입력했습니다. \n다시 입력해주세요.(숫자입력)");
+                sc.nextLine();
+                continue;
+            }
+
+            System.out.println("설명을 입력해주세요");
+            story = sc.nextLine();    //설명
+            System.out.println("출판일을 입력해주세요");
+            launchDate = sc.nextLine();    //출판일
 
 
-        info = new Book(title, genre, localData,
-                author, limitAge, story, launchDate);
+            info = new Book(title, genre, localData,
+                    author, limitAge, story, launchDate);
 
-        //배열에 추가
-        books.add(info);
-        return info;
+            //배열에 추가
+            books.add(info);
+            return info;
         }
     }
 
@@ -678,12 +692,12 @@ public class AdminManager {
         String genre = null;
         String localData = null;
         String foreman = null;
-        String runingTime=null;
-        int limitAge =0;
-        String story=null;
-        String launchDate=null;
-        
-        
+        String runingTime = null;
+        int limitAge = 0;
+        String story = null;
+        String launchDate = null;
+
+
         // 기본정보 수집: DVD이름, 장르, DVD위치, 감독, 상영시간, 연령제한, 설명, 출판일
 
         System.out.println("책이름을 입력해주세요.");
@@ -701,33 +715,34 @@ public class AdminManager {
         System.out.println("상영시간을 입력해주세요");
         runingTime = sc.nextLine();
 
-        while(true) {
-        	try {
-        		System.out.println("연령제한 입력해주세요");
+        while (true) {
+            try {
+                System.out.println("연령제한 입력해주세요");
                 limitAge = sc.nextInt();
                 sc.nextLine();
-			} catch (InputMismatchException e) {
-				System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요");
-				sc.nextLine();
-			}
-        
-        System.out.println("설명을 입력해주세요");
-        story = sc.nextLine();    //설명
+            } catch (InputMismatchException e) {
+                System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요");
+                sc.nextLine();
+            }
 
-        System.out.println("출판일을 입력해주세요");
-        launchDate = sc.nextLine();    //출판일
+            System.out.println("설명을 입력해주세요");
+            story = sc.nextLine();    //설명
+
+            System.out.println("출판일을 입력해주세요");
+            launchDate = sc.nextLine();    //출판일
 
 
-        //DVD 클래스로 인스턴스생성
-        info = new DVD(title, genre, localData, foreman,
-                runingTime, limitAge, story, launchDate);
+            //DVD 클래스로 인스턴스생성
+            info = new DVD(title, genre, localData, foreman,
+                    runingTime, limitAge, story, launchDate);
 
-        //배열에 추가
-        dvd.add(info);
+            //배열에 추가
+            dvd.add(info);
 
-        return info;
+            return info;
+        }
     }
-    }
+
     //Game 정보 입력
     public Game CreateGameInfo() {
         Game info = null;
@@ -737,7 +752,7 @@ public class AdminManager {
         String producer = null;
         int limitAge = 0;
         String story = null;
-        String launchDate=null;
+        String launchDate = null;
         // 기본정보 수집: 게임이름, 장르, 게임위치, 제작자, 연령제한, 설명, 출판일
 
         System.out.println("책이름을 입력해주세요.");
@@ -752,33 +767,34 @@ public class AdminManager {
         System.out.println("제작자를 입력해주세요");
         producer = sc.nextLine();
 
-       
-        sc.nextLine();while(true) {
-        	try {
-        		System.out.println("연령제한 입력해주세요");
+
+        sc.nextLine();
+        while (true) {
+            try {
+                System.out.println("연령제한 입력해주세요");
                 limitAge = sc.nextInt();
                 sc.nextLine();
-			} catch (InputMismatchException e) {
-				System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요.");
-				sc.nextLine();
-			}
-        
-        System.out.println("설명을 입력해주세요");
-        story = sc.nextLine();    //설명
+            } catch (InputMismatchException e) {
+                System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요.");
+                sc.nextLine();
+            }
 
-        System.out.println("출판일을 입력해주세요");
-        launchDate = sc.nextLine();    //출판일
+            System.out.println("설명을 입력해주세요");
+            story = sc.nextLine();    //설명
+
+            System.out.println("출판일을 입력해주세요");
+            launchDate = sc.nextLine();    //출판일
 
 
-        //2.2.3 Book 클래스로 인스턴스생성
-        info = new Game(title, genre, localData,
-                producer, limitAge, story, launchDate);
+            //2.2.3 Book 클래스로 인스턴스생성
+            info = new Game(title, genre, localData,
+                    producer, limitAge, story, launchDate);
 
-        //배열에 추가
-        game.add(info);
-        return info;
+            //배열에 추가
+            game.add(info);
+            return info;
         }
     }
-    
-    
+
+
 }
