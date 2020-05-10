@@ -237,10 +237,18 @@ public class AdminManager {
         if(index > 0) {
             MemberInfo info = null;
 
-            System.out.println("1. 비밀번호 | 2. 전화번호 | 3.주소 | 4. 이메일");
+            while(true) {
+            System.out.println("1. 비밀번호 | 2. 전화번호 | 3.주소 | 4. 이메일 |5. 뒤로가기");
 
-            int selectNum = sc.nextInt();
-            sc.nextLine();
+            int selectNum;
+			try {
+				selectNum = sc.nextInt();
+				sc.nextLine();
+			} catch (Exception e) {
+				System.out.println("1~5사이의 숫자를 입력해주세요");
+				sc.nextLine();
+				continue;
+			}
             switch (selectNum) {
                 case 1:
                     boolean check = true;
@@ -284,13 +292,19 @@ public class AdminManager {
                     member.get(index).email = email;
                     System.out.println("이메일 변경이 완료되었습니다.");
                     break;
+                case 5:
+                	break;
+                	default:				
+                		System.out.println("1~5사이의 숫자를 입력해주세요");
+                		continue;
+            }
             }
         } else {
             System.out.println("찾으시는 아이디가 없습니다.");
 
         }
     }
-
+    
     public void deleteInfo() {
         System.out.println("삭제하실분의 아이디를 입력해 주세요.");
         String id = sc.nextLine();
