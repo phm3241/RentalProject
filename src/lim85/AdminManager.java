@@ -137,14 +137,16 @@ public class AdminManager {
                 name = sc.nextLine();
 
                 while (true) {
-                    try {
-
+                   
                         System.out.println("나이를 입력 해주세요.");
+                        try {
+                        	
                         age = sc.nextInt();
                         sc.nextLine();
 
                     } catch (InputMismatchException e) {
-                        System.out.println("2자리 숫자를 입력해 주세요.");
+                        System.out.println("숫자를 입력해 주세요.");
+                        sc.nextLine();
                         continue;
                     }
 
@@ -164,14 +166,16 @@ public class AdminManager {
 
                     System.out.println("회원가입이 정상적으로 완료되었습니다.");
                     //저장후 무한루프를 빠져나오기 위해 checkPw를 false로 변경
-                    System.out.println(member.get(0));
+                    //System.out.println(member.get(0));
                     checkPw = false;
+                    break;
                 }
             } else {
                 System.out.println("입력하신 비밀번호가 다릅니다. 다시 입력해 주세요.");
                 continue;
             }
         }
+               
     }
 
 
@@ -309,7 +313,7 @@ public class AdminManager {
                     if (member.get(index).getPw().equals(pw)) {
                         System.out.println("로그인이 완료되었습니다.");
                         member.get(index).loginCheck = true;
-                        System.out.println(member.get(index).loginCheck);
+                        //System.out.println(member.get(index).loginCheck);
                         check = false;
                         break;
                     } else {
@@ -339,7 +343,7 @@ public class AdminManager {
         while (loginCheck) {
             System.out.println("비밀번호를 입력해주세요");
             String adminPw = sc.nextLine();
-            sc.nextLine();
+            
 
             if (loginPw.equals(adminPw)) {
                 System.out.println("관리자로 로그인 하였습니다.");

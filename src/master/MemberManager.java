@@ -475,7 +475,7 @@ public class MemberManager {
 			
 			
 			//예약자와 예약일 추가
-			rentalList.get(index).returnDate=returnDate;
+//			rentalList.get(index).returnDate=returnDate;
 //			rentalList.get(index).rentInfo="반납완료";
 			
 			

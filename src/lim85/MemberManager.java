@@ -518,18 +518,15 @@ public class MemberManager {
 		rentalList.get(index).showRentalListInfo();
 		
 		
-		RentalItemInfo itemIndex = checkTypeIndex();
+		RentalItemInfo itemIndex=checkTypeIndex();
 		itemIndex.numOfItem += 1; // 자료정보 : 재고 += numOfItem
 		//itemIndex.rentalCount -= 1; // 자료정보 : 대여횟수 -= rentalCount	반납이랑 상관없음.
 		
 
-		//System.out.println(gap+"일");
-		
-		//RentalList gap = rentalList.get(index).returnDate - rentalList.get(index).returnLimit;
-		
-		int gap = .returnDate - rentalList.;	
-	        
-			if( gap > 0) {	 // 연체.
+	 System.out.println(gap+"일");
+
+	        if( gap > 7) {	 // 연체.
+				
 				
 	        	adm.getMember().get(adm.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
 	        	adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
@@ -537,14 +534,11 @@ public class MemberManager {
 			
 				System.out.println(title + "연체일수가 있습니다.");
 				System.out.println(title + "연체일수는 " + gap + " 입니다.");
-				System.out.println(gap + "일 동안 자료를 대여하실 수 없습니다.");
+				System.out.println(overdue + "일 동안 자료를 대여하실 수 없습니다.");
 				System.out.println("처리 : " + today);	
-			
-	        }else if( gap <= 0) {	// 연체 없음.
+			}else if(gap < 7) {	// 연체 없음.
 				
-	        	LocalDateTime today1 = LocalDateTime.now();
-				String returnDate1 = today.toString();
-				rentalList.get(index).returnDate = returnDate1;						
+				returnDate = today;						
 					
 				System.out.println(title+"자료가 정상적으로 반납되었습니다.");
 				System.out.println("처리 : " + today);	
@@ -559,7 +553,7 @@ public class MemberManager {
 			rentalList.get(index).title
 			rentInfo = "대여가능";
 
-		
+		}
 
 	} // itemReturn(index) end
 
