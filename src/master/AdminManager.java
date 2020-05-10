@@ -1,10 +1,30 @@
 package master;
 
 
-import data.*;
-
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import data.Bookdata;
+import data.Bookdata2;
+import data.Bookdata3;
+import data.Bookdata4;
+import data.Bookdata5;
+import data.DVDData;
+import data.DVDData2;
+import data.DVDData3;
+import data.DVDData4;
+import data.DVDData5;
+import data.GameData;
+import data.GameData2;
+import data.GameData3;
+import data.GameData4;
+import data.GameData5;
+import data.MemberData;
+import data.MemberData2;
+import data.MemberData3;
+import data.MemberData4;
+import data.MemberData5;
 
 public class AdminManager {
 
@@ -618,16 +638,19 @@ public class AdminManager {
 
     //정보 입력단계------------------------------------------------------
     //책 정보 입력
-    public Book createBookInfo() {
+    public Book createBookInfo() throws InputMismatchException {
 
         Book info = null;
-
         String title = null;
         String genre = null;
         String localData = null;
-
-        // 기본정보 수집: 책이름, 장르, 책위치, 대여상태
-
+        String author = null;
+        int limitAge=0;
+        String story=null;
+        String launchDate = null;
+        // 기본정보 수집: 책이름, 장르, 책위치, 저자, 연령제한, 설명, 출판일
+        
+       
         System.out.println("책이름을 입력해주세요.");
         title = sc.nextLine();
 
@@ -638,14 +661,23 @@ public class AdminManager {
         localData = sc.nextLine();
 
         System.out.println("저자를 입력해주세요");
-        String author = sc.nextLine();
-        System.out.println("연령제한 입력해주세요");
-        int limitAge = sc.nextInt();
-        sc.nextLine();
+        author = sc.nextLine();
+        while(true) {
+        try {
+        	System.out.println("연령제한 입력해주세요");
+        	limitAge = sc.nextInt();
+        	sc.nextLine();
+			
+		} catch (InputMismatchException e) {
+			System.out.println("연령제한을 잘못입력했습니다. \n다시 입력해주세요.(숫자입력)");
+			sc.nextLine();
+			continue;
+		}
+        
         System.out.println("설명을 입력해주세요");
-        String story = sc.nextLine();    //설명
+        story = sc.nextLine();    //설명
         System.out.println("출판일을 입력해주세요");
-        String launchDate = sc.nextLine();    //출판일
+        launchDate = sc.nextLine();    //출판일
 
 
         info = new Book(title, genre, localData,
@@ -654,18 +686,23 @@ public class AdminManager {
         //배열에 추가
         books.add(info);
         return info;
-
+        }
     }
 
     //DVD 정보 입력
     public DVD createDvdInfo() {
         DVD info = null;
-
         String title = null;
         String genre = null;
         String localData = null;
-
-        // 기본정보 수집: DVD이름, 장르, DVD위치, 대여상태
+        String foreman = null;
+        String runingTime=null;
+        int limitAge =0;
+        String story=null;
+        String launchDate=null;
+        
+        
+        // 기본정보 수집: DVD이름, 장르, DVD위치, 감독, 상영시간, 연령제한, 설명, 출판일
 
         System.out.println("책이름을 입력해주세요.");
         title = sc.nextLine();
@@ -677,19 +714,26 @@ public class AdminManager {
         localData = sc.nextLine();
 
         System.out.println("감독를 입력해주세요");
-        String foreman = sc.nextLine();
+        foreman = sc.nextLine();
 
         System.out.println("상영시간을 입력해주세요");
-        String runingTime = sc.nextLine();
+        runingTime = sc.nextLine();
 
-        System.out.println("연령제한 입력해주세요");
-        int limitAge = sc.nextInt();
-        sc.nextLine();
+        while(true) {
+        	try {
+        		System.out.println("연령제한 입력해주세요");
+                limitAge = sc.nextInt();
+                sc.nextLine();
+			} catch (InputMismatchException e) {
+				System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요");
+				sc.nextLine();
+			}
+        
         System.out.println("설명을 입력해주세요");
-        String story = sc.nextLine();    //설명
+        story = sc.nextLine();    //설명
 
         System.out.println("출판일을 입력해주세요");
-        String launchDate = sc.nextLine();    //출판일
+        launchDate = sc.nextLine();    //출판일
 
 
         //DVD 클래스로 인스턴스생성
@@ -701,16 +745,18 @@ public class AdminManager {
 
         return info;
     }
-
+    }
     //Game 정보 입력
     public Game CreateGameInfo() {
         Game info = null;
-
         String title = null;
         String genre = null;
         String localData = null;
-
-        // 기본정보 수집: 게임이름, 장르, 게임위치, 대여상태
+        String producer = null;
+        int limitAge = 0;
+        String story = null;
+        String launchDate=null;
+        // 기본정보 수집: 게임이름, 장르, 게임위치, 제작자, 연령제한, 설명, 출판일
 
         System.out.println("책이름을 입력해주세요.");
         title = sc.nextLine();
@@ -722,16 +768,24 @@ public class AdminManager {
         localData = sc.nextLine();
 
         System.out.println("제작자를 입력해주세요");
-        String producer = sc.nextLine();
+        producer = sc.nextLine();
 
-        System.out.println("연령제한 입력해주세요");
-        int limitAge = sc.nextInt();
-        sc.nextLine();
+       
+        sc.nextLine();while(true) {
+        	try {
+        		System.out.println("연령제한 입력해주세요");
+                limitAge = sc.nextInt();
+                sc.nextLine();
+			} catch (InputMismatchException e) {
+				System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요.");
+				sc.nextLine();
+			}
+        
         System.out.println("설명을 입력해주세요");
-        String story = sc.nextLine();    //설명
+        story = sc.nextLine();    //설명
 
         System.out.println("출판일을 입력해주세요");
-        String launchDate = sc.nextLine();    //출판일
+        launchDate = sc.nextLine();    //출판일
 
 
         //2.2.3 Book 클래스로 인스턴스생성
@@ -741,5 +795,8 @@ public class AdminManager {
         //배열에 추가
         game.add(info);
         return info;
+        }
     }
+    
+    
 }
