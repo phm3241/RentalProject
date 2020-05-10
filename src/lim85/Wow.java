@@ -438,7 +438,8 @@ public class Wow {
 				System.out.println(title + "연체일수는 " + gap + " 입니다.");
 				System.out.println(overdue + "일 동안 자료를 대여하실 수 없습니다.");
 				System.out.println("처리 : " + today);	
-			}else if(gap < 7) {	// 연체 없음.
+			
+	        }else if(gap < 7) {	// 연체 없음.
 				
 				returnDate = today;						
 					
@@ -574,15 +575,15 @@ public class Wow {
 //			// 만약에 선택한 타이틀이 book이면...book 카운트변경
 //			if (adm.searchBookInfo(this.title) >= 0) {
 //				adm.getMember().get(index).rentalAvail += 1; // 회원정보 : 대여가능권수 +1
-//				adm.getMember().get(index).numOfRent -= 1; // 회원정보 : 내가빌려간 대여권수 -1
+//				//adm.getMember().get(index).numOfRent -= 1; // 회원정보 : 내가빌려간 대여권수 -1
 //
 //			// 만약에 선택한 타이틀이 DVD이면...DVD 카운트변경
 //			} else if (adm.searchDvdInfo(this.title) >= 0) {
 //				adm.getMember().get(index).rentalAvail += 1; // 회원정보 : 대여가능권수 +1
-//				adm.getMember().get(index).numOfRent -= 1; // 회원정보 : 내가빌려간 대여권수 -1
+//				//adm.getMember().get(index).numOfRent -= 1; // 회원정보 : 내가빌려간 대여권수 -1
 //			
 //				// 만약에 선택한 타이틀이 Game이면...Game 카운트변경
 //			} else if (adm.searchGameInfo(this.title) >= 0) {
 //				adm.getMember().get(index).rentalAvail += 1; // 회원정보 : 대여가능권수 +1
-//				adm.getMember().get(index).numOfRent -= 1; // 회원정보 : 내가빌려간 대여권수 -1
+//				//adm.getMember().get(index).numOfRent -= 1; // 회원정보 : 내가빌려간 대여권수 -1
 //			}
