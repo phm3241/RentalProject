@@ -34,11 +34,10 @@ public class MemberManager {
 	// 회원리스트, 자료리스트 불러오기
 	AdminManager adm = AdminManager.getInstance();
 
-	
 	// 기본생성자, 대여리스트 생성
 	public MemberManager() {
 		rentalList = new ArrayList<>();
-		
+
 		// 대여리스트 항목 추가
 //		UserList uList=new UserList();
 //		UserList2 uList2=new UserList2();
@@ -73,11 +72,7 @@ public class MemberManager {
 //		rentalList.add(uList14);
 //		rentalList.add(uList15);
 //		rentalList.add(uList16);
-		
-		
-		
-		
-		
+
 	}
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -219,34 +214,44 @@ public class MemberManager {
 		} // switch end
 	} // showInfo() end
 
-	
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 선택한 자료의 타입을 확인하고 아이템인덱스 반환
 	RentalItemInfo checkTypeIndex() {
-		
-		int index=0;
-		RentalItemInfo itemIndex=null;
-		
+
+		int index = 0;
+		RentalItemInfo itemIndex = null;
+
 		if (adm.searchBookInfo(this.title) >= 0) {
-			index=adm.searchBookInfo(this.title);
-			itemIndex=adm.getBooks().get(index);
+			index = adm.searchBookInfo(this.title);
+			itemIndex = adm.getBooks().get(index);
 			return itemIndex;
-			
-		}else if (adm.searchDvdInfo(this.title) >= 0) {
-			index=adm.searchDvdInfo(this.title);
-			itemIndex=adm.getDvd().get(index);
+
+		} else if (adm.searchDvdInfo(this.title) >= 0) {
+			index = adm.searchDvdInfo(this.title);
+			itemIndex = adm.getDvd().get(index);
 			return itemIndex;
-			
-		}else if (adm.searchGameInfo(this.title) >= 0) {
-			index=adm.searchGameInfo(this.title);
-			itemIndex=adm.getGame().get(index);
+
+		} else if (adm.searchGameInfo(this.title) >= 0) {
+			index = adm.searchGameInfo(this.title);
+			itemIndex = adm.getGame().get(index);
 			return itemIndex;
 		}
 		return itemIndex;
 	}
 	
+	// 로그인한 id의 정보를 반환하는 메서드
+	Member getloginIdInfo() {
+		
+		// 로그인한 회원 Id의 인덱스 찾고,
+		int index = adm.loginCheckIndex();
+		
+		// 그 회원의 정보 반환
+		Member loginIdInfo=null;
+		loginIdInfo = adm.getMember().get(index);
 	
-	
+		return loginIdInfo;
+	}
+
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList에 인스턴스 추가
 	void addRental(RentalList info) {
@@ -257,83 +262,94 @@ public class MemberManager {
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList 인스턴스 생성
 	void creatRentalList() {
-		
-		// 대여불가처리 경우,
-		// 1. 만약에 회원의 대여가능권수가 0이면
-		// 2. 자료의 재고가 0이면 ㅡ> 자료 예약을 하시겠습니까? 물어보고, 예약으로 이동. 
-		
-		
+
+		// rentalList 객체 생성
 		RentalList info = null;
+		
+		// login한 id의 회원정보와 id 가져오기
+		Member loginIdInfo=getloginIdInfo();
+		String id=loginIdInfo.getId();
 
-		int index = adm.loginCheckIndex();
-
-		// 대여할 때 받을 정보 ㅡ> 로그인한 회원 Id, 대여할 자료명
-		String id = adm.getMember().get(index).getId(); // 로그인한 id
+		// 선택한 자료정보 가져오기.
+		RentalItemInfo itemIndex = checkTypeIndex();
+		
+		
+		// 1. 대여불가여부 확인 : 만약에 회원의 자료 대여개수가 5개일 때
+		if(loginIdInfo.numOfRent==5) {  
+			System.out.println("자료 대여가능개수(5개)를 모두 사용중입니다. 자료를 반납하신 후 대여를 이용해 주세요.");
+		
+		// 2. 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
+		} else if(itemIndex.numOfItem==0){
+			System.out.println("선택하신 자료가 현재 모두 대여중입니다. 대여예약을 진행해주세요.");
+		
+		// 3. 대여가능일때
+		} else {
+		
 		// 회원 카운트 변경
-		adm.getMember().get(index).rentalAvail -= 1; // 회원정보 : 대여가능권수 -1
-		adm.getMember().get(index).numOfRent += 1; // 회원정보 : 대여권수 +1
+		// 로그인한 아이디로 회원정보 받아서 카운트 변경
+		loginIdInfo.rentalAvail -= 1; // 회원정보 : 대여가능권수 -1
+		loginIdInfo.numOfRent += 1; // 회원정보 : 대여권수 +1
+
+
+		// 자료 카운트 변경
+		// 자료의 타입을 체크해서 해당 아이템리스트 인덱스 반환해주는 메서드 사용하고, 재고변경
+		itemIndex.numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
+		itemIndex.rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
+
 
 		// 대여일 생성
 		LocalDateTime rentalDate = LocalDateTime.now();
 		System.out.println();
 		String start = rentalDate.toString();
-
+		
 		// 반납일 생성 : 대여일+7일
 		LocalDateTime returnDate = rentalDate.plusDays(7);
 		String end = returnDate.toString();
-		
-		
-		// 자료 카운트 변경
-		// 자료의 타입을 체크해서 해당 아이템리스트 인덱스 반환해주는 메서드 사용하고, 재고변경 
-		RentalItemInfo itemIndex=checkTypeIndex();
-		itemIndex.numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
-		itemIndex.rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
 
-		
 		// MemberManager 객체 생성
 		info = new RentalList(id, title, start, end);
-
+		
 		// MemberManager 객체 ㅡ> 대여리스트에 추가 메서드 1-1. 호출.
 		addRental(info);
 		System.out.println(id + "님  < " + title + " > 자료가 대여완료 되었습니다. ");
 		System.out.println("대여일 : " + start + " | 반납예정일 : " + end);
-
+		
+		} //else end
+		
 	} // creatRentalList() end
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 메인에서 4번 눌렀을 떄! ㅡ> 내 대여내역 자동출력, 반납 연장 선택 ㅡ> 반납. 연장 기능
 	void returnExtends() {
-		
+
 		// 내 대여내역 자동출력
 		showMyRentalList();
-		
+
 		// 내 대여내역에서 반납하거나 연장할 자료를 검색입력
 		System.out.println("반납이나 연장하실 자료명을 입력해주세요.");
 		String title = adm.sc.nextLine();
 
-		
 		// 검색입력 받은 타이틀이 있는 rentalList의 인덱스
-		int index=checkTitle(title);
+		int index = checkTitle(title);
 //		rentalList.get(index).showRentalListInfo();  // 확인용. 선택한 타이틀이 있는 나의 대여내역 출력 
-		
-		
+
 		// 반납 연장 기능선택
 		System.out.println("1. 반납 | 2.연장");
 
-        int selectNum = adm.sc.nextInt();
-        adm.sc.nextLine();
-   
-        	// 선택한 기능 실행
-	        switch (selectNum) {
-	        case 1:		// 반납 선택시
-	        	itemReturn(index);
-	        	break;
-	        	
-	        case 2:		// 연장 선택시
-	        	extention(index);
-	        	break;
-	        }
-		
+		int selectNum = adm.sc.nextInt();
+		adm.sc.nextLine();
+
+		// 선택한 기능 실행
+		switch (selectNum) {
+		case 1: // 반납 선택시
+			itemReturn(index);
+			break;
+
+		case 2: // 연장 선택시
+			extention(index);
+			break;
+		}
+
 	}
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -357,7 +373,7 @@ public class MemberManager {
 		int index = adm.loginCheckIndex();
 
 		String id = adm.getMember().get(index).getId();
-		
+
 		int index2 = -1;
 		for (int i = 0; i < rentalList.size(); i++) {
 			if (rentalList.get(i).id.equals(id) && rentalList.get(i).title.equals(title)) {
@@ -367,7 +383,7 @@ public class MemberManager {
 		}
 		return index2;
 	}
-				
+
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList 에서 id로 검색하기(내 대여내역) ㅡ> 인덱스 반환
 	void showMyRentalList() {
@@ -389,18 +405,18 @@ public class MemberManager {
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList 에서 title로 검색하기(관리자사용) ㅡ> 인덱스 반환
 	void showTitleRentalList() {
-		
+
 		System.out.println("찾아보실 자료명을 입력해주세요.");
 		String title = adm.sc.nextLine();
-		
+
 		for (int i = 0; i < rentalList.size(); i++) {
 			if (rentalList.get(i).title.equals(title)) {
-				
+
 				rentalList.get(i).showRentalListInfo();
-				
+
 			}
 		}
-		
+
 	}
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
@@ -481,123 +497,93 @@ public class MemberManager {
 
 	
 	} // reserve() end
-		
 
-	
-	
-	
-	
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 	// 반납
 	void itemReturn(int index) {
-			
-			// 반납일 = 현재날짜로 생성
-			LocalDateTime today=LocalDateTime.now();
-			String returnDate=today.toString();
-			System.out.println("returnDate"+returnDate);
-			
-			// 나의 대여리스트 중 해당 인덱스의  반납일이 변경됨.
-			rentalList.get(index).returnDate=returnDate;
-			rentalList.get(index).rentInfo="반납완료";
+
+		// 반납일 = 현재날짜로 생성
+		LocalDateTime today = LocalDateTime.now();
+		String returnDate = today.toString();
+		System.out.println("returnDate" + returnDate);
+
+		// 나의 대여리스트 중 해당 인덱스의 반납일이 변경됨.
+		rentalList.get(index).returnDate = returnDate;
+		rentalList.get(index).rentInfo = "반납완료";
+
+
 		
-			
-			
-			// 나의 대여리스트 중 해당 인덱스 출력. 확인. 
-			rentalList.get(index).showRentalListInfo();
-			
-			
-			RentalItemInfo itemIndex=checkTypeIndex();
-			itemIndex.numOfItem += 1; // 자료정보 : 재고 += numOfItem
-			//itemIndex.rentalCount -= 1; // 자료정보 : 대여횟수 -= rentalCount	반납이랑 상관없음.
-			
-			
+		// 나의 대여리스트 중 해당 인덱스 출력. 확인. 
+		rentalList.get(index).showRentalListInfo();
+		
+		
+		RentalItemInfo itemIndex = checkTypeIndex();
+		itemIndex.numOfItem += 1; // 자료정보 : 재고 += numOfItem
+		//itemIndex.rentalCount -= 1; // 자료정보 : 대여횟수 -= rentalCount	반납이랑 상관없음.
+		
 
+		//System.out.println(gap+"일");
+		
+		//RentalList gap = rentalList.get(index).returnDate - rentalList.get(index).returnLimit;
+		
+		int gap = .returnDate - rentalList.;	
+	        
+			if( gap > 0) {	 // 연체.
+				
+	        	adm.getMember().get(adm.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
+	        	adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
+				//numOfRent = ??		// 대여권수, 빌려간게 더 있을수도 있고 없을수도있고.	??
 			
+				System.out.println(title + "연체일수가 있습니다.");
+				System.out.println(title + "연체일수는 " + gap + " 입니다.");
+				System.out.println(gap + "일 동안 자료를 대여하실 수 없습니다.");
+				System.out.println("처리 : " + today);	
 			
+	        }else if( gap <= 0) {	// 연체 없음.
+				
+	        	LocalDateTime today1 = LocalDateTime.now();
+				String returnDate1 = today.toString();
+				rentalList.get(index).returnDate = returnDate1;						
+					
+				System.out.println(title+"자료가 정상적으로 반납되었습니다.");
+				System.out.println("처리 : " + today);	
+				
+				adm.getMember().get(adm.loginCheckIndex()).numOfRent --;			// 대여권수
+				adm.getMember().get(adm.loginCheckIndex()).rentalAvail ++;		// 대여가능권수
+				adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 1;		// 연장가능횟수
+				
+			}
 			
-	
+			// 대여가능으로 바꾼다.
+			rentalList.get(index).title
+			rentInfo = "대여가능";
+
+		
+
 	} // itemReturn(index) end
-	
-	
-			// System.out.println(gap+"일");
-
-//	        if( gap > 7) {	 // 연체.
-//				
-//				
-//	        	adm.getMember().get(adm.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
-//	        	adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
-//				//numOfRent = ??		// 대여권수, 빌려간게 더 있을수도 있고 없을수도있고.	??
-//			
-//				System.out.println(title + "연체일수가 있습니다.");
-//				System.out.println(title + "연체일수는 " + gap + " 입니다.");
-//				System.out.println(overdue + "일 동안 자료를 대여하실 수 없습니다.");
-//				System.out.println("처리 : " + today);	
-//			}else if(gap < 7) {	// 연체 없음.
-//				
-//				returnDate = today;						
-//					
-//				System.out.println(title+"자료가 정상적으로 반납되었습니다.");
-//				System.out.println("처리 : " + today);	
-//				
-//				adm.getMember().get(adm.loginCheckIndex()).numOfRent --;			// 대여권수
-//				adm.getMember().get(adm.loginCheckIndex()).rentalAvail ++;		// 대여가능권수
-//				adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 1;		// 연장가능횟수
-//				
-//			}
-//			
-//			// 대여가능으로 바꾼다.
-//			rentalList.get(index).title
-//			rentInfo = "대여가능";
-
-//		}
-//
-//	} // itemReturn끝.
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// 연장.
 	void extention(int index) {
-		
-		
-		// 만약에 연장하려는 내 대여내역에 예약자가 있으면, 연장불가. 
+
+		// 만약에 연장하려는 내 대여내역에 예약자가 있으면, 연장불가.
 		// 만약에 내 연장횟수가 0이면, 연장불가
-		
-		
+
 		// 연장된 반납일 생성 : 나의 대여리스트 중 해당 인덱스의 반납예정일 + 7
-		LocalDateTime returnLimit0=LocalDateTime.parse(rentalList.get(index).returnLimit);
+		LocalDateTime returnLimit0 = LocalDateTime.parse(rentalList.get(index).returnLimit);
 		LocalDateTime extendDate1 = returnLimit0.plusDays(7);
 		String extendDate = extendDate1.toString();
-		
-		// 나의 대여리스트 중 해당 인덱스의 연장된 반납일 ㅡ > 연장된 반납일로 수정 
-		rentalList.get(index).extendDate=extendDate;
-		rentalList.get(index).rentInfo="연장완료";
-				
-		// 나의 대여리스트 중 해당 인덱스 출력. 확인. 
+
+		// 나의 대여리스트 중 해당 인덱스의 연장된 반납일 ㅡ > 연장된 반납일로 수정
+		rentalList.get(index).extendDate = extendDate;
+		rentalList.get(index).rentInfo = "연장완료";
+
+		// 나의 대여리스트 중 해당 인덱스 출력. 확인.
 		rentalList.get(index).showRentalListInfo();
 	}
-		
 
 //			
-//			//Calendar cal = Calendar.getInstance();
-//			//SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
-//			String today = format.format(cal.getTime());
-//			cal.add(Calendar.DATE,7);
-//			String returnDate = format.format(cal.getTime());		// 7일 연장.
-//			
-//			String startDate = rentalDate; 
-//	        String endDate = today;
-//	       
-//	        Date startDate1 = null;
-//	        Date endDate1 = null;
-//	        
-//	        try {
-//		        
-//	        	startDate1 = format.parse(startDate);	// rentalDate
-//	            endDate1 = format.parse(endDate);		// today
-//		        
-//	        } catch(ParseException e) {
-//	        	e.printStackTrace();
-//	        }
 //	        
 //	        long gap = startDate1.getTime() - endDate1.getTime() / (24*60*60*1000);
 //            gap = Math.abs(gap);
@@ -638,7 +624,6 @@ public class MemberManager {
 //	
 //	
 
-	
 	void showGuide() {
 		System.out.println("=====이용안내=====");
 		System.out.println();
@@ -649,11 +634,7 @@ public class MemberManager {
 		System.out.println("연장가능 횟수 : id당 1회");
 		System.out.println("연장가능 일수 : 7일");
 		System.out.println("연체시 연체일수만큼 대여불가");
-		
-		
-		
+
 	}
-	
-	
-	
+
 } // class end
