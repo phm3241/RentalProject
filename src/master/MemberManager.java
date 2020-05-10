@@ -476,27 +476,27 @@ public class MemberManager {
 			
 			//예약자와 예약일 추가
 //			rentalList.get(index).returnDate=returnDate;
-//			rentalList.get(index).rentInfo="반납완료";
-			
-			
-			// 가장 반납일이 빠른 대여목록 찾기.. 
-			LocalDate today=LocalDate.now();
-			for(int i=0; i<rentalList.size(); i++) {
-				if(searchRentalIndexTitle(this.title);
+////			rentalList.get(index).rentInfo="반납완료";
+//			
+//			
+//			// 가장 반납일이 빠른 대여목록 찾기.. 
+//			LocalDate today=LocalDate.now();
+//			for(int i=0; i<rentalList.size(); i++) {
+//				if(searchRentalIndexTitle(this.title)
+//
+//				System.out.println(title + "이(가) " + reservDate + "일자로 예약 되었습니다.");
+//				System.out.println(rentalAvailDate + " 부터 대여 가능합니다.");
+//		
 
-				System.out.println(title + "이(가) " + reservDate + "일자로 예약 되었습니다.");
-				System.out.println(rentalAvailDate + " 부터 대여 가능합니다.");
-				
-
-		} 
+//		} 
 		
 		// else if 예약불가 상황. 만약에 선택한 타이틀에 예약자가 있으면, 예약불가.
 		
-
+				
 	} 
 
-	
-	} // reserve() end
+	}	
+ // reserve() end
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
@@ -523,37 +523,37 @@ public class MemberManager {
 		//itemIndex.rentalCount -= 1; // 자료정보 : 대여횟수 -= rentalCount	반납이랑 상관없음.
 		
 
-	 System.out.println(gap+"일");
-
-	        if( gap > 7) {	 // 연체.
-				
-				
-	        	adm.getMember().get(adm.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
-	        	adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
-				//numOfRent = ??		// 대여권수, 빌려간게 더 있을수도 있고 없을수도있고.	??
-			
-				System.out.println(title + "연체일수가 있습니다.");
-				System.out.println(title + "연체일수는 " + gap + " 입니다.");
-				System.out.println(overdue + "일 동안 자료를 대여하실 수 없습니다.");
-				System.out.println("처리 : " + today);	
-			}else if(gap < 7) {	// 연체 없음.
-				
-				returnDate = today;						
-					
-				System.out.println(title+"자료가 정상적으로 반납되었습니다.");
-				System.out.println("처리 : " + today);	
-				
-				adm.getMember().get(adm.loginCheckIndex()).numOfRent --;			// 대여권수
-				adm.getMember().get(adm.loginCheckIndex()).rentalAvail ++;		// 대여가능권수
-				adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 1;		// 연장가능횟수
-				
-			}
-			
-			// 대여가능으로 바꾼다.
-			rentalList.get(index).title
-			rentInfo = "대여가능";
-
-		}
+//	 System.out.println(gap+"일");
+//
+//	        if( gap > 7) {	 // 연체.
+//				
+//				
+//	        	adm.getMember().get(adm.loginCheckIndex()).rentalAvail = 0;		// 대여가능권수
+//	        	adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 0;		// 연장가능횟수
+//				//numOfRent = ??		// 대여권수, 빌려간게 더 있을수도 있고 없을수도있고.	??
+//			
+//				System.out.println(title + "연체일수가 있습니다.");
+//				System.out.println(title + "연체일수는 " + gap + " 입니다.");
+//				System.out.println(overdue + "일 동안 자료를 대여하실 수 없습니다.");
+//				System.out.println("처리 : " + today);	
+//			}else if(gap < 7) {	// 연체 없음.
+//				
+//				returnDate = today;						
+//					
+//				System.out.println(title+"자료가 정상적으로 반납되었습니다.");
+//				System.out.println("처리 : " + today);	
+//				
+//				adm.getMember().get(adm.loginCheckIndex()).numOfRent --;			// 대여권수
+//				adm.getMember().get(adm.loginCheckIndex()).rentalAvail ++;		// 대여가능권수
+//				adm.getMember().get(adm.loginCheckIndex()).numOfExtens = 1;		// 연장가능횟수
+//				
+//			}
+//			
+//			// 대여가능으로 바꾼다.
+//			rentalList.get(index).title
+//			rentInfo = "대여가능";
+//
+//		}
 
 	} // itemReturn(index) end
 
