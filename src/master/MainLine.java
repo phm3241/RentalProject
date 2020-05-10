@@ -42,7 +42,7 @@ public class MainLine {
 
                     switch (selectNum){
                         case 1:
-                            System.out.println("이용안내 출력");
+                        	mem.showGuide();
                             break;
                         case 2:
                             adm.addInfo();
@@ -71,7 +71,7 @@ public class MainLine {
                 case 6:
                 	
                 	adm.AdminLogin();
-                	System.out.println("1. 회원관리 | 2. 도서관리 | 3. DVD관리 | 4. 게임관리 | 5. 로그아웃");
+                	System.out.println("1. 회원관리 | 2. 도서관리 | 3. DVD관리 | 4. 게임관리 | 5. 대여내역관리 | 6. 로그아웃");
                 	selectNum = sc.nextInt();
                 	switch (selectNum) {
 					case 1:
@@ -87,14 +87,15 @@ public class MainLine {
 						RentalMenu.gameView();
 						break;
 					case 5:
+						
+						break;
+					case 6:
 						break;
 
 					}
                 	break;
-            }
-            
-            
 
-        }
-    }
-}
+            } //switch end
+        } //while end
+    } //main end
+} //class end

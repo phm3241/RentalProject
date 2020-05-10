@@ -4,7 +4,7 @@ package master;
 public class RentalMenu {
 	
 	public static AdminManager adm = AdminManager.getInstance();
-	MemberManager mem = new MemberManager();
+	static MemberManager mem = new MemberManager();
 	
 	
 	//6-1 관리자 페이지-회원관리
@@ -109,26 +109,27 @@ public class RentalMenu {
 				break;
 			}
 		}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+			
+		
+		//6-4 관리자페이지-대여내역관리
+		public static void rentalListView() {
+			
+			System.out.println("대여내역관리 페이지 입니다.");
+			mem.showAllRentalListInfo();
+			System.out.println("1. 회원 id로 대여내역보기  | 2. 자료명으로 대여내역보기 ");
+			
+			int selectNum = adm.sc.nextInt();
+			adm.sc.nextLine();
+			switch(selectNum) {
+			
+			case 1:
+				mem.showMyRentalList();
+				break;
+			case 2:
+				mem.showTitleRentalList();
+				break;
+			}
+		}
 }
+	
+	
