@@ -5,7 +5,9 @@ public class RentalItemInfo {
 	public String title;		//자료명
 	public String genre;		//장르
 	public String localData;	//자료위치
-	public String rentInfo;	//대여상태
+	public String rentInfo;		//대여상태
+	public int numOfItem;		// 자료의 재고
+	public int rentalCount; 	// 자료의 대여횟수
 	
 	
 	//인스턴스 변수 초기화
@@ -14,7 +16,7 @@ public class RentalItemInfo {
 		this.genre = genre;
 		this.localData = localData;
 		this.rentInfo = "대여가능" ;
-
+		
 	}
 	
 	public RentalItemInfo() {

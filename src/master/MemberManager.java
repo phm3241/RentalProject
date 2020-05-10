@@ -99,8 +99,8 @@ public class MemberManager {
 				System.out.println("검색하신 자료의 정보가 없습니다.");
 				break;
 			} else {
-				System.out.println("1.대여 | 2.예약");
 				adm.getBooks().get(index).showAllinfo();
+				System.out.println("1.대여 | 2.예약");
 				selectNum = adm.sc.nextInt();
 				adm.sc.nextLine();
 
@@ -141,8 +141,8 @@ public class MemberManager {
 				System.out.println("검색하신 자료의 정보가 없습니다.");
 				break;
 			} else {
-				adm.getDvd().get(index).showAllinfo();
 				System.out.println("1.대여 | 2.예약");
+				adm.getDvd().get(index).showAllinfo();
 				selectNum = adm.sc.nextInt();
 				adm.sc.nextLine();
 
@@ -183,8 +183,8 @@ public class MemberManager {
 				System.out.println("검색하신 자료의 정보가 없습니다.");
 				break;
 			} else {
-				adm.getGame().get(index).showAllinfo();
 				System.out.println("1.대여 | 2.예약");
+				adm.getGame().get(index).showAllinfo();
 				selectNum = adm.sc.nextInt();
 				adm.sc.nextLine();
 
@@ -224,6 +224,8 @@ public class MemberManager {
 		if (adm.searchBookInfo(this.title) >= 0) {
 			index = adm.searchBookInfo(this.title);
 			itemIndex = adm.getBooks().get(index);
+//			itemIndex = adm.getBooks().get(adm.searchBookInfo(this.title));
+			
 			return itemIndex;
 
 		} else if (adm.searchDvdInfo(this.title) >= 0) {
@@ -272,6 +274,16 @@ public class MemberManager {
 
 		// 선택한 자료정보 가져오기.
 		RentalItemInfo itemIndex = checkTypeIndex();
+		
+		System.out.println("오류확인용");
+		System.out.println("this.title : "+this.title);
+		System.out.println("adm.searchBookInfo(this.title) : "+adm.searchBookInfo(this.title));
+		System.out.println("adm.getBooks().get(adm.searchBookInfo(this.title) : "+adm.getBooks().get(adm.searchBookInfo(this.title)));
+		System.out.println("loginIdInfo.rentalAvail : "+loginIdInfo.rentalAvail);
+		System.out.println("loginIdInfo.numOfRent : "+loginIdInfo.numOfRent);
+		System.out.println("itemIndex.numOfItem : "+itemIndex.numOfItem);
+		System.out.println("itemIndex : "+itemIndex);
+//		System.out.println("Index : "+index);
 		
 		
 		// 1. 대여불가여부 확인 : 만약에 회원의 자료 대여개수가 5개일 때
