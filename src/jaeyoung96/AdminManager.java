@@ -5,26 +5,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import jaeyoung96.jy.Bookdata;
-import jaeyoung96.jy.Bookdata2;
-import jaeyoung96.jy.Bookdata3;
-import jaeyoung96.jy.Bookdata4;
-import jaeyoung96.jy.Bookdata5;
-import jaeyoung96.jy.DVDData;
-import jaeyoung96.jy.DVDData2;
-import jaeyoung96.jy.DVDData3;
-import jaeyoung96.jy.DVDData4;
-import jaeyoung96.jy.DVDData5;
-import jaeyoung96.jy.GameData;
-import jaeyoung96.jy.GameData2;
-import jaeyoung96.jy.GameData3;
-import jaeyoung96.jy.GameData4;
-import jaeyoung96.jy.GameData5;
-import jaeyoung96.jy.MemberData;
-import jaeyoung96.jy.MemberData2;
-import jaeyoung96.jy.MemberData3;
-import jaeyoung96.jy.MemberData4;
-import jaeyoung96.jy.MemberData5;
+import jaeyoung96.jy.*;
+
 
 public class AdminManager {
 
@@ -154,10 +136,16 @@ public class AdminManager {
             if (pw.equals(pw2)) {
                 System.out.println("이름을 입력해 주세요.");
                 name = sc.nextLine();
+
+                System.out.println("나이를 입력 해주세요.");
+                age = sc.nextInt();
+
                 System.out.println("전화번호를 입력해 주세요.");
                 phoneNum = sc.nextLine();
+
                 System.out.println("주소를 입력해 주세요.");
                 addr = sc.nextLine();
+
                 System.out.println("이메일을 입력해 주세요.");
                 email = sc.nextLine();
 
@@ -185,6 +173,7 @@ public class AdminManager {
         for (int i = 0; i < this.member.size(); i++) {
             if ((this.member.get(i).loginCheck) == true) {
                 loginCheck = true;
+
                 break;
             }
         }
@@ -243,7 +232,7 @@ public class AdminManager {
                 while (check) {
                     System.out.println("변경하실 비밀번호를 입력해 주세요.");
                     String pw1 = sc.nextLine();
-                    
+
                     System.out.println("다시 입력해주세요.");
                     String pw2 = sc.nextLine();
 
@@ -296,29 +285,34 @@ public class AdminManager {
 
     //로그인
     public void login() {
-        boolean check = true;
-        while (check) {
-            System.out.println("아이디를 입력해 주세요.");
 
-            String id = sc.nextLine();
-            int index = searchIndex(id);
-            if (index >= 0) {
-                System.out.println("비밀번호를 입력해 주세요.");
-                String pw = sc.nextLine();
-                if (member.get(index).getPw().equals(pw)) {
-                    System.out.println("로그인이 완료되었습니다.");
-                    member.get(index).loginCheck = true;
-                    System.out.println(member.get(index).loginCheck);
-                    check = false;
-                    break;
+        if (loginCheck() == false) {
+            boolean check = true;
+            while (check) {
+                System.out.println("아이디를 입력해 주세요.");
+                String id = sc.nextLine();
+
+                int index = searchIndex(id);
+                if (index >= 0) {
+                    System.out.println("비밀번호를 입력해 주세요.");
+                    String pw = sc.nextLine();
+                    if (member.get(index).getPw().equals(pw)) {
+                        System.out.println("로그인이 완료되었습니다.");
+                        member.get(index).loginCheck = true;
+                        System.out.println(member.get(index).loginCheck);
+                        check = false;
+                        break;
+                    } else {
+                        System.out.println("비밀번호를 다시 입력해 주세요.");
+                        continue;
+                    }
                 } else {
-                    System.out.println("비밀번호를 다시 입력해 주세요.");
+                    System.out.println("입력하신 아이디가 없습니다. 다시 입력해주세요.");
                     continue;
                 }
-            } else {
-                System.out.println("입력하신 아이디가 없습니다. 다시 입력해주세요.");
-                continue;
             }
+        } else {
+            System.out.println("이미 로그인 중입니다.");
         }
     }
 
@@ -327,15 +321,15 @@ public class AdminManager {
         int loginPw = 0000;
         boolean loginCheck = true;
         int failCnt = 0;
-        
+
         System.out.println("관리자 페이지 입니다.");
         System.out.println("");
-    	
+
 
         while (loginCheck) {
-        	System.out.println("비밀번호를 입력해주세요");
-        	int adminPw = sc.nextInt();
-        	sc.nextLine();
+            System.out.println("비밀번호를 입력해주세요");
+            int adminPw = sc.nextInt();
+            sc.nextLine();
 
             if (loginPw == adminPw) {
                 System.out.println("관리자로 로그인 하였습니다.");
@@ -344,34 +338,30 @@ public class AdminManager {
             } else {
                 System.out.println("비밀번호가 틀립니다. 다시 입력해 주세요.");
                 failCnt++;
-                
-                if(failCnt == 3){
+
+                if (failCnt == 3) {
                     System.out.println("너무 많이 틀리셨습니다. 메인 페이지로 돌아갑니다.");
                     break;
                 }
-                    continue;
-                
+                continue;
+
             }
         }
     }
 
     public void logOut() {
-
-        for (int i = 0; i < member.size(); i++) {
-            if (member.get(i).loginCheck == true) {
-                member.get(i).loginCheck = false;
-                System.out.println("로그아웃 되었습니다.");
-                break;
-            } else {
-                System.out.println("로그인된 계정이 없습니다.");
-                break;
+        if(loginCheck()) {
+            for (int i = 0; i < member.size(); i++) {
+                if (member.get(i).loginCheck == true) {
+                    member.get(i).loginCheck = false;
+                    System.out.println("로그아웃 되었습니다.");
+                    break;
+                }
             }
+        }else{
+                System.out.println("로그인된 계정이 없습니다.");
         }
-
     }
-
-    
-
 
 
     public void adminLogOut() {
@@ -541,7 +531,7 @@ public class AdminManager {
         int searchIndex = -1;
 
         //배열의 반복으로 title값을 비교해서 index 값을 찾는다.
-        for (int i = 0; i < game.size(); i++) {
+        for (int i = 0; i < dvd.size(); i++) {
             if (dvd.get(i).title.equals(title)) {
                 searchIndex = i;
                 break;
@@ -789,4 +779,6 @@ public class AdminManager {
         return info;
         }
     }
+    
+    
 }

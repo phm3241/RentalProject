@@ -339,7 +339,7 @@ public class AdminManager {
         while (loginCheck) {
             System.out.println("비밀번호를 입력해주세요");
             String adminPw = sc.nextLine();
-            sc.nextLine();
+            
 
             if (loginPw.equals(adminPw)) {
                 System.out.println("관리자로 로그인 하였습니다.");
