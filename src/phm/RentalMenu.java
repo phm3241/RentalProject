@@ -175,7 +175,7 @@ public class RentalMenu {
 				mem.showMyRentalList();
 				break;
 			case 2:
-				mem.showTitleRentalList();
+//				mem.showTitleRentalList();
 				break;
 			}
 		}
