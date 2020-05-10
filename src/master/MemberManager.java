@@ -234,14 +234,15 @@ public class MemberManager {
 			
 		}else if (adm.searchDvdInfo(this.title) >= 0) {
 			index=adm.searchDvdInfo(this.title);
-			itemIndex=adm.getBooks().get(index);
+			itemIndex=adm.getDvd().get(index);
 			return itemIndex;
 			
 		}else if (adm.searchGameInfo(this.title) >= 0) {
 			index=adm.searchGameInfo(this.title);
-			itemIndex=adm.getBooks().get(index);
+			itemIndex=adm.getGame().get(index);
 			return itemIndex;
 		}
+		return itemIndex;
 	}
 	
 	
@@ -454,7 +455,13 @@ public class MemberManager {
 			int index = adm.loginCheckIndex();
 			String reservId = adm.getMember().get(index).getId(); // 로그인한 id
 			
-			// rentalList에서 해당 타이틀의 반납일이 가장 빠른 인덱스 찾고, 예약자와 예약일 추가
+			// rentalList에서 해당 타이틀의 반납일이 가장 빠른 인덱스 찾고
+			
+			
+			//예약자와 예약일 추가
+			rentalList.get(index).returnDate=returnDate;
+//			rentalList.get(index).rentInfo="반납완료";
+			
 			
 			// 가장 반납일이 빠른 대여목록 찾기.. 
 			LocalDate today=LocalDate.now();
