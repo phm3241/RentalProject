@@ -5,13 +5,18 @@ public class MainLine {
 	public static void main(String[] args) {
 
 		AdminManager adm = AdminManager.getInstance();
-//		MemberManager mem = new MemberManager();
-		RentManager mem = new RentManager();
-		ReturnManager mem2 = new ReturnManager();
+		MemberManager mem = new MemberManager();
 
 		while (true) {
-			System.out.println("메인메뉴");
+			System.out.println();
+			System.out.println("■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■");
+			System.out.println();
+			System.out.println("- - - - - - - - - - - - - -      대     여     대     여     L I B R A R Y 　　 　- - - - - - - - - - - - - - ");			   				  
+			System.out.println();
+            System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
 			System.out.println("1. 검색/대여 | 2.로그인 | 3.이용안내/회원가입 | 4.내 대여내역(반납/연장) | 5.로그아웃 | 6.관리자페이지 | 7.프로그램 종료");
+			System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+			System.out.println();
 
 			int selectNum;
 			
@@ -29,7 +34,7 @@ public class MainLine {
 
 			// 1. 검색/대여-----------------------------
 			case 1:
-				mem.showInfo();
+				mem.searchItemInfo();
 				break;
 
 			// 2. 로그인-----------------------------
@@ -56,8 +61,7 @@ public class MainLine {
 			// 4. 내 대여내역-----------------------------
 			case 4:
 				if (adm.loginCheck()) {
-					mem.showMyRentalList();
-					mem2.returnExtends();
+					mem.returnExtends();
 					break;
 				} else {
 					System.out.println("먼저 로그인 해주세요.");

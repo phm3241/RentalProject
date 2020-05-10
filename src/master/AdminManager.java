@@ -419,7 +419,7 @@ public class AdminManager {
         System.out.println("책 전체정보 출력");
         for (int i = 0; i < books.size(); i++) {
             books.get(i).showAllinfo();
-            System.out.println("-------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
 
 
@@ -429,7 +429,7 @@ public class AdminManager {
         System.out.println("책 기본 정보 출력");
         for (int i = 0; i < books.size(); i++) {
             books.get(i).showBasicInfo();
-            System.out.println("---------------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
     }
 
@@ -499,18 +499,18 @@ public class AdminManager {
     //DVD입니다----------------------------------------------
     //DVD정보출력
     public void showDvdInfo() {
-        System.out.println("DVD정보 출력");
+        System.out.println("DVD정보 출력\n");
         for (int i = 0; i < dvd.size(); i++) {
             dvd.get(i).showAllinfo();
-            System.out.println("-------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
     }
 
     public void showDvdBasic() {
-        System.out.println("책 기본 정보 출력");
+        System.out.println("DVD 기본 정보 출력\n");
         for (int i = 0; i < dvd.size(); i++) {
             dvd.get(i).showBasicInfo();
-            System.out.println("---------------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
     }
     //create로 이동
@@ -576,19 +576,19 @@ public class AdminManager {
     //게임입니다---------------------------------------------------
     //게임보기
     public void showGameInfo() {
-        System.out.println("게임정보 출력");
+        System.out.println("게임정보 출력\n");
         for (int i = 0; i < game.size(); i++) {
             game.get(i).showAllinfo();
-            System.out.println("-------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
 
     }
 
     public void showGameBasic() {
-        System.out.println("책 기본 정보 출력");
+        System.out.println("게임 기본 정보 출력\n");
         for (int i = 0; i < game.size(); i++) {
             game.get(i).showBasicInfo();
-            System.out.println("---------------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
     }
 

@@ -2,7 +2,6 @@ package phm;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-
 //import data.UserList;
 //import data.UserList10;
 //import data.UserList11;
@@ -25,7 +24,7 @@ public class MemberManager {
 	String title = null; // 자료명
 //	String rentalDate=null; 	// 대여일#
 //	String returnDate=null;		// 반납일#
-	private ArrayList<RentalList> rentalList;
+	public ArrayList<RentalList> rentalList;
 
 	// 회원리스트, 자료리스트 불러오기
 	AdminManager adm = AdminManager.getInstance();
