@@ -542,3 +542,47 @@ public class Wow {
 	
 } //class end
 
+
+
+
+
+
+
+
+//+++++++++++++++++++++++++++++++++
+
+
+
+// 			//자료 카운트 변경			//item
+//			// 만약에 선택한 타이틀이 book이면...book 카운트변경
+//			if (adm.searchBookInfo(this.title) >= 0) {
+//				adm.getBooks().get(index).numOfItem += 1; // 자료정보 : 재고 +1 numOfItem
+//				//adm.getBooks().get(index).rentalCount -= 1; // 자료정보 : 대여횟수 -1 rentalCount
+//
+//			// 만약에 선택한 타이틀이 DVD이면...DVD 카운트변경
+//			} else if (adm.searchDvdInfo(this.title) >= 0) {
+//				adm.getDvd().get(index).numOfItem += 1; // 자료정보 : 재고 +1 numOfItem
+//				//adm.getDvd().get(index).rentalCount -= 1; // 자료정보 : 대여횟수 -1 rentalCount
+//
+//			// 만약에 선택한 타이틀이 Game이면...Game 카운트변경
+//			} else if (adm.searchGameInfo(this.title) >= 0) {
+//				adm.getGame().get(index).numOfItem += 1; // 자료정보 : 재고 +1 numOfItem
+//				//adm.getGame().get(index).rentalCount -= 1; // 자료정보 : 대여횟수 -1 rentalCount
+//			}
+//			
+//			// 자료 카운트 변경			// member
+//			// 만약에 선택한 타이틀이 book이면...book 카운트변경
+//			if (adm.searchBookInfo(this.title) >= 0) {
+//				adm.getMember().get(index).rentalAvail += 1; // 회원정보 : 대여가능권수 +1
+//				adm.getMember().get(index).numOfRent -= 1; // 회원정보 : 내가빌려간 대여권수 -1
+//
+//			// 만약에 선택한 타이틀이 DVD이면...DVD 카운트변경
+//			} else if (adm.searchDvdInfo(this.title) >= 0) {
+//				adm.getMember().get(index).rentalAvail += 1; // 회원정보 : 대여가능권수 +1
+//				adm.getMember().get(index).numOfRent -= 1; // 회원정보 : 내가빌려간 대여권수 -1
+//			
+//				// 만약에 선택한 타이틀이 Game이면...Game 카운트변경
+//			} else if (adm.searchGameInfo(this.title) >= 0) {
+//				adm.getMember().get(index).rentalAvail += 1; // 회원정보 : 대여가능권수 +1
+//				adm.getMember().get(index).numOfRent -= 1; // 회원정보 : 내가빌려간 대여권수 -1
+//			}

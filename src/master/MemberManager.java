@@ -104,8 +104,8 @@ public class MemberManager {
 				System.out.println("검색하신 자료의 정보가 없습니다.");
 				break;
 			} else {
-				adm.getBooks().get(index).showAllinfo();
 				System.out.println("1.대여 | 2.예약");
+				adm.getBooks().get(index).showAllinfo();
 				selectNum = adm.sc.nextInt();
 				adm.sc.nextLine();
 
@@ -219,6 +219,34 @@ public class MemberManager {
 		} // switch end
 	} // showInfo() end
 
+	
+//	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+	// 선택한 자료의 타입을 확인하고 아이템인덱스 반환
+	RentalItemInfo checkTypeIndex() {
+		
+		int index=0;
+		RentalItemInfo itemIndex=null;
+		
+		if (adm.searchBookInfo(this.title) >= 0) {
+			index=adm.searchBookInfo(this.title);
+			itemIndex=adm.getBooks().get(index);
+			return itemIndex;
+			
+		}else if (adm.searchDvdInfo(this.title) >= 0) {
+			index=adm.searchDvdInfo(this.title);
+			itemIndex=adm.getDvd().get(index);
+			return itemIndex;
+			
+		}else if (adm.searchGameInfo(this.title) >= 0) {
+			index=adm.searchGameInfo(this.title);
+			itemIndex=adm.getGame().get(index);
+			return itemIndex;
+		}
+		return itemIndex;
+	}
+	
+	
+	
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 	// rentalList에 인스턴스 추가
 	void addRental(RentalList info) {
@@ -247,32 +275,21 @@ public class MemberManager {
 
 		// 대여일 생성
 		LocalDateTime rentalDate = LocalDateTime.now();
-//			String rentalDate=LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss"));
 		System.out.println();
 		String start = rentalDate.toString();
-//			LocalDate.parse(rentalDate);
 
 		// 반납일 생성 : 대여일+7일
 		LocalDateTime returnDate = rentalDate.plusDays(7);
 		String end = returnDate.toString();
-
+		
+		
 		// 자료 카운트 변경
-		// 만약에 선택한 타이틀이 book이면...book 카운트변경
-		if (adm.searchBookInfo(this.title) >= 0) {
-			adm.getBooks().get(index).numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
-			adm.getBooks().get(index).rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
+		// 자료의 타입을 체크해서 해당 아이템리스트 인덱스 반환해주는 메서드 사용하고, 재고변경 
+		RentalItemInfo itemIndex=checkTypeIndex();
+		itemIndex.numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
+		itemIndex.rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
 
-		// 만약에 선택한 타이틀이 DVD이면...DVD 카운트변경
-		} else if (adm.searchDvdInfo(this.title) >= 0) {
-			adm.getDvd().get(index).numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
-			adm.getDvd().get(index).rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
-
-		// 만약에 선택한 타이틀이 Game이면...Game 카운트변경
-		} else if (adm.searchGameInfo(this.title) >= 0) {
-			adm.getGame().get(index).numOfItem -= 1; // 자료정보 : 재고 -1 numOfItem
-			adm.getGame().get(index).rentalCount += 1; // 자료정보 : 대여횟수 +1 rentalCount
-		}
-
+		
 		// MemberManager 객체 생성
 		info = new RentalList(id, title, start, end);
 
@@ -320,7 +337,7 @@ public class MemberManager {
 	}
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-	// 전체 rentalList 에서 title로 검색하기(내 대여내역) ㅡ> 인덱스 반환
+	// 전체 rentalList 에서 title로 검색하기 ㅡ> 인덱스 반환
 	int searchRentalIndexTitle(String title) {
 
 		int searchRentalIndex = -1;
@@ -370,7 +387,7 @@ public class MemberManager {
 	}
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-	// rentalList 에서 id로 검색하기(내 대여내역) ㅡ> 인덱스 반환
+	// rentalList 에서 title로 검색하기(관리자사용) ㅡ> 인덱스 반환
 	void showTitleRentalList() {
 		
 		System.out.println("찾아보실 자료명을 입력해주세요.");
@@ -421,33 +438,55 @@ public class MemberManager {
 		
 		
 		
-		// 예약불가 상황. 만약에 선택한 타이틀에 예약자가 있으면, 예약불가.
-					
-		// 예약가능. 선택한 타이틀(this.title)을 rentalList에서 찾고, 
+		
+		RentalItemInfo itemIndex=checkTypeIndex();
+		
+		// if 자료의 재고가 있으면, 대여하라고 안내출력
+		if (itemIndex.numOfItem>0) { // 재고있으면,
+			System.out.println("선택하신 자료의 재고가 있어 대여가 가능합니다. 대여를 진행해주세요.");
+		}
+
+		// else if 만약에 자료의 재고가 없으면, 예약가능 
+		// 예약가능절차. 선택한 타이틀(this.title)을 rentalList에서 찾고, 
 		// 그 중 가장 반납예정일이 빠른 인덱스에 예약자: 로그인한 id 추가, 예약일 : 반납예정일+1 추가
-		
-		
-		
-		// 예약할 때 받을 정보 ㅡ> 로그인한 회원 Id, 대여할 자료명
-//		int index = adm.loginCheckIndex();
-//		String reservId = adm.getMember().get(index).getId(); // 로그인한 id
-//
-//		searchRentalIndexTitle(this.title);
-//
-//		// 예약일 생성
-//		String reservDate = format.format(cal.getTime());
-//		System.out.println("예약일 : " + reservDate);
-//
-//		// 대여가능일 생성
-//		cal.add(Calendar.DATE, 1);
-//		String rentalAvailDate = format.format(cal.getTime());
-//		System.out.println("대여가능일 : " + rentalAvailDate);
-//
-//		System.out.println(title + "이(가) " + reservDate + "일자로 예약 되었습니다.");
-//		System.out.println(rentalAvailDate + " 부터 대여 가능합니다.");
+		else if (itemIndex.numOfItem==0) {  // 재고없음이면,
 
+			// 예약할 때 받을 정보 ㅡ> 로그인한 회원 Id, 대여할 자료명
+			int index = adm.loginCheckIndex();
+			String reservId = adm.getMember().get(index).getId(); // 로그인한 id
+			
+			// rentalList에서 해당 타이틀의 반납일이 가장 빠른 인덱스 찾고
+			
+			
+			//예약자와 예약일 추가
+			rentalList.get(index).returnDate=returnDate;
+//			rentalList.get(index).rentInfo="반납완료";
+			
+			
+			// 가장 반납일이 빠른 대여목록 찾기.. 
+			LocalDate today=LocalDate.now();
+			for(int i=0; i<rentalList.size(); i++) {
+				if(searchRentalIndexTitle(this.title);
+
+				System.out.println(title + "이(가) " + reservDate + "일자로 예약 되었습니다.");
+				System.out.println(rentalAvailDate + " 부터 대여 가능합니다.");
+				
+
+		} 
+		
+		// else if 예약불가 상황. 만약에 선택한 타이틀에 예약자가 있으면, 예약불가.
+		
+
+	} 
+
+	
 	} // reserve() end
+		
 
+	
+	
+	
+	
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
 
 	// 반납
