@@ -234,55 +234,60 @@ public class AdminManager {
 
         int index = searchIndex(id);
 
-        MemberInfo info = null;
+        if(index > 0) {
+            MemberInfo info = null;
 
-        System.out.println("1. 비밀번호 | 2. 전화번호 | 3.주소 | 4. 이메일");
+            System.out.println("1. 비밀번호 | 2. 전화번호 | 3.주소 | 4. 이메일");
 
-        int selectNum = sc.nextInt();
-        sc.nextLine();
-        switch (selectNum) {
-            case 1:
-                boolean check = true;
-                while (check) {
-                    System.out.println("변경하실 비밀번호를 입력해 주세요.");
-                    String pw1 = sc.nextLine();
+            int selectNum = sc.nextInt();
+            sc.nextLine();
+            switch (selectNum) {
+                case 1:
+                    boolean check = true;
+                    while (check) {
+                        System.out.println("변경하실 비밀번호를 입력해 주세요.");
+                        String pw1 = sc.nextLine();
 
-                    System.out.println("다시 입력해주세요.");
-                    String pw2 = sc.nextLine();
+                        System.out.println("다시 입력해주세요.");
+                        String pw2 = sc.nextLine();
 
-                    //아이디,비밀번호정보 받고 수정해야함
-                    if (pw1.equals(pw2)) {
-                        member.get(index).setPw(pw1);
-                        System.out.println("비밀번호 변경이 완료되었습니다.");
-                        check = false;
-                        break;
-                    } else {
-                        System.out.println("비밀번호가 맞지 않습니다. 다시 입력해 주세요.");
-                        continue;
+                        //아이디,비밀번호정보 받고 수정해야함
+                        if (pw1.equals(pw2)) {
+                            member.get(index).setPw(pw1);
+                            System.out.println("비밀번호 변경이 완료되었습니다.");
+                            check = false;
+                            break;
+                        } else {
+                            System.out.println("비밀번호가 맞지 않습니다. 다시 입력해 주세요.");
+                            continue;
+                        }
                     }
-                }
-                break;
-            case 2:
-                System.out.println("변경하실 전화번호를 입력해 주세요.");
-                String phoneNumber = sc.nextLine();
+                    break;
+                case 2:
+                    System.out.println("변경하실 전화번호를 입력해 주세요.");
+                    String phoneNumber = sc.nextLine();
 
-                member.get(index).phoneNum = phoneNumber;
-                System.out.println("전화번호 변경이 완료되었습니다.");
-                break;
-            case 3:
-                System.out.println("변경하실 주소를 입력해 주세요.");
-                String addr = sc.nextLine();
+                    member.get(index).phoneNum = phoneNumber;
+                    System.out.println("전화번호 변경이 완료되었습니다.");
+                    break;
+                case 3:
+                    System.out.println("변경하실 주소를 입력해 주세요.");
+                    String addr = sc.nextLine();
 
-                member.get(index).addr = addr;
-                System.out.println("주소 변경이 완료되었습니다.");
-                break;
-            case 4:
-                System.out.println("변경하실 이메일을 입력해 주세요.");
-                String email = sc.nextLine();
+                    member.get(index).addr = addr;
+                    System.out.println("주소 변경이 완료되었습니다.");
+                    break;
+                case 4:
+                    System.out.println("변경하실 이메일을 입력해 주세요.");
+                    String email = sc.nextLine();
 
-                member.get(index).email = email;
-                System.out.println("이메일 변경이 완료되었습니다.");
-                break;
+                    member.get(index).email = email;
+                    System.out.println("이메일 변경이 완료되었습니다.");
+                    break;
+            }
+        } else {
+            System.out.println("찾으시는 아이디가 없습니다.");
+
         }
     }
 
