@@ -500,14 +500,21 @@ public class MemberManager {
 			// 나의 대여리스트 중 해당 인덱스의  반납일이 변경됨.
 			rentalList.get(index).returnDate=returnDate;
 			rentalList.get(index).rentInfo="반납완료";
-			
-			// 대여하고 반납한 자료의 유형찾기 : 책인지. DVD인지. 게임인지.
-			// 찾아서 해당 자료의 rentInfo를 대여가능으로 변경.
-			adm.getBooks().get(index).rentInfo="대여가능";
+		
 			
 			
 			// 나의 대여리스트 중 해당 인덱스 출력. 확인. 
 			rentalList.get(index).showRentalListInfo();
+			
+			
+			RentalItemInfo itemIndex=checkTypeIndex();
+			itemIndex.numOfItem += 1; // 자료정보 : 재고 += numOfItem
+			//itemIndex.rentalCount -= 1; // 자료정보 : 대여횟수 -= rentalCount	반납이랑 상관없음.
+			
+			
+
+			
+			
 			
 	
 	} // itemReturn(index) end
