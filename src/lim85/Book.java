@@ -1,6 +1,4 @@
-package lim85;
 
-import master.RentalItemInfo;
 
 public class Book extends RentalItemInfo{
 	
@@ -16,7 +14,7 @@ public class Book extends RentalItemInfo{
 	
 
 	//인스턴스 변수 초기화
-	public Book(String title, String genre, String localData, String author, int limitAge, String story, String launchDate) {
+	public Book(String title, String genre, String localData,String author,int limitAge,String story,String launchDate) {
 		super(title, genre, localData);
 		this.author = author;
 		this.limitAge = limitAge;
