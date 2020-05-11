@@ -49,7 +49,5 @@ public class Game extends RentalItemInfo{
 	boolean checkTitle(String title) {
 		return super.checkTitle(title);
 	}
-	
-
 
 }

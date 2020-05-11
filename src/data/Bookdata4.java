@@ -8,7 +8,7 @@ public class Bookdata4 extends Book {
 	
 		this.title = "5년후 나에게";
 		this.genre = "자기개발";
-		this.localData = "A-5";
+		this.localData = "A-4";
 		this.author = "포터 스타일";
 		this.limitAge = 0;
 		this.story = "5년 후 나에게 삶에서 가장 눈부시게 빛나는 1,825개의 하루를 선물하다!가장 쉽고 지혜로운 방법으로 우리를 깊이 생각\r\n" + 

@@ -3,10 +3,10 @@ package master;
 public class MemberInfo {
 	
 	public boolean loginCheck;	//로그인
-	public String name;		//이름
-	public int age;			//나이
-	public String phoneNum;	//전화번호
-	public String addr;		//주소
+	public String name;			//이름
+	public int age;				//나이
+	public String phoneNum;		//전화번호
+	public String addr;			//주소
 	public String email;		//이메일
 	
 	//인스턴스 변수 초기화
@@ -34,7 +34,5 @@ public class MemberInfo {
 		
 		
 	}
-	
-	
-	
+
 }

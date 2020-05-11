@@ -8,7 +8,7 @@ public class Bookdata5 extends Book {
 		
 		this.title = "언컨택트";
 		this.genre = "경제/경영";
-		this.localData = "A-4";
+		this.localData = "A-5";
 		this.author = "김용섭";
 		this.limitAge = 0;
 		this.story = "코로나19 이후 우리 삶은 어떻게 달라져 있을까? 2020년 코로나19로 촉발된 전혀 새로운 삶의 방식 ‘언컨택트’! 불편한\r\n" + 
