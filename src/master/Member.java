@@ -44,6 +44,7 @@ public class Member extends MemberInfo{
 		System.out.println("아이디 : "+id);
 		
 	}
+	
 
 	@Override
 	void AllInformation() {

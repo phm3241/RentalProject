@@ -20,8 +20,6 @@ public class Bookdata5 extends Book {
 		this.numOfItem = 5;
 		this.returnDate = "0";
 
-		
-		
 	}
 	
 	
