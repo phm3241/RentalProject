@@ -80,6 +80,7 @@ public class MainLine {
 				while (true) {
 					System.out.println("1. 회원관리 | 2. 도서관리 | 3. DVD관리 | 4. 게임관리 | 5. 대여내역관리 | 6. 로그아웃");
 					selectNum = adm.sc.nextInt();
+					adm.sc.nextLine();
 					switch (selectNum) {
 					case 1:
 						RentalMenu.memeberView();

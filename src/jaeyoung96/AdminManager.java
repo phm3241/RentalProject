@@ -234,58 +234,77 @@ public class AdminManager {
 
         int index = searchIndex(id);
 
-        MemberInfo info = null;
+        if(index > 0) {
+            MemberInfo info = null;
 
-        System.out.println("1. 비밀번호 | 2. 전화번호 | 3.주소 | 4. 이메일");
+            while(true) {
+            System.out.println("1. 비밀번호 | 2. 전화번호 | 3.주소 | 4. 이메일 |5. 뒤로가기");
 
-        int selectNum = sc.nextInt();
-        sc.nextLine();
-        switch (selectNum) {
-            case 1:
-                boolean check = true;
-                while (check) {
-                    System.out.println("변경하실 비밀번호를 입력해 주세요.");
-                    String pw1 = sc.nextLine();
+            int selectNum;
+			try {
+				selectNum = sc.nextInt();
+				sc.nextLine();
+			} catch (Exception e) {
+				System.out.println("1~5사이의 숫자를 입력해주세요");
+				sc.nextLine();
+				continue;
+			}
+            switch (selectNum) {
+                case 1:
+                    boolean check = true;
+                    while (check) {
+                        System.out.println("변경하실 비밀번호를 입력해 주세요.");
+                        String pw1 = sc.nextLine();
 
-                    System.out.println("다시 입력해주세요.");
-                    String pw2 = sc.nextLine();
+                        System.out.println("다시 입력해주세요.");
+                        String pw2 = sc.nextLine();
 
-                    //아이디,비밀번호정보 받고 수정해야함
-                    if (pw1.equals(pw2)) {
-                        member.get(index).setPw(pw1);
-                        System.out.println("비밀번호 변경이 완료되었습니다.");
-                        check = false;
-                        break;
-                    } else {
-                        System.out.println("비밀번호가 맞지 않습니다. 다시 입력해 주세요.");
-                        continue;
+                        //아이디,비밀번호정보 받고 수정해야함
+                        if (pw1.equals(pw2)) {
+                            member.get(index).setPw(pw1);
+                            System.out.println("비밀번호 변경이 완료되었습니다.");
+                            check = false;
+                            break;
+                        } else {
+                            System.out.println("비밀번호가 맞지 않습니다. 다시 입력해 주세요.");
+                            continue;
+                        }
                     }
-                }
-                break;
-            case 2:
-                System.out.println("변경하실 전화번호를 입력해 주세요.");
-                String phoneNumber = sc.nextLine();
+                    break;
+                case 2:
+                    System.out.println("변경하실 전화번호를 입력해 주세요.");
+                    String phoneNumber = sc.nextLine();
 
-                member.get(index).phoneNum = phoneNumber;
-                System.out.println("전화번호 변경이 완료되었습니다.");
-                break;
-            case 3:
-                System.out.println("변경하실 주소를 입력해 주세요.");
-                String addr = sc.nextLine();
+                    member.get(index).phoneNum = phoneNumber;
+                    System.out.println("전화번호 변경이 완료되었습니다.");
+                    break;
+                case 3:
+                    System.out.println("변경하실 주소를 입력해 주세요.");
+                    String addr = sc.nextLine();
 
-                member.get(index).addr = addr;
-                System.out.println("주소 변경이 완료되었습니다.");
-                break;
-            case 4:
-                System.out.println("변경하실 이메일을 입력해 주세요.");
-                String email = sc.nextLine();
+                    member.get(index).addr = addr;
+                    System.out.println("주소 변경이 완료되었습니다.");
+                    break;
+                case 4:
+                    System.out.println("변경하실 이메일을 입력해 주세요.");
+                    String email = sc.nextLine();
 
-                member.get(index).email = email;
-                System.out.println("이메일 변경이 완료되었습니다.");
-                break;
+                    member.get(index).email = email;
+                    System.out.println("이메일 변경이 완료되었습니다.");
+                    break;
+                case 5:
+                	break;
+                	default:				
+                		System.out.println("1~5사이의 숫자를 입력해주세요");
+                		continue;
+            }
+            }
+        } else {
+            System.out.println("찾으시는 아이디가 없습니다.");
+
         }
     }
-
+    
     public void deleteInfo() {
         System.out.println("삭제하실분의 아이디를 입력해 주세요.");
         String id = sc.nextLine();
@@ -400,7 +419,7 @@ public class AdminManager {
         System.out.println("책 전체정보 출력");
         for (int i = 0; i < books.size(); i++) {
             books.get(i).showAllinfo();
-            System.out.println("-------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
 
 
@@ -410,7 +429,7 @@ public class AdminManager {
         System.out.println("책 기본 정보 출력");
         for (int i = 0; i < books.size(); i++) {
             books.get(i).showBasicInfo();
-            System.out.println("---------------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
     }
 
@@ -480,18 +499,18 @@ public class AdminManager {
     //DVD입니다----------------------------------------------
     //DVD정보출력
     public void showDvdInfo() {
-        System.out.println("DVD정보 출력");
+        System.out.println("DVD정보 출력\n");
         for (int i = 0; i < dvd.size(); i++) {
             dvd.get(i).showAllinfo();
-            System.out.println("-------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
     }
 
     public void showDvdBasic() {
-        System.out.println("책 기본 정보 출력");
+        System.out.println("DVD 기본 정보 출력\n");
         for (int i = 0; i < dvd.size(); i++) {
             dvd.get(i).showBasicInfo();
-            System.out.println("---------------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
     }
     //create로 이동
@@ -557,19 +576,19 @@ public class AdminManager {
     //게임입니다---------------------------------------------------
     //게임보기
     public void showGameInfo() {
-        System.out.println("게임정보 출력");
+        System.out.println("게임정보 출력\n");
         for (int i = 0; i < game.size(); i++) {
             game.get(i).showAllinfo();
-            System.out.println("-------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
 
     }
 
     public void showGameBasic() {
-        System.out.println("책 기본 정보 출력");
+        System.out.println("게임 기본 정보 출력\n");
         for (int i = 0; i < game.size(); i++) {
             game.get(i).showBasicInfo();
-            System.out.println("---------------------");
+            System.out.println("----------------------------------------------------------------------------------------------------");
         }
     }
 
@@ -674,17 +693,27 @@ public class AdminManager {
             story = sc.nextLine();    //설명
             System.out.println("출판일을 입력해주세요");
             launchDate = sc.nextLine();    //출판일
-
-
+           
+            try {
+            	if(!(title.trim().isEmpty()||genre.trim().isEmpty()||
+            	localData.trim().isEmpty()||author.trim().isEmpty()||
+            	story.trim().isEmpty()||launchDate.trim().isEmpty())) {
+            	continue;
+            	}
+            	
+            }catch (Exception e) {
+				System.out.println("정보는 공백없이 입력되어야 합니다");
+				continue;
+			}
             info = new Book(title, genre, localData,
                     author, limitAge, story, launchDate);
 
             //배열에 추가
             books.add(info);
             return info;
-        }
+        
     }
-
+    }
     //DVD 정보 입력
     public DVD createDvdInfo() {
         DVD info = null;

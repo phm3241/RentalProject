@@ -624,15 +624,16 @@ public class AdminManager {
 
     //게임삭제
     public void deleteGameInfo() {
-        System.out.println("삭제하고자 하는 게임 이름을 선택하여주세요");
+        System.out.println("삭제하고자 하는 게임이름을 선택하여주세요");
         String title = sc.nextLine();
         int index = searchDvdInfo(title);
 
         if (index < 0) {
             System.out.println("삭제하고자 하는 게임이 존재하지 않습니다.");
         } else {
-            dvd.remove(index);
+            game.remove(index);
         }
+
 
     }
 
@@ -784,20 +785,19 @@ public class AdminManager {
         String launchDate = null;
         // 기본정보 수집: 게임이름, 장르, 게임위치, 제작자, 연령제한, 설명, 출판일
 
-        System.out.println("책이름을 입력해주세요.");
+        System.out.println("게임이름을 입력해주세요.");
         title = sc.nextLine();
 
         System.out.println("장르을 입력해주세요.");
         genre = sc.nextLine();
 
-        System.out.println("자료위치를 입력해주세요.");
+        System.out.println("게임위치를 입력해주세요.");
         localData = sc.nextLine();
 
         System.out.println("제작자를 입력해주세요");
         producer = sc.nextLine();
 
 
-        sc.nextLine();
         while (true) {
             try {
                 System.out.println("연령제한 입력해주세요");
