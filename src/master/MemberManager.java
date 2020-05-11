@@ -79,36 +79,24 @@ public class MemberManager {
 	// 예약기능
 	void searchItemInfo() {
 
+		int selectNum;
+		
 		while (true) {
 
 			System.out.println("1.도서 | 2.DVD | 3. 게임");
-
-			int selectNum;
+			System.out.println("검색하고자 하는 자료의 번호를 입력해주세요.");
 
 			try {
 
 				selectNum = adm.sc.nextInt();
-				if (!(1 <= selectNum && selectNum <= 3)) {
-					BadNumberException e = new BadNumberException("잘못된 메뉴번호 입력");
-					throw e;
-				}
-			} catch (InputMismatchException e) {
-				System.out.println("잘못된 메뉴입력입니다. \n 확인하시고 다시 입력해주세요");
-				continue;
-			} catch (BadNumberException e) {
-				System.out.println("메뉴범위를 벗어난 숫자입력입니다. \n 확인하시고 다시 입력해주세요");
-				continue;
+				adm.sc.nextLine();
+				
 			} catch (Exception e) { // 생각치 못한 오류발생이 있을 수 있기 때문에.
 				System.out.println("잘못된 메뉴입력입니다. \n 확인하시고 다시 입력해주세요");
-				continue;
-			} finally {
 				adm.sc.nextLine();
-				// 버퍼발생을 없애주기 위해, finally에 넣어 예외가 발생하든 안하든 실행됨.
-			}
+				continue;
+			} 
 
-			break;
-
-		} // while end
 
 		switch (selectNum) {
 		case 1: // Book 선택시
@@ -128,10 +116,20 @@ public class MemberManager {
 			} else {
 				System.out.println(
 						"===================================================================================================");
+				
+				
 				adm.getBooks().get(index).showAllinfo();
-				System.out.println("1.대여 | 2.예약");
-				selectNum = adm.sc.nextInt();
-				adm.sc.nextLine();
+				System.out.println("1.대여 | 2.예약  | 3.뒤로가기 ");
+				
+				
+				try {
+					selectNum = adm.sc.nextInt();
+					adm.sc.nextLine();
+				} catch (Exception e) {
+					System.out.println("잘못된 메뉴입력입니다. \n 확인하시고 다시 입력해주세요");
+					adm.sc.nextLine();
+					continue;
+				}
 
 				switch (selectNum) {
 
@@ -152,8 +150,16 @@ public class MemberManager {
 				case 2: // 예약
 					/* 예약 메서드 */
 					break;
-
+				case 3: // 예약
+					/* 예약 메서드 */
+					break;
+				default:
+					System.out.println("1 또는 2를 입력해주세요. ");
+					continue;
 				} // switch : case1(Book) : switch end
+				
+				
+				
 				break;
 			} // switch : case1(Book) : else end
 
@@ -245,8 +251,11 @@ public class MemberManager {
 
 				} // switch : case3(Game) : switch end
 				break;
+				
 			} // switch : case3(Game) : else end
-
+			default:
+				System.out.println("1~3사이의 숫자를 입력해주세요.");
+				continue;
 		} // switch end
 	} // while end
 
@@ -697,8 +706,8 @@ public class MemberManager {
 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// 이용안내
 	void showGuide() {
-		System.out.println(
-				"=======================================\t\t이\t\t용\t\t안\t\t내=======================================");
+		System.out.println("===============================\t\t이\t\t용\t\t안\t\t내============================================");
+		System.out.println();
 		System.out.println("1. 비회원은 대여 검색을 하여 대여 가능한 목록을 볼수 있으며, 대여 하기위해서는 회원가입을 해야지만 대여 가능합니다.");
 		System.out.println("2. 회원가입은 이름, 나이, 전화번호, 주소, 이메일 그리고 아이디와 패스워드 입력을 통해서 회원가입이 합니다.");
 		System.out.println("3. 회원가입이 완료 되었으면 로그인을 하고 도서, DVD, 게임 중 목록을 보고 선택하여 대여를 할수 있습니다.");
