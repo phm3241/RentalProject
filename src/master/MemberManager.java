@@ -117,8 +117,9 @@ public class MemberManager {
 				System.out.println(
 						"===================================================================================================");
 				
-				
 				adm.getBooks().get(index).showAllinfo();
+				
+				while(true) {
 				System.out.println("1.대여 | 2.예약  | 3.뒤로가기 ");
 				
 				
@@ -150,19 +151,24 @@ public class MemberManager {
 				case 2: // 예약
 					/* 예약 메서드 */
 					break;
-				case 3: // 예약
-					/* 예약 메서드 */
+				case 3: 
+					searchItemInfo();
 					break;
 				default:
-					System.out.println("1 또는 2를 입력해주세요. ");
+					System.out.println("1~3사이의 숫자를 입력해주세요.");
 					continue;
 				} // switch : case1(Book) : switch end
-				
-				
-				
+			
 				break;
+				}	
+				
+				
 			} // switch : case1(Book) : else end
 
+			
+			
+			
+			
 		case 2: // DVD 선택시
 			System.out.println(
 					"===================================================================================================");
@@ -321,7 +327,8 @@ public class MemberManager {
 			addRental(info);
 			System.out.println(id + "님  < " + title + " > 자료가 대여완료 되었습니다. ");
 			System.out.println("대여일 : " + start + " | 반납예정일 : " + end);
-
+			return;
+			
 		} // else end
 
 	} // creatRentalList() end
