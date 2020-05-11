@@ -12,7 +12,7 @@ public class RentalList {
 	public String returnLimit;		// 반납일#
 	public String reservDate;		// 예약일#
 	public String reservId;		// 예약자
-	public String extendDate;		// 연장된 반납일#
+	public String extendDate;	 	// 연장된 반납일#
 	public String overdue;			// 연체일
 	
 	AdminManager admManager=AdminManager.getInstance();
