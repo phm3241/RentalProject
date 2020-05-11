@@ -19,7 +19,7 @@ public class RentalMenu {
 			selectNum = adm.sc.nextInt();
 			adm.sc.nextLine();
 		} catch (Exception e) {
-			System.out.println("1~4사이의 숫자를 입력해주세요.");
+			System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요.");
 			adm.sc.nextLine();
 			continue;
 		}
@@ -37,7 +37,7 @@ public class RentalMenu {
             case 4:
             	break;
             	default:
-            		System.out.println("1~4사이의 숫자를 입력해주세요.");
+            		System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요.");
             		continue;
         }
         break;
@@ -56,7 +56,7 @@ public class RentalMenu {
 			selectNum = adm.sc.nextInt();
 			adm.sc.nextLine();
 		} catch (Exception e) {
-			System.out.println("1~4사이의 숫자를 입력해주세요");
+			System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요");
 			adm.sc.nextLine();
 			continue;
 		}
@@ -75,7 +75,7 @@ public class RentalMenu {
 			case 4:
 				break;
 			default:
-				System.out.println("1~4사이의 숫자를 입력해주세요");
+				System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요");
 				continue;
 								
 			}
@@ -96,7 +96,7 @@ public class RentalMenu {
 				selectNum = adm.sc.nextInt();
 				adm.sc.nextLine();
 			} catch (Exception e) {
-				System.out.println("1~4사이의 숫자를 입력해주세요");
+				System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요");
 				adm.sc.nextLine();
 				continue;
 			}
@@ -114,7 +114,7 @@ public class RentalMenu {
 				
 				break;
 				default:
-					System.out.println("1~4사이의 숫자를 입력해주세요");
+					System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요");
 					continue;
 					
 			}
@@ -135,7 +135,8 @@ public class RentalMenu {
 				selectNum = adm.sc.nextInt();
 				adm.sc.nextLine();
 			} catch (Exception e) {
-				System.out.println("1~4사이의 숫자를 입력해주세요");
+				System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요");
+				adm.sc.nextLine();
 				continue;
 			}
 			switch(selectNum) {
@@ -153,7 +154,7 @@ public class RentalMenu {
 				
 				break;
 			default:
-				System.out.println("1~4사이의 숫자를 입력해주세요");
+				System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요");
 				continue;	
 			}
 			break;
@@ -163,11 +164,19 @@ public class RentalMenu {
 		//6-4 관리자페이지-대여내역관리
 		public static void rentalListView() {
 			
+			while(true) {
 			System.out.println("대여내역관리 페이지 입니다.");
-			System.out.println("1. 전체 대여내역보기 | 2. 회원 id로 대여내역보기  | 3. 자료명으로 대여내역보기 ");
+			System.out.println("1. 전체 대여내역보기 | 2. 회원 id로 대여내역보기  | 3. 자료명으로 대여내역보기 | 4. 뒤로가기 ");
 			
-			int selectNum = adm.sc.nextInt();
-			adm.sc.nextLine();
+			int selectNum;
+			try {
+				selectNum = adm.sc.nextInt();
+				adm.sc.nextLine();
+			} catch (Exception e) {
+				System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요");
+				adm.sc.nextLine();
+				continue;
+			}
 			switch(selectNum) {
 			
 			case 1:
@@ -179,8 +188,16 @@ public class RentalMenu {
 			case 3:
 				mem.showTitleRentalList();
 				break;
+			case 4:
+				break;
+			default:
+				System.out.println("잘못된 입력입니다.\n1~4사이의 숫자를 입력해주세요");
+				continue;
+				
 			}
+			break;
 		}
+	}
 }
 	
 	

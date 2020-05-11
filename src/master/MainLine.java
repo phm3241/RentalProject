@@ -83,7 +83,7 @@ public class MainLine {
 						selectNum = adm.sc.nextInt();
 						adm.sc.nextLine();
 					} catch (Exception e) {
-						System.out.println("잘못된 입력입니다.\n 1~6사이의 숫자를 입력해주세요.");
+						System.out.println("잘못된 입력입니다.\n1~6사이의 숫자를 입력해주세요.");
 					}
 					switch (selectNum) {
 					case 1:
@@ -104,7 +104,7 @@ public class MainLine {
 					case 6:
 						break;
 					default:
-						System.out.println("잘못된 입력입니다.\n 1~6사이의 숫자를 입력해주세요.");
+						System.out.println("잘못된 입력입니다.\n1~6사이의 숫자를 입력해주세요.");
 						continue;
 					}
 					break;
