@@ -112,7 +112,7 @@ public class MemberManager {
 
 			if (index < 0) {
 				System.out.println("검색하신 자료의 정보가 없습니다.");
-				break;
+				continue;
 			} else {
 				System.out.println(
 						"===================================================================================================");
@@ -120,7 +120,7 @@ public class MemberManager {
 				adm.getBooks().get(index).showAllinfo();
 				
 				while(true) {
-				System.out.println("1.대여 | 2.예약  | 3.뒤로가기 ");
+				System.out.println("1.대여 | 2.예약  | 3.뒤로가기  | 4.메인화면 ");
 				
 				
 				try {
@@ -151,8 +151,14 @@ public class MemberManager {
 				case 2: // 예약
 					/* 예약 메서드 */
 					break;
-				case 3: 
+					
+				case 3: // 뒤로가기 
+					searchItemInfo();
 					break;
+					
+				case 4: // 메인화면
+					return;
+					
 				default:
 					System.out.println("1~3사이의 숫자를 입력해주세요.");
 					continue;
@@ -172,8 +178,7 @@ public class MemberManager {
 			System.out.println(
 					"===================================================================================================");
 			adm.showDvdBasic();
-			System.out.println();
-
+			
 			System.out.println("찾으시는 DVD명을 입력해주세요.");
 			this.title = adm.sc.nextLine();
 
@@ -181,12 +186,15 @@ public class MemberManager {
 
 			if (index < 0) {
 				System.out.println("검색하신 자료의 정보가 없습니다.");
-				break;
+				continue;
 			} else {
+				
 				System.out.println(
 						"===================================================================================================");
-				System.out.println("1.대여 | 2.예약");
 				adm.getDvd().get(index).showAllinfo();
+
+				while(true) {
+				System.out.println("1.대여 | 2.예약  | 3.뒤로가기  | 4.메인화면 ");
 				selectNum = adm.sc.nextInt();
 				adm.sc.nextLine();
 
@@ -208,16 +216,29 @@ public class MemberManager {
 				case 2: // 예약
 					/* 예약 메서드 */
 					break;
+					
+				case 3: // 뒤로가기 
+					searchItemInfo();
+					break;
+					
+				case 4: // 메인화면
+					return;
 
-				} // switch : case2(DVD) : switch end
+				default:
+					System.out.println("1~3사이의 숫자를 입력해주세요.");
+					continue;
+				} // switch : case1(Book) : switch end
+			
 				break;
-			} // switch : case2(DVD) : else end
+				} // while end	
+			break;
+				
+		} // switch : case1(Book) : else end
 
 		case 3: // Game 선택시
 			System.out.println(
 					"===================================================================================================");
 			adm.showGameBasic();
-			System.out.println();
 
 			System.out.println("찾으시는 Game명을 입력해주세요.");
 			this.title = adm.sc.nextLine();
@@ -226,12 +247,14 @@ public class MemberManager {
 
 			if (index < 0) {
 				System.out.println("검색하신 자료의 정보가 없습니다.");
-				break;
+				continue;
 			} else {
 				System.out.println(
 						"===================================================================================================");
-				System.out.println("1.대여 | 2.예약");
 				adm.getGame().get(index).showAllinfo();
+				
+				while(true) {
+				System.out.println("1.대여 | 2.예약  | 3.뒤로가기  | 4.메인화면");
 				selectNum = adm.sc.nextInt();
 				adm.sc.nextLine();
 
@@ -253,18 +276,31 @@ public class MemberManager {
 				case 2: // 예약
 					/* 예약 메서드 */
 					break;
-
-				} // switch : case3(Game) : switch end
+					
+				case 3: // 뒤로가기 
+					searchItemInfo();
+					break;
+					
+				case 4: // 메인화면
+					return;
+				default:
+					System.out.println("1~3사이의 숫자를 입력해주세요.");
+					continue;
+				} // switch : case1(Book) : switch end
+			
 				break;
+				} // while end	
+			break;
 				
-			} // switch : case3(Game) : else end
-			default:
-				System.out.println("1~3사이의 숫자를 입력해주세요.");
-				continue;
-		} // switch end
+		} // switch : case1(Book) : else end
+		default:
+			System.out.println("1~3사이의 숫자를 입력해주세요.");
+			continue;
+		
+		} //switch end
 		break;
 	} // while end
-
+		
 	} // showInfo() end
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
