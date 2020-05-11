@@ -6,7 +6,7 @@ public class MemberData4 extends Member{
 	
 	public MemberData4(){
 		this.name = "임재영";
-		this.age = 23;
+		this.age = 28;
 		this.phoneNum ="010-6611-4511";
 		this.addr = "서울시 종로구 창신2동";
 		this.email = "dlawodud@naver.com";

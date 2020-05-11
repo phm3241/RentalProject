@@ -17,7 +17,7 @@ public class UserList13 extends RentalList {
 	
 	public UserList13(){
 		this.id="dlawodud1";  						// 대여한 회원ID
-		this.title="포켓몬스터 소드실드";					// 대여한 자료명
+		this.title="포켓몬스터";					// 대여한 자료명
 		this.rentInfo="대여중";						// 대여상태
 		this.rentalDate="2020-05-02"; 				// 대여일#
 		this.returnLimit ="2020-05-09";				// 반납예정일#
