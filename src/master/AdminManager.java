@@ -1,11 +1,31 @@
 package master;
 
 
-import data.*;
-
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
+
+import data.Bookdata;
+import data.Bookdata2;
+import data.Bookdata3;
+import data.Bookdata4;
+import data.Bookdata5;
+import data.DVDData;
+import data.DVDData2;
+import data.DVDData3;
+import data.DVDData4;
+import data.DVDData5;
+import data.GameData;
+import data.GameData2;
+import data.GameData3;
+import data.GameData4;
+import data.GameData5;
+import data.MemberData;
+import data.MemberData2;
+import data.MemberData3;
+import data.MemberData4;
+import data.MemberData5;
 
 public class AdminManager {
 
@@ -125,16 +145,16 @@ public class AdminManager {
 
         System.out.println("회원가입을 시작합니다.");
         System.out.println("사용하실 아이디를 입력해 주세요.");
-        id = sc.nextLine();
+        id = checkVal();
 
         while (checkPw) {
             System.out.println("비밀번호를 입력해 주세요.");
-            pw = sc.nextLine();
+            pw = checkVal();
             System.out.println("다시한번 입력해 주세요.");
-            pw2 = sc.nextLine();
+            pw2 = checkVal();
             if (pw.equals(pw2)) {
                 System.out.println("이름을 입력해 주세요.");
-                name = sc.nextLine();
+                name = checkVal();
 
                 while (true) {
                    
@@ -152,13 +172,13 @@ public class AdminManager {
 
 
                     System.out.println("전화번호를 입력해 주세요.");
-                    phoneNum = sc.nextLine();
+                    phoneNum = checkVal();
 
                     System.out.println("주소를 입력해 주세요.");
-                    addr = sc.nextLine();
+                    addr = checkVal();
 
                     System.out.println("이메일을 입력해 주세요.");
-                    email = sc.nextLine();
+                    email = checkVal();
 
                     //입력받은 데이터 저장
                     Member info = new Member(name, age, phoneNum, addr, email, id, pw);
@@ -404,21 +424,40 @@ public class AdminManager {
             System.out.println("로그인된 계정이 없습니다.");
         }
     }
+    
+    
+// 체크 메소드들    
+//====================================================================================================
 
-
-    public void adminLogOut() {
-        for (int i = 0; i < member.size(); i++) {
-            if (member.get(i).loginCheck == true) {
-                member.get(i).loginCheck = false;
-                System.out.println("로그아웃 되었습니다.");
-                break;
-            } else {
-                System.out.println("로그인된 계정이 없습니다.");
-                break;
-            }
-        }
-
+    
+    //공백 체크 메소드(String)
+    String checkVal() {
+    	String checkMsg = null;
+    	while(true) {
+    		checkMsg = sc.nextLine();
+    		
+    		Pattern p = Pattern.compile("[^\\s]");
+    		
+    		
+    		if(checkMsg.trim().isEmpty()) {
+    			System.out.println("공백을 입력하셨습니다. 다시 입력해주세요.");
+    			continue;
+    		} else {
+    			break;
+    		}
+    	}
+    	return checkMsg;
     }
+    
+    //
+//    String checkName() {
+//    	Pattern p = Pattern.compile("^+[가-힣]*\/S$");
+//    }
+    
+    
+    
+    
+    
 
     //책입니다---------------------------------------------
 
