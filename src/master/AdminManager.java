@@ -498,7 +498,7 @@ public class AdminManager {
             String p = "^[가-힣0-9]*$";
             boolean m = Pattern.matches(p, checkMsg);
             if (m==false) {
-                System.out.println("영어와 숫자의 조합만 입력가능합니다.");
+                System.out.println("한글과 숫자의 조합만 입력가능합니다.");
                 continue;
             } else {
                 break;
