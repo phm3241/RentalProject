@@ -23,7 +23,7 @@ public class MemberInfo {
 		
 	}
 	void showBasicInfo() {
-		System.out.println("이름 : "+name+"\t\t나이 : "+age+"\t\t\t\t\t전화번호 : "+phoneNum+"\t\t주소 : "+addr+"\t\t이메일 : "+email);
+		System.out.println("이름 : "+name+"\t\t나이 : "+age+"\t\t\t\t전화번호 : "+phoneNum+"\t\t주소 : "+addr+"\t\t이메일 : "+email);
 	}
 	
 	void showAllInfo() {

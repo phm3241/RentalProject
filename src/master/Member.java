@@ -41,6 +41,7 @@ public class Member extends MemberInfo{
 	void showAllInfo() {
 		super.showBasicInfo();
 		System.out.println("등급 : "+level+"\t\t\t대여권수 : "+numOfRent+"\t\t\t\t대여가능권수 : "+rentalAvail+"\t\t\t연장가능횟수 : "+numOfExtens+"\t\t\t연체 : "+overdue);
+		System.out.println("아이디 : "+id);
 		
 	}
 
