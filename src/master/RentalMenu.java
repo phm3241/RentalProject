@@ -164,7 +164,6 @@ public class RentalMenu {
 		public static void rentalListView() {
 			
 			System.out.println("대여내역관리 페이지 입니다.");
-			mem.showAllRentalListInfo();
 			System.out.println("1. 전체 대여내역보기 | 2. 회원 id로 대여내역보기  | 3. 자료명으로 대여내역보기 ");
 			
 			int selectNum = adm.sc.nextInt();
