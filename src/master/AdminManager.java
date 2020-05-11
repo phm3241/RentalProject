@@ -250,7 +250,7 @@ public class AdminManager {
     public void editInfo() {
 
         System.out.println("수정하실 분의 아이디를 선택해 주세요.");
-        String id = sc.nextLine();
+        String id = checkVal();
 
         int index = searchIndex(id);
 
@@ -274,10 +274,10 @@ public class AdminManager {
                     boolean check = true;
                     while (check) {
                         System.out.println("변경하실 비밀번호를 입력해 주세요.");
-                        String pw1 = sc.nextLine();
+                        String pw1 = checkVal();
 
                         System.out.println("다시 입력해주세요.");
-                        String pw2 = sc.nextLine();
+                        String pw2 = checkVal();
 
                         //아이디,비밀번호정보 받고 수정해야함
                         if (pw1.equals(pw2)) {
@@ -293,21 +293,21 @@ public class AdminManager {
                     break;
                 case 2:
                     System.out.println("변경하실 전화번호를 입력해 주세요.");
-                    String phoneNumber = sc.nextLine();
+                    String phoneNumber = checkVal();
 
                     member.get(index).phoneNum = phoneNumber;
                     System.out.println("전화번호 변경이 완료되었습니다.");
                     break;
                 case 3:
                     System.out.println("변경하실 주소를 입력해 주세요.");
-                    String addr = sc.nextLine();
+                    String addr = checkVal();
 
                     member.get(index).addr = addr;
                     System.out.println("주소 변경이 완료되었습니다.");
                     break;
                 case 4:
                     System.out.println("변경하실 이메일을 입력해 주세요.");
-                    String email = sc.nextLine();
+                    String email = checkVal();
 
                     member.get(index).email = email;
                     System.out.println("이메일 변경이 완료되었습니다.");
@@ -327,7 +327,7 @@ public class AdminManager {
     
     public void deleteInfo() {
         System.out.println("삭제하실분의 아이디를 입력해 주세요.");
-        String id = sc.nextLine();
+        String id = checkVal();
 
         int index = searchIndex(id);
         if(index <0) {
@@ -349,12 +349,12 @@ public class AdminManager {
             boolean check = true;
             while (check) {
                 System.out.println("아이디를 입력해 주세요.");
-                String id = sc.nextLine();
+                String id = checkVal();
 
                 int index = searchIndex(id);
                 if (index >= 0) {
                     System.out.println("비밀번호를 입력해 주세요.");
-                    String pw = sc.nextLine();
+                    String pw = checkVal();
                     if (member.get(index).getPw().equals(pw)) {
                         System.out.println("로그인이 완료되었습니다.");
                         member.get(index).loginCheck = true;
@@ -376,25 +376,22 @@ public class AdminManager {
     }
 
     //관리자 로그인
-    public void AdminLogin() {
+    public boolean AdminLogin() {
         String loginPw = "0000";
         boolean loginCheck = true;
         int failCnt = 0;
         System.out.println("-----------------------");
         System.out.println("관리자페이지 입니다.");
         
-
-
         while (loginCheck) {
         	
             System.out.println("비밀번호를 입력해주세요..>>");
             System.out.println("-----------------------");
             
             String adminPw = sc.nextLine();
-            
 
             if (loginPw.equals(adminPw)) {
-                System.out.println("관리자로 로그인 하였습니다.");
+                
                 loginCheck = false;
                 break;
             } else {
@@ -402,13 +399,14 @@ public class AdminManager {
                 failCnt++;
 
                 if (failCnt == 3) {
-                    System.out.println("너무 많이 틀리셨습니다. 메인 페이지로 돌아갑니다.");
+                    
                     break;
                 }
                 continue;
-
             }
+            
         }
+        return loginCheck;
     }
 
     public void logOut() {

@@ -77,7 +77,12 @@ public class MainLine {
 
 			// 6.관리자페이지-----------------------------
 			case 6:
-				adm.AdminLogin();
+				if(adm.AdminLogin()) {
+					System.out.println("너무 많이 틀리셨습니다. 메인 페이지로 돌아갑니다.");
+					break;
+				} else {
+					System.out.println("관리자로 로그인 하였습니다.");
+				}
 				while (true) {
 					System.out.println("1. 회원관리 | 2. 도서관리 | 3. DVD관리 | 4. 게임관리 | 5. 대여내역관리 | 6. 로그아웃");
 					try {
