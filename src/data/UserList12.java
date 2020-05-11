@@ -16,12 +16,12 @@ public class UserList12 extends RentalList {
 //	String overdue;			// 연체일
 	
 	public UserList12(){
-		this.id="dlawodud1";  						// 대여한 회원ID
-		this.title="나의 청춘은 너의 것";						// 대여한 자료명
-		this.rentInfo="대여가능";						// 대여상태
-		this.rentalDate="2020-04-15"; 				// 대여일#
-		this.returnLimit ="2020-04-22";				// 반납예정일#
-		this.returnDate="2020-04-20";				// 반납일#
+		this.id="mi";  						// 대여한 회원ID
+		this.title="자리의 힘";						// 대여한 자료명
+		this.rentInfo="대여중";				// 대여상태
+		this.rentalDate="2020-05-07"; 		// 대여일#
+		this.returnLimit ="2020-05-14";		// 반납예정일#
+		this.returnDate=" ";				// 반납일#
 		this.reservDate=" ";		 				// 예약일#
 		this.reservId=" ";							// 예약자
 		this.extendDate=" ";						// 연장된 반납일#

@@ -9,10 +9,10 @@ public class MemberData4 extends Member{
 		this.age = 28;
 		this.phoneNum ="010-6611-4511";
 		this.addr = "서울시 종로구 창신2동";
-		this.email = "dlawodud@naver.com";
+		this.email = "lim@naver.com";
 		this.loginCheck = false;
-		this.setId("dlawodud");
-		this.setPw("dlawodud111");
+		this.setId("lim");
+		this.setPw("lim");
 		this.level = 3;
 		this.numOfRent = 0;
 		this.rentalAvail = 5;
