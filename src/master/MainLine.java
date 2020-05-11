@@ -74,7 +74,6 @@ public class MainLine {
 			case 5:
 				adm.logOut();
 				break;
-
 			// 6.관리자페이지-----------------------------
 			case 6:
 				if(adm.AdminLogin()) {

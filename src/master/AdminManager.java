@@ -346,6 +346,8 @@ public class AdminManager {
 
         if (loginCheck() == false) {
             boolean check = true;
+            int loginCnt = 0;
+            int pwCnt = 0;
             while (check) {
                 System.out.println("아이디를 입력해 주세요.");
                 String id = checkVal();
@@ -362,10 +364,20 @@ public class AdminManager {
                         break;
                     } else {
                         System.out.println("비밀번호를 다시 입력해 주세요.");
+                        pwCnt++;
+                        if(pwCnt == 3){
+                            System.out.println("3회 잘못 입력 하셨습니다. 메인으로 돌아갑니다.");
+                            break;
+                        }
                         continue;
                     }
                 } else {
                     System.out.println("입력하신 아이디가 없습니다. 다시 입력해주세요.");
+                    loginCnt++;
+                    if(loginCnt == 3){
+                        System.out.println("3회 잘못 입력 하셨습니다. 메인으로 돌아갑니다.");
+                        break;
+                    }
                     continue;
                 }
             }
