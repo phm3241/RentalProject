@@ -1,12 +1,11 @@
 package jaeyoung96.jy;
 
-import jaeyoung96.DVD;
-
+import jaeyoung96.*;
 public class DVDData5 extends DVD{
 	
 	public DVDData5(){
 		this.title = "프리즌 이스케이프";
-		this.genre = "모험,스릴러";
+		this.genre = "모험/스릴러";
 		this.localData ="B-5";
 		this.foreman = "프란시스 아난";
 		this.runingTime = "106분";

@@ -1,12 +1,12 @@
 package jaeyoung96.jy;
 
-import jaeyoung96.Book;
+import jaeyoung96.*;
 
 public class Bookdata4 extends Book {
 
 	public Bookdata4() {
 	
-		this.title = "5년후 나에게 Q&A a Day";
+		this.title = "5년후 나에게";
 		this.genre = "자기개발";
 		this.localData = "A-5";
 		this.author = "포터 스타일";

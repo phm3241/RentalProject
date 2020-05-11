@@ -1,7 +1,6 @@
 package jaeyoung96.jy;
 
-import jaeyoung96.DVD;
-
+import jaeyoung96.*;
 public class DVDData3 extends DVD{
 	
 	public DVDData3(){

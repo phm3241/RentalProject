@@ -1,4 +1,5 @@
 package jaeyoung96.jy;
+import jaeyoung96.*;
 
 public class InformationUse {
 	public static void main(String[] args) {

@@ -1,7 +1,6 @@
 package jaeyoung96.jy;
 
 import jaeyoung96.*;
-
 public class UserList extends RentalList{
 	
 	String id;      		// 회원ID

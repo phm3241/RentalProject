@@ -1,16 +1,15 @@
 package jaeyoung96.jy;
 
-import jaeyoung96.Member;
-
+import jaeyoung96.*;
 public class MemberData extends Member{
 	
 	public MemberData(){
 		this.name = "박명훈";
-		this.age = 20;
+		this.age = 41;
 		this.phoneNum ="010-1234-3210";
 		this.addr = "서울시 종로구 숭인동";
 		this.email = "qkraudgns@naver.com";
-		this.loginCheck = true;
+		this.loginCheck = false;
 		this.setId("qkraudgns");
 		this.setPw("qkraudgns111");
 		this.level = 2;

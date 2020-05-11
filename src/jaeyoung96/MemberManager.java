@@ -5,22 +5,7 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.ArrayList;
 
-import data.UserList;
-import data.UserList10;
-import data.UserList11;
-import data.UserList12;
-import data.UserList13;
-import data.UserList14;
-import data.UserList15;
-import data.UserList16;
-import data.UserList2;
-import data.UserList3;
-import data.UserList4;
-import data.UserList5;
-import data.UserList6;
-import data.UserList7;
-import data.UserList8;
-import data.UserList9;
+import jaeyoung96.jy.*;
 
 public class MemberManager {
 

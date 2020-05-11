@@ -1,6 +1,6 @@
 package jaeyoung96.jy;
 
-import jaeyoung96.Book;
+import jaeyoung96.*;
 
 public class Bookdata3 extends Book {
 

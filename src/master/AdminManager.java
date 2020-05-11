@@ -626,7 +626,7 @@ public class AdminManager {
     public void deleteGameInfo() {
         System.out.println("삭제하고자 하는 게임이름을 선택하여주세요");
         String title = sc.nextLine();
-        int index = searchDvdInfo(title);
+        int index = searchGameInfo(title);
 
         if (index < 0) {
             System.out.println("삭제하고자 하는 게임이 존재하지 않습니다.");
