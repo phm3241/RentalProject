@@ -4,6 +4,7 @@ package master;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import data.Bookdata;
@@ -144,21 +145,21 @@ public class AdminManager {
         boolean checkPw = true;
 
         System.out.println("회원가입을 시작합니다.");
-        System.out.println("사용하실 아이디를 입력해 주세요.");
-        id = checkVal();
+        System.out.println("사용하실 아이디를 입력해 주세요.(숫자와 영문만 입력가능합니다.)");
+        id = checkEnN();
 
         while (checkPw) {
-            System.out.println("비밀번호를 입력해 주세요.");
-            pw = checkVal();
-            System.out.println("다시한번 입력해 주세요.");
-            pw2 = checkVal();
+            System.out.println("비밀번호를 입력해 주세요.(숫자와 영문만 가능합니다.)");
+            pw = checkEnN();
+            System.out.println("다시한번 입력해 주세요.(숫자와 영문만 가능합니다.)");
+            pw2 = checkEnN();
             if (pw.equals(pw2)) {
-                System.out.println("이름을 입력해 주세요.");
-                name = checkVal();
+                System.out.println("이름을 입력해 주세요.(한글만 입력 가능합니다)");
+                name = checkKorean();
 
                 while (true) {
 
-                    System.out.println("나이를 입력 해주세요.");
+                    System.out.println("나이를 입력 해주세요.(숫자만 입력 가능합니다.)");
                     try {
 
                         age = sc.nextInt();
@@ -171,14 +172,14 @@ public class AdminManager {
                     }
 
 
-                    System.out.println("전화번호를 입력해 주세요.");
-                    phoneNum = checkVal();
+                    System.out.println("전화번호를 입력해 주세요.(전화번호형식 000-0000-0000 입력만 가능합니다.)");
+                    phoneNum = checkPhoneNum();
 
-                    System.out.println("주소를 입력해 주세요.");
-                    addr = checkVal();
+                    System.out.println("주소를 입력해 주세요. (숫자와 한글만 입력가능합니다.)");
+                    addr = checkKnN();
 
-                    System.out.println("이메일을 입력해 주세요.");
-                    email = checkVal();
+                    System.out.println("이메일을 입력해 주세요.(이메일형식 xxx@xxx.xxx식으로 입력해주세요.)");
+                    email = checkEmail();
 
                     //입력받은 데이터 저장
                     Member info = new Member(name, age, phoneNum, addr, email, id, pw);
@@ -273,11 +274,11 @@ public class AdminManager {
                     case 1:
                         boolean check = true;
                         while (check) {
-                            System.out.println("변경하실 비밀번호를 입력해 주세요.");
-                            String pw1 = checkVal();
+                            System.out.println("변경하실 비밀번호를 입력해 주세요.(영어와 숫자만 입력가능)");
+                            String pw1 = checkEnN();
 
                             System.out.println("다시 입력해주세요.");
-                            String pw2 = checkVal();
+                            String pw2 = checkEnN();
 
                             //아이디,비밀번호정보 받고 수정해야함
                             if (pw1.equals(pw2)) {
@@ -292,22 +293,22 @@ public class AdminManager {
                         }
                         break;
                     case 2:
-                        System.out.println("변경하실 전화번호를 입력해 주세요.");
-                        String phoneNumber = checkVal();
+                        System.out.println("변경하실 전화번호를 입력해 주세요.(xxx-xxx(x)-xxxx 형식으로 가능)");
+                        String phoneNumber = checkPhoneNum();
 
                         member.get(index).phoneNum = phoneNumber;
                         System.out.println("전화번호 변경이 완료되었습니다.");
                         break;
                     case 3:
-                        System.out.println("변경하실 주소를 입력해 주세요.");
-                        String addr = checkVal();
+                        System.out.println("변경하실 주소를 입력해 주세요.(한글과 숫자만 입력 가능)");
+                        String addr = checkKnN();
 
                         member.get(index).addr = addr;
                         System.out.println("주소 변경이 완료되었습니다.");
                         break;
                     case 4:
-                        System.out.println("변경하실 이메일을 입력해 주세요.");
-                        String email = checkVal();
+                        System.out.println("변경하실 이메일을 입력해 주세요.(xxx@xxxx.xxx형식으로 가능)");
+                        String email = checkEmail();
 
                         member.get(index).email = email;
                         System.out.println("이메일 변경이 완료되었습니다.");
@@ -431,11 +432,9 @@ public class AdminManager {
         String checkMsg = null;
         while (true) {
             checkMsg = sc.nextLine();
-
-            Pattern p = Pattern.compile("[^\\s]");
-
-
-            if (checkMsg.trim().isEmpty()) {
+            String p = "^\\s*$";
+            boolean m = Pattern.matches(p, checkMsg);
+            if (m) {
                 System.out.println("공백을 입력하셨습니다. 다시 입력해주세요.");
                 continue;
             } else {
@@ -444,6 +443,94 @@ public class AdminManager {
         }
         return checkMsg;
     }
+
+    //한글만 입력받는 메소드
+    String checkKorean() {
+        String checkMsg = null;
+        while (true) {
+            checkMsg = checkVal();
+            String p = "^[가-힣]*$";
+            boolean m = Pattern.matches(p, checkMsg);
+            if (m==false) {
+                System.out.println("한글만 입력가능합니다.");
+                continue;
+            } else {
+                break;
+            }
+        }
+        return checkMsg;
+    }
+
+    //영어와 숫자만 받는 메소드(id)
+    String checkEnN() {
+        String checkMsg = null;
+        while (true) {
+            checkMsg = checkVal();
+            String p = "^[a-zA-Z0-9]*$";
+            boolean m = Pattern.matches(p, checkMsg);
+            if (m==false) {
+                System.out.println("영어와 숫자의 조합만 입력가능합니다.");
+                continue;
+            } else {
+                break;
+            }
+        }
+        return checkMsg;
+    }
+
+    //한글과 숫자만 받는 메소드(id)
+    String checkKnN() {
+        String checkMsg = null;
+        while (true) {
+            checkMsg = checkVal();
+            String p = "^[가-힣0-9]*$";
+            boolean m = Pattern.matches(p, checkMsg);
+            if (m==false) {
+                System.out.println("영어와 숫자의 조합만 입력가능합니다.");
+                continue;
+            } else {
+                break;
+            }
+        }
+        return checkMsg;
+    }
+
+    //전화번호 입력받는 메소드
+    String checkPhoneNum() {
+        String checkMsg = null;
+        while (true) {
+            checkMsg = checkVal();
+            String p = "^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$";
+            boolean m = Pattern.matches(p, checkMsg);
+            if (m == false) {
+                System.out.println("전화번호 형식 (000-0000-0000) 으로 입력해 주세요.");
+                continue;
+            } else {
+                break;
+            }
+        }
+        return checkMsg;
+    }
+
+
+    //전화번호 입력받는 메소드
+    String checkEmail() {
+        String checkMsg = null;
+        while (true) {
+            checkMsg = checkVal();
+            String p = "^[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,6}$";
+            boolean m = Pattern.matches(p, checkMsg);
+            if (m == false) {
+                System.out.println("이메일 형식(xxx@xxx.xxx)으로 입력하여 주세요.");
+                continue;
+            } else {
+                break;
+            }
+        }
+        return checkMsg;
+    }
+
+
 
     //
 //    String checkName() {

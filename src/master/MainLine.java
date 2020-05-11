@@ -90,6 +90,8 @@ public class MainLine {
 						adm.sc.nextLine();
 					} catch (Exception e) {
 						System.out.println("잘못된 입력입니다.\n1~6사이의 숫자를 입력해주세요.");
+						adm.sc.nextLine();
+						continue;
 					}
 					switch (selectNum) {
 					case 1:
