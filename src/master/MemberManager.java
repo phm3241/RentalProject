@@ -37,39 +37,39 @@ public class MemberManager {
 		rentalList = new ArrayList<>();
 
 		// 대여리스트 항목 추가
-		UserList uList=new UserList();
-		UserList2 uList2=new UserList2();
-		UserList3 uList3=new UserList3();
-		UserList4 uList4=new UserList4();
-		UserList5 uList5=new UserList5();
-		UserList6 uList6=new UserList6();
-		UserList7 uList7=new UserList7();
-		UserList8 uList8=new UserList8();
-		UserList9 uList9=new UserList9();
-		UserList10 uList10=new UserList10();
-		UserList11 uList11=new UserList11();
-		UserList12 uList12=new UserList12();
-		UserList13 uList13=new UserList13();
-		UserList14 uList14=new UserList14();
-		UserList15 uList15=new UserList15();
-		UserList16 uList16=new UserList16();
-		
-		rentalList.add(uList);
-		rentalList.add(uList2);
-		rentalList.add(uList3);
-		rentalList.add(uList4);
-		rentalList.add(uList5);
-		rentalList.add(uList6);
-		rentalList.add(uList7);
-		rentalList.add(uList8);
-		rentalList.add(uList9);
-		rentalList.add(uList10);
-		rentalList.add(uList11);
-		rentalList.add(uList12);
-		rentalList.add(uList13);
-		rentalList.add(uList14);
-		rentalList.add(uList15);
-		rentalList.add(uList16);
+		UserList uList = new UserList();
+		UserList2 uList2 = new UserList2();
+		UserList3 uList3 = new UserList3();
+		UserList4 uList4 = new UserList4();
+		UserList5 uList5 = new UserList5();
+		UserList6 uList6 = new UserList6();
+		UserList7 uList7 = new UserList7();
+		UserList8 uList8 = new UserList8();
+		UserList9 uList9 = new UserList9();
+		UserList10 uList10 = new UserList10();
+		UserList11 uList11 = new UserList11();
+		UserList12 uList12 = new UserList12();
+		UserList13 uList13 = new UserList13();
+		UserList14 uList14 = new UserList14();
+		UserList15 uList15 = new UserList15();
+		UserList16 uList16 = new UserList16();
+
+		this.rentalList.add(uList);
+		this.rentalList.add(uList2);
+		this.rentalList.add(uList3);
+		this.rentalList.add(uList4);
+		this.rentalList.add(uList5);
+		this.rentalList.add(uList6);
+		this.rentalList.add(uList7);
+		this.rentalList.add(uList8);
+		this.rentalList.add(uList9);
+		this.rentalList.add(uList10);
+		this.rentalList.add(uList11);
+		this.rentalList.add(uList12);
+		this.rentalList.add(uList13);
+		this.rentalList.add(uList14);
+		this.rentalList.add(uList15);
+		this.rentalList.add(uList16);
 
 	}
 
@@ -406,9 +406,6 @@ public class MemberManager {
 //			} // else end
 //		} // if book..end
 
-
-
-		
 		//
 	} // reserve() end
 
@@ -640,6 +637,21 @@ public class MemberManager {
 	}
 
 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	// rentalList 에서 id로 검색하기(관리자사용) ㅡ> 인덱스 반환
+	void showIDRentalList() {
+
+		System.out.println("찾아보실 회원id을 입력해주세요.");
+		String id = adm.sc.nextLine();
+
+		for (int i = 0; i < rentalList.size(); i++) {
+			if (rentalList.get(i).id.equals(id)) {
+
+				rentalList.get(i).showRentalListInfo();
+			}
+		}
+	}
+
+// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// rentalList 에서 title로 검색하기(관리자사용) ㅡ> 인덱스 반환
 	void showTitleRentalList() {
 
@@ -657,7 +669,8 @@ public class MemberManager {
 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// 이용안내
 	void showGuide() {
-		System.out.println("=======================================\t\t이\t\t용\t\t안\t\t내=======================================");
+		System.out.println(
+				"=======================================\t\t이\t\t용\t\t안\t\t내=======================================");
 		System.out.println("1. 비회원은 대여 검색을 하여 대여 가능한 목록을 볼수 있으며, 대여 하기위해서는 회원가입을 해야지만 대여 가능합니다.");
 		System.out.println("2. 회원가입은 이름, 나이, 전화번호, 주소, 이메일 그리고 아이디와 패스워드 입력을 통해서 회원가입이 합니다.");
 		System.out.println("3. 회원가입이 완료 되었으면 로그인을 하고 도서, DVD, 게임 중 목록을 보고 선택하여 대여를 할수 있습니다.");
@@ -669,9 +682,10 @@ public class MemberManager {
 		System.out.println("연장가능 횟수 : id당 1회");
 		System.out.println("연장가능 일수 : 7일");
 		System.out.println("연체시 연체일수만큼 대여불가");
-	
-		System.out.println("=====================================================================================================");
-		
+
+		System.out.println(
+				"=====================================================================================================");
+
 		System.out.println();
 	}
 } // class end
