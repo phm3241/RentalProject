@@ -4,30 +4,30 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 
-import data.UserList;
-import data.UserList10;
-import data.UserList11;
-import data.UserList12;
-import data.UserList13;
-import data.UserList14;
-import data.UserList15;
-import data.UserList16;
-import data.UserList2;
-import data.UserList3;
-import data.UserList4;
-import data.UserList5;
-import data.UserList6;
-import data.UserList7;
-import data.UserList8;
-import data.UserList9;
+import master.BadNumberException;
+//import data.UserList;
+//import data.UserList10;
+//import data.UserList11;
+//import data.UserList12;
+//import data.UserList13;
+//import data.UserList14;
+//import data.UserList15;
+//import data.UserList16;
+//import data.UserList2;
+//import data.UserList3;
+//import data.UserList4;
+//import data.UserList5;
+//import data.UserList6;
+//import data.UserList7;
+//import data.UserList8;
+//import data.UserList9;
 
 public class MemberManager {
 
 	String title = null; // 자료명
-//	String rentalDate=null; 	// 대여일#
-//	String returnDate=null;		// 반납일#
-	private ArrayList<RentalList> rentalList;
+	public ArrayList<RentalList> rentalList;
 
 	// 회원리스트, 자료리스트 불러오기
 	AdminManager adm = AdminManager.getInstance();
@@ -37,39 +37,39 @@ public class MemberManager {
 		rentalList = new ArrayList<>();
 
 		// 대여리스트 항목 추가
-		UserList uList = new UserList();
-		UserList2 uList2 = new UserList2();
-		UserList3 uList3 = new UserList3();
-		UserList4 uList4 = new UserList4();
-		UserList5 uList5 = new UserList5();
-		UserList6 uList6 = new UserList6();
-		UserList7 uList7 = new UserList7();
-		UserList8 uList8 = new UserList8();
-		UserList9 uList9 = new UserList9();
-		UserList10 uList10 = new UserList10();
-		UserList11 uList11 = new UserList11();
-		UserList12 uList12 = new UserList12();
-		UserList13 uList13 = new UserList13();
-		UserList14 uList14 = new UserList14();
-		UserList15 uList15 = new UserList15();
-		UserList16 uList16 = new UserList16();
-
-		this.rentalList.add(uList);
-		this.rentalList.add(uList2);
-		this.rentalList.add(uList3);
-		this.rentalList.add(uList4);
-		this.rentalList.add(uList5);
-		this.rentalList.add(uList6);
-		this.rentalList.add(uList7);
-		this.rentalList.add(uList8);
-		this.rentalList.add(uList9);
-		this.rentalList.add(uList10);
-		this.rentalList.add(uList11);
-		this.rentalList.add(uList12);
-		this.rentalList.add(uList13);
-		this.rentalList.add(uList14);
-		this.rentalList.add(uList15);
-		this.rentalList.add(uList16);
+//		UserList uList = new UserList();
+//		UserList2 uList2 = new UserList2();
+//		UserList3 uList3 = new UserList3();
+//		UserList4 uList4 = new UserList4();
+//		UserList5 uList5 = new UserList5();
+//		UserList6 uList6 = new UserList6();
+//		UserList7 uList7 = new UserList7();
+//		UserList8 uList8 = new UserList8();
+//		UserList9 uList9 = new UserList9();
+//		UserList10 uList10 = new UserList10();
+//		UserList11 uList11 = new UserList11();
+//		UserList12 uList12 = new UserList12();
+//		UserList13 uList13 = new UserList13();
+//		UserList14 uList14 = new UserList14();
+//		UserList15 uList15 = new UserList15();
+//		UserList16 uList16 = new UserList16();
+//
+//		this.rentalList.add(uList);
+//		this.rentalList.add(uList2);
+//		this.rentalList.add(uList3);
+//		this.rentalList.add(uList4);
+//		this.rentalList.add(uList5);
+//		this.rentalList.add(uList6);
+//		this.rentalList.add(uList7);
+//		this.rentalList.add(uList8);
+//		this.rentalList.add(uList9);
+//		this.rentalList.add(uList10);
+//		this.rentalList.add(uList11);
+//		this.rentalList.add(uList12);
+//		this.rentalList.add(uList13);
+//		this.rentalList.add(uList14);
+//		this.rentalList.add(uList15);
+//		this.rentalList.add(uList16);
 
 	}
 
@@ -79,10 +79,36 @@ public class MemberManager {
 	// 예약기능
 	void searchItemInfo() {
 
-		System.out.println("1.도서 | 2.DVD | 3. 게임");
+		while (true) {
 
-		int selectNum = adm.sc.nextInt();
-		adm.sc.nextLine();
+			System.out.println("1.도서 | 2.DVD | 3. 게임");
+
+			int selectNum;
+
+			try {
+
+				selectNum = adm.sc.nextInt();
+				if (!(1 <= selectNum && selectNum <= 3)) {
+					BadNumberException e = new BadNumberException("잘못된 메뉴번호 입력");
+					throw e;
+				}
+			} catch (InputMismatchException e) {
+				System.out.println("잘못된 메뉴입력입니다. \n 확인하시고 다시 입력해주세요");
+				continue;
+			} catch (BadNumberException e) {
+				System.out.println("메뉴범위를 벗어난 숫자입력입니다. \n 확인하시고 다시 입력해주세요");
+				continue;
+			} catch (Exception e) { // 생각치 못한 오류발생이 있을 수 있기 때문에.
+				System.out.println("잘못된 메뉴입력입니다. \n 확인하시고 다시 입력해주세요");
+				continue;
+			} finally {
+				adm.sc.nextLine();
+				// 버퍼발생을 없애주기 위해, finally에 넣어 예외가 발생하든 안하든 실행됨.
+			}
+
+			break;
+
+		} // while end
 
 		switch (selectNum) {
 		case 1: // Book 선택시
@@ -222,6 +248,8 @@ public class MemberManager {
 			} // switch : case3(Game) : else end
 
 		} // switch end
+	} // while end
+
 	} // showInfo() end
 
 //	■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
