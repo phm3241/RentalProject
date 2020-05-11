@@ -160,7 +160,7 @@ public class MemberManager {
 					return;
 					
 				default:
-					System.out.println("1~3사이의 숫자를 입력해주세요.");
+					System.out.println("메뉴의 숫자를 입력해주세요.");
 					continue;
 				} // switch : case1(Book) : switch end
 			
@@ -225,7 +225,7 @@ public class MemberManager {
 					return;
 
 				default:
-					System.out.println("1~3사이의 숫자를 입력해주세요.");
+					System.out.println("메뉴의 숫자를 입력해주세요.");
 					continue;
 				} // switch : case1(Book) : switch end
 			
@@ -284,7 +284,7 @@ public class MemberManager {
 				case 4: // 메인화면
 					return;
 				default:
-					System.out.println("1~3사이의 숫자를 입력해주세요.");
+					System.out.println("메뉴의 숫자를 입력해주세요.");
 					continue;
 				} // switch : case1(Book) : switch end
 			
@@ -294,7 +294,7 @@ public class MemberManager {
 				
 		} // switch : case1(Book) : else end
 		default:
-			System.out.println("1~3사이의 숫자를 입력해주세요.");
+			System.out.println("메뉴의 숫자를 입력해주세요.");
 			continue;
 		
 		} //switch end
