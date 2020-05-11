@@ -25,7 +25,7 @@ public class MainLine {
 				adm.sc.nextLine();
 				
 			} catch (Exception e) {
-				System.out.println("1~7사이 숫자를 입력해 주세요.");
+				System.out.println("잘못된 입력입니다.\n1~7사이 숫자를 입력해 주세요.");
 				adm.sc.nextLine();
 				continue;
 			}
@@ -79,8 +79,12 @@ public class MainLine {
 				adm.AdminLogin();
 				while (true) {
 					System.out.println("1. 회원관리 | 2. 도서관리 | 3. DVD관리 | 4. 게임관리 | 5. 대여내역관리 | 6. 로그아웃");
-					selectNum = adm.sc.nextInt();
-					adm.sc.nextLine();
+					try {
+						selectNum = adm.sc.nextInt();
+						adm.sc.nextLine();
+					} catch (Exception e) {
+						System.out.println("잘못된 입력입니다.\n 1~6사이의 숫자를 입력해주세요.");
+					}
 					switch (selectNum) {
 					case 1:
 						RentalMenu.memeberView();
@@ -100,7 +104,7 @@ public class MainLine {
 					case 6:
 						break;
 					default:
-						System.out.println("잘못된 입력입니다.");
+						System.out.println("잘못된 입력입니다.\n 1~6사이의 숫자를 입력해주세요.");
 						continue;
 					}
 					break;
@@ -110,7 +114,7 @@ public class MainLine {
 				System.out.println("프로그램이 종료됩니다.");
 				System.exit(0);
 			default:
-				System.out.println("1~7사이 숫자를 입력해 주세요.");
+				System.out.println("잘못된 입력입니다.\n1~7사이 숫자를 입력해 주세요.");
 				continue;
 
 			} // switch end

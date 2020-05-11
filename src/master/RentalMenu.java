@@ -48,7 +48,7 @@ public class RentalMenu {
 		
 		while(true) {
 		System.out.println("도서관리 페이지 입니다.");
-		adm.showBookBasic();
+		adm.showBookInfo();
 		System.out.println("1. 도서 추가 | 2. 도서수정 | 3. 도서삭제 | 4. 뒤로가기");
 		
 		int selectNum;
@@ -127,7 +127,7 @@ public class RentalMenu {
 			
 			while(true) {
 			System.out.println("게임관리 페이지 입니다.");
-			adm.showGameBasic();
+			adm.showGameInfo();
 			System.out.println("1. 게임추가| 2. 게임수정| 3. 게임삭제 |4. 뒤로가기");
 			
 			int selectNum;

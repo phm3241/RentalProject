@@ -112,7 +112,7 @@ public class AdminManager {
     public void showInfo() {
         for (int i = 0; i < member.size(); i++) {
             member.get(i).showAllInfo();
-            System.out.println("----------------------------");
+            System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------");
         }
     }
 
@@ -360,13 +360,16 @@ public class AdminManager {
         String loginPw = "0000";
         boolean loginCheck = true;
         int failCnt = 0;
-
-        System.out.println("관리자 페이지 입니다.");
-        System.out.println("");
+        System.out.println("-----------------------");
+        System.out.println("관리자페이지 입니다.");
+        
 
 
         while (loginCheck) {
-            System.out.println("비밀번호를 입력해주세요");
+        	
+            System.out.println("비밀번호를 입력해주세요..>>");
+            System.out.println("-----------------------");
+            
             String adminPw = sc.nextLine();
             
 
