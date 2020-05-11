@@ -5,22 +5,22 @@ import java.time.LocalDateTime;
 import java.time.Period;
 import java.util.ArrayList;
 
-//import data.UserList;
-//import data.UserList10;
-//import data.UserList11;
-//import data.UserList12;
-//import data.UserList13;
-//import data.UserList14;
-//import data.UserList15;
-//import data.UserList16;
-//import data.UserList2;
-//import data.UserList3;
-//import data.UserList4;
-//import data.UserList5;
-//import data.UserList6;
-//import data.UserList7;
-//import data.UserList8;
-//import data.UserList9;
+import data.UserList;
+import data.UserList10;
+import data.UserList11;
+import data.UserList12;
+import data.UserList13;
+import data.UserList14;
+import data.UserList15;
+import data.UserList16;
+import data.UserList2;
+import data.UserList3;
+import data.UserList4;
+import data.UserList5;
+import data.UserList6;
+import data.UserList7;
+import data.UserList8;
+import data.UserList9;
 
 public class MemberManager {
 
@@ -37,39 +37,39 @@ public class MemberManager {
 		rentalList = new ArrayList<>();
 
 		// 대여리스트 항목 추가
-//		UserList uList=new UserList();
-//		UserList2 uList2=new UserList2();
-//		UserList3 uList3=new UserList3();
-//		UserList4 uList4=new UserList4();
-//		UserList5 uList5=new UserList5();
-//		UserList6 uList6=new UserList6();
-//		UserList7 uList7=new UserList7();
-//		UserList8 uList8=new UserList8();
-//		UserList9 uList9=new UserList9();
-//		UserList10 uList10=new UserList10();
-//		UserList11 uList11=new UserList11();
-//		UserList12 uList12=new UserList12();
-//		UserList13 uList13=new UserList13();
-//		UserList14 uList14=new UserList14();
-//		UserList15 uList15=new UserList15();
-//		UserList16 uList16=new UserList16();
-//		
-//		rentalList.add(uList);
-//		rentalList.add(uList2);
-//		rentalList.add(uList3);
-//		rentalList.add(uList4);
-//		rentalList.add(uList5);
-//		rentalList.add(uList6);
-//		rentalList.add(uList7);
-//		rentalList.add(uList8);
-//		rentalList.add(uList9);
-//		rentalList.add(uList10);
-//		rentalList.add(uList11);
-//		rentalList.add(uList12);
-//		rentalList.add(uList13);
-//		rentalList.add(uList14);
-//		rentalList.add(uList15);
-//		rentalList.add(uList16);
+		UserList uList=new UserList();
+		UserList2 uList2=new UserList2();
+		UserList3 uList3=new UserList3();
+		UserList4 uList4=new UserList4();
+		UserList5 uList5=new UserList5();
+		UserList6 uList6=new UserList6();
+		UserList7 uList7=new UserList7();
+		UserList8 uList8=new UserList8();
+		UserList9 uList9=new UserList9();
+		UserList10 uList10=new UserList10();
+		UserList11 uList11=new UserList11();
+		UserList12 uList12=new UserList12();
+		UserList13 uList13=new UserList13();
+		UserList14 uList14=new UserList14();
+		UserList15 uList15=new UserList15();
+		UserList16 uList16=new UserList16();
+		
+		rentalList.add(uList);
+		rentalList.add(uList2);
+		rentalList.add(uList3);
+		rentalList.add(uList4);
+		rentalList.add(uList5);
+		rentalList.add(uList6);
+		rentalList.add(uList7);
+		rentalList.add(uList8);
+		rentalList.add(uList9);
+		rentalList.add(uList10);
+		rentalList.add(uList11);
+		rentalList.add(uList12);
+		rentalList.add(uList13);
+		rentalList.add(uList14);
+		rentalList.add(uList15);
+		rentalList.add(uList16);
 
 	}
 
@@ -657,8 +657,11 @@ public class MemberManager {
 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// 이용안내
 	void showGuide() {
-		System.out.println("=====이용안내=====");
-		System.out.println();
+		System.out.println("=======================================\t\t이\t\t용\t\t안\t\t내=======================================");
+		System.out.println("1. 비회원은 대여 검색을 하여 대여 가능한 목록을 볼수 있으며, 대여 하기위해서는 회원가입을 해야지만 대여 가능합니다.");
+		System.out.println("2. 회원가입은 이름, 나이, 전화번호, 주소, 이메일 그리고 아이디와 패스워드 입력을 통해서 회원가입이 합니다.");
+		System.out.println("3. 회원가입이 완료 되었으면 로그인을 하고 도서, DVD, 게임 중 목록을 보고 선택하여 대여를 할수 있습니다.");
+		System.out.println("4. 개인회원은 도서, DVD, 게임 품목은 기본정보와 대여가능횟수, 관심수, 재고, 반납예정일을 화면상에서 확인 할수 있습니다.");
 		System.out.println("대여자료 : 도서 / DVD / 게임");
 		System.out.println("대여가능 자료수 : id당 5개");
 		System.out.println("대여기간 : 자료당 7일");
@@ -666,6 +669,9 @@ public class MemberManager {
 		System.out.println("연장가능 횟수 : id당 1회");
 		System.out.println("연장가능 일수 : 7일");
 		System.out.println("연체시 연체일수만큼 대여불가");
+	
+		System.out.println("=====================================================================================================");
+		
+		System.out.println();
 	}
-
 } // class end
