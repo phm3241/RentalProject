@@ -112,7 +112,7 @@ public class AdminManager {
     public void showInfo() {
         for (int i = 0; i < member.size(); i++) {
             member.get(i).showAllInfo();
-            System.out.println("----------------------------");
+            System.out.println("---------------------------------------------------------------------------------------------------------------------------------------------------------");
         }
     }
 
@@ -310,10 +310,16 @@ public class AdminManager {
         String id = sc.nextLine();
 
         int index = searchIndex(id);
-        System.out.println("아이디가 삭제되었습니다.");
-        member.remove(index);
+        if(index <0) {
+        	System.out.println("삭제하고자하는 아이디가 존재하지 않습니다");
+        }
+        else {
+        	System.out.println("아이디가 삭제되었습니다.");
+        	member.remove(index);
+        }
 
     }
+    
 
 
     //로그인
@@ -354,13 +360,16 @@ public class AdminManager {
         String loginPw = "0000";
         boolean loginCheck = true;
         int failCnt = 0;
-
-        System.out.println("관리자 페이지 입니다.");
-        System.out.println("");
+        System.out.println("-----------------------");
+        System.out.println("관리자페이지 입니다.");
+        
 
 
         while (loginCheck) {
-            System.out.println("비밀번호를 입력해주세요");
+        	
+            System.out.println("비밀번호를 입력해주세요..>>");
+            System.out.println("-----------------------");
+            
             String adminPw = sc.nextLine();
             
 
@@ -476,6 +485,7 @@ public class AdminManager {
         if (index < 0) {
             System.out.println("삭제하고자 하는 책이 존재하지 않습니다.");
         } else {
+        	System.out.println("선택하신 책이 삭제되었습니다.");
             books.remove(index);
         }
 
@@ -523,13 +533,13 @@ public class AdminManager {
 
     //DVD수정
     public void editDvdInfo() {
-        System.out.println("변경하고자하는 DVD 이름을 입력해주세요");
+        System.out.println("변경하고자하는 DVD이름을 입력해주세요");
         String title = sc.nextLine();
 
         int index = searchDvdInfo(title);
 
         if (index < 0) {
-            System.out.println("찾으시는 책의 정보가 존재하지 않습니다.");
+            System.out.println("찾으시는 DVD의 정보가 존재하지 않습니다.");
         } else {
             String editTitle = dvd.get(index).title;
 
@@ -552,6 +562,7 @@ public class AdminManager {
         if (index < 0) {
             System.out.println("삭제하고자 하는 DVD가 존재하지 않습니다.");
         } else {
+        	System.out.println("선택하신 DVD가 삭제되었습니다.");
             dvd.remove(index);
         }
 
@@ -631,6 +642,7 @@ public class AdminManager {
         if (index < 0) {
             System.out.println("삭제하고자 하는 게임이 존재하지 않습니다.");
         } else {
+        	System.out.println("선택하신 게임이 삭제되었습니다.");
             game.remove(index);
         }
 
@@ -694,18 +706,7 @@ public class AdminManager {
             story = sc.nextLine();    //설명
             System.out.println("출판일을 입력해주세요");
             launchDate = sc.nextLine();    //출판일
-
-//            try {
-//            	if(title.trim().isEmpty()||genre.trim().isEmpty()||
-//            	localData.trim().isEmpty()||author.trim().isEmpty()||
-//            	story.trim().isEmpty()||launchDate.trim().isEmpty()) {
-//            	
-//            	}
-//            	
-//            }catch (Exception e) {
-//				System.out.println("정보는 공백없이 입력되어야 합니다");
-//				continue;
-//			}
+            
             info = new Book(title, genre, localData,
                     author, limitAge, story, launchDate);
 
@@ -730,7 +731,7 @@ public class AdminManager {
 
         // 기본정보 수집: DVD이름, 장르, DVD위치, 감독, 상영시간, 연령제한, 설명, 출판일
 
-        System.out.println("책이름을 입력해주세요.");
+        System.out.println("DVD이름을 입력해주세요.");
         title = sc.nextLine();
 
         System.out.println("장르을 입력해주세요.");
