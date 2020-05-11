@@ -570,6 +570,10 @@ public class MemberManager {
 	// 반납
 	void itemReturn(int index) {
 
+		// 만약에 대여내역에 같은 자료명이 한개 이상일 때, 
+		// 
+		// 반납일이 null이고, 
+		
 		// 반납일 = 현재날짜로 생성
 		LocalDate today = LocalDate.now();
 		String returnDate = today.toString();
