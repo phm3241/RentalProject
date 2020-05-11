@@ -27,7 +27,7 @@ public class RentalItemInfo {
 	
 	//기본정보 출력 메서드
 	void showBasicInfo() {
-		System.out.println("자료명 : "+title+"\t\t장르 :"+genre+"\t\t재고 :"+numOfItem+"\t\t자료위치 :"+localData);
+		System.out.println("자료명 : "+title+"\t\t장르 : "+genre+"\t\t재고 : "+numOfItem+"\t\t자료위치 : "+localData);
 	}
 	
 	void showAllinfo() {
