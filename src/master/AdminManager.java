@@ -157,10 +157,10 @@ public class AdminManager {
                 name = checkVal();
 
                 while (true) {
-                   
-                        System.out.println("나이를 입력 해주세요.");
-                        try {
-                        	
+
+                    System.out.println("나이를 입력 해주세요.");
+                    try {
+
                         age = sc.nextInt();
                         sc.nextLine();
 
@@ -195,7 +195,7 @@ public class AdminManager {
                 continue;
             }
         }
-               
+
     }
 
 
@@ -254,92 +254,90 @@ public class AdminManager {
 
         int index = searchIndex(id);
 
-        if(index > 0) {
+        if (index > 0) {
             MemberInfo info = null;
 
-            while(true) {
-            System.out.println("1. 비밀번호 | 2. 전화번호 | 3.주소 | 4. 이메일 |5. 뒤로가기");
+            while (true) {
+                System.out.println("1. 비밀번호 | 2. 전화번호 | 3.주소 | 4. 이메일 |5. 뒤로가기");
 
-            int selectNum;
-			try {
-				selectNum = sc.nextInt();
-				sc.nextLine();
-			} catch (Exception e) {
-				System.out.println("1~5사이의 숫자를 입력해주세요");
-				sc.nextLine();
-				continue;
-			}
-            switch (selectNum) {
-                case 1:
-                    boolean check = true;
-                    while (check) {
-                        System.out.println("변경하실 비밀번호를 입력해 주세요.");
-                        String pw1 = checkVal();
+                int selectNum;
+                try {
+                    selectNum = sc.nextInt();
+                    sc.nextLine();
+                } catch (Exception e) {
+                    System.out.println("1~5사이의 숫자를 입력해주세요");
+                    sc.nextLine();
+                    continue;
+                }
+                switch (selectNum) {
+                    case 1:
+                        boolean check = true;
+                        while (check) {
+                            System.out.println("변경하실 비밀번호를 입력해 주세요.");
+                            String pw1 = checkVal();
 
-                        System.out.println("다시 입력해주세요.");
-                        String pw2 = checkVal();
+                            System.out.println("다시 입력해주세요.");
+                            String pw2 = checkVal();
 
-                        //아이디,비밀번호정보 받고 수정해야함
-                        if (pw1.equals(pw2)) {
-                            member.get(index).setPw(pw1);
-                            System.out.println("비밀번호 변경이 완료되었습니다.");
-                            check = false;
-                            break;
-                        } else {
-                            System.out.println("비밀번호가 맞지 않습니다. 다시 입력해 주세요.");
-                            continue;
+                            //아이디,비밀번호정보 받고 수정해야함
+                            if (pw1.equals(pw2)) {
+                                member.get(index).setPw(pw1);
+                                System.out.println("비밀번호 변경이 완료되었습니다.");
+                                check = false;
+                                break;
+                            } else {
+                                System.out.println("비밀번호가 맞지 않습니다. 다시 입력해 주세요.");
+                                continue;
+                            }
                         }
-                    }
-                    break;
-                case 2:
-                    System.out.println("변경하실 전화번호를 입력해 주세요.");
-                    String phoneNumber = checkVal();
+                        break;
+                    case 2:
+                        System.out.println("변경하실 전화번호를 입력해 주세요.");
+                        String phoneNumber = checkVal();
 
-                    member.get(index).phoneNum = phoneNumber;
-                    System.out.println("전화번호 변경이 완료되었습니다.");
-                    break;
-                case 3:
-                    System.out.println("변경하실 주소를 입력해 주세요.");
-                    String addr = checkVal();
+                        member.get(index).phoneNum = phoneNumber;
+                        System.out.println("전화번호 변경이 완료되었습니다.");
+                        break;
+                    case 3:
+                        System.out.println("변경하실 주소를 입력해 주세요.");
+                        String addr = checkVal();
 
-                    member.get(index).addr = addr;
-                    System.out.println("주소 변경이 완료되었습니다.");
-                    break;
-                case 4:
-                    System.out.println("변경하실 이메일을 입력해 주세요.");
-                    String email = checkVal();
+                        member.get(index).addr = addr;
+                        System.out.println("주소 변경이 완료되었습니다.");
+                        break;
+                    case 4:
+                        System.out.println("변경하실 이메일을 입력해 주세요.");
+                        String email = checkVal();
 
-                    member.get(index).email = email;
-                    System.out.println("이메일 변경이 완료되었습니다.");
-                    break;
-                case 5:
-                	break;
-                	default:				
-                		System.out.println("1~5사이의 숫자를 입력해주세요");
-                		continue;
-            }
+                        member.get(index).email = email;
+                        System.out.println("이메일 변경이 완료되었습니다.");
+                        break;
+                    case 5:
+                        break;
+                    default:
+                        System.out.println("1~5사이의 숫자를 입력해주세요");
+                        continue;
+                }
             }
         } else {
             System.out.println("찾으시는 아이디가 없습니다.");
 
         }
     }
-    
+
     public void deleteInfo() {
         System.out.println("삭제하실분의 아이디를 입력해 주세요.");
         String id = checkVal();
 
         int index = searchIndex(id);
-        if(index <0) {
-        	System.out.println("삭제하고자하는 아이디가 존재하지 않습니다");
-        }
-        else {
-        	System.out.println("아이디가 삭제되었습니다.");
-        	member.remove(index);
+        if (index < 0) {
+            System.out.println("삭제하고자하는 아이디가 존재하지 않습니다");
+        } else {
+            System.out.println("아이디가 삭제되었습니다.");
+            member.remove(index);
         }
 
     }
-    
 
 
     //로그인
@@ -382,16 +380,16 @@ public class AdminManager {
         int failCnt = 0;
         System.out.println("-----------------------");
         System.out.println("관리자페이지 입니다.");
-        
+
         while (loginCheck) {
-        	
+
             System.out.println("비밀번호를 입력해주세요..>>");
             System.out.println("-----------------------");
-            
+
             String adminPw = sc.nextLine();
 
             if (loginPw.equals(adminPw)) {
-                
+
                 loginCheck = false;
                 break;
             } else {
@@ -399,12 +397,12 @@ public class AdminManager {
                 failCnt++;
 
                 if (failCnt == 3) {
-                    
+
                     break;
                 }
                 continue;
             }
-            
+
         }
         return loginCheck;
     }
@@ -422,40 +420,36 @@ public class AdminManager {
             System.out.println("로그인된 계정이 없습니다.");
         }
     }
-    
-    
+
+
 // 체크 메소드들    
 //====================================================================================================
 
-    
+
     //공백 체크 메소드(String)
     String checkVal() {
-    	String checkMsg = null;
-    	while(true) {
-    		checkMsg = sc.nextLine();
-    		
-    		Pattern p = Pattern.compile("[^\\s]");
-    		
-    		
-    		if(checkMsg.trim().isEmpty()) {
-    			System.out.println("공백을 입력하셨습니다. 다시 입력해주세요.");
-    			continue;
-    		} else {
-    			break;
-    		}
-    	}
-    	return checkMsg;
+        String checkMsg = null;
+        while (true) {
+            checkMsg = sc.nextLine();
+
+            Pattern p = Pattern.compile("[^\\s]");
+
+
+            if (checkMsg.trim().isEmpty()) {
+                System.out.println("공백을 입력하셨습니다. 다시 입력해주세요.");
+                continue;
+            } else {
+                break;
+            }
+        }
+        return checkMsg;
     }
-    
+
     //
 //    String checkName() {
 //    	Pattern p = Pattern.compile("^+[가-힣]*\/S$");
 //    }
-    
-    
-    
-    
-    
+
 
     //책입니다---------------------------------------------
 
@@ -492,7 +486,7 @@ public class AdminManager {
     public void editBookInfo() {
 
         System.out.println("변경하고자하는 책 이름을 입력해주세요");
-        String title = sc.nextLine();
+        String title = checkVal();
 
         int index = searchBookInfo(title);
 
@@ -505,7 +499,7 @@ public class AdminManager {
             System.out.println("수정 사항을 입력합니다");
             System.out.println("책 이름은: " + editTitle + "입니다");
             System.out.println("자료위치는");
-            String localData = sc.nextLine();
+            String localData = checkVal();
 
             books.get(index).localData = localData;
 
@@ -516,13 +510,13 @@ public class AdminManager {
     //도서정보삭제
     public void deleteBookInfo() {
         System.out.println("삭제하고자 하는 책 이름을 선택하여주세요");
-        String title = sc.nextLine();
+        String title = checkVal();
         int index = searchBookInfo(title);
 
         if (index < 0) {
             System.out.println("삭제하고자 하는 책이 존재하지 않습니다.");
         } else {
-        	System.out.println("선택하신 책이 삭제되었습니다.");
+            System.out.println("선택하신 책이 삭제되었습니다.");
             books.remove(index);
         }
 
@@ -571,7 +565,7 @@ public class AdminManager {
     //DVD수정
     public void editDvdInfo() {
         System.out.println("변경하고자하는 DVD이름을 입력해주세요");
-        String title = sc.nextLine();
+        String title = checkVal();
 
         int index = searchDvdInfo(title);
 
@@ -583,7 +577,7 @@ public class AdminManager {
             System.out.println("수정 사항을 입력합니다");
             System.out.println("DVD 이름은: " + editTitle + "입니다");
             System.out.println("자료위치는");
-            String localData = sc.nextLine();
+            String localData = checkVal();
 
             dvd.get(index).localData = localData;
         }
@@ -593,13 +587,13 @@ public class AdminManager {
     //DVD삭제
     public void deleteDvdInfo() {
         System.out.println("삭제하고자 하는 DVD 이름을 선택하여주세요");
-        String title = sc.nextLine();
+        String title = checkVal();
         int index = searchDvdInfo(title);
 
         if (index < 0) {
             System.out.println("삭제하고자 하는 DVD가 존재하지 않습니다.");
         } else {
-        	System.out.println("선택하신 DVD가 삭제되었습니다.");
+            System.out.println("선택하신 DVD가 삭제되었습니다.");
             dvd.remove(index);
         }
 
@@ -650,7 +644,7 @@ public class AdminManager {
 //게임수정
     public void editGameInfo() {
         System.out.println("변경하고자하는 게임 이름을 입력해주세요");
-        String title = sc.nextLine();
+        String title = checkVal();
 
         int index = searchGameInfo(title);
 
@@ -663,7 +657,7 @@ public class AdminManager {
             System.out.println("수정 사항을 입력합니다");
             System.out.println("게임 이름은: " + editTitle + "입니다");
             System.out.println("자료위치는");
-            String localData = sc.nextLine();
+            String localData = checkVal();
             game.get(index).localData = localData;
 
         }
@@ -673,13 +667,13 @@ public class AdminManager {
     //게임삭제
     public void deleteGameInfo() {
         System.out.println("삭제하고자 하는 게임이름을 선택하여주세요");
-        String title = sc.nextLine();
+        String title = checkVal();
         int index = searchGameInfo(title);
 
         if (index < 0) {
             System.out.println("삭제하고자 하는 게임이 존재하지 않습니다.");
         } else {
-        	System.out.println("선택하신 게임이 삭제되었습니다.");
+            System.out.println("선택하신 게임이 삭제되었습니다.");
             game.remove(index);
         }
 
@@ -717,33 +711,33 @@ public class AdminManager {
 
 
         System.out.println("책이름을 입력해주세요.");
-        title = sc.nextLine();
+        title = checkVal();
 
         System.out.println("장르을 입력해주세요.");
-        genre = sc.nextLine();
+        genre = checkVal();
 
         System.out.println("자료위치를 입력해주세요.");
-        localData = sc.nextLine();
+        localData = checkVal();
 
         System.out.println("저자를 입력해주세요");
-        author = sc.nextLine();
+        author = checkVal();
         while (true) {
             try {
                 System.out.println("연령제한 입력해주세요");
                 limitAge = sc.nextInt();
-                sc.nextLine();
+                checkVal();
 
             } catch (InputMismatchException e) {
                 System.out.println("연령제한을 잘못입력했습니다. \n다시 입력해주세요.(숫자입력)");
-                sc.nextLine();
+                checkVal();
                 continue;
             }
 
             System.out.println("설명을 입력해주세요");
-            story = sc.nextLine();    //설명
+            story = checkVal();    //설명
             System.out.println("출판일을 입력해주세요");
-            launchDate = sc.nextLine();    //출판일
-            
+            launchDate = checkVal();    //출판일
+
             info = new Book(title, genre, localData,
                     author, limitAge, story, launchDate);
 
@@ -769,35 +763,35 @@ public class AdminManager {
         // 기본정보 수집: DVD이름, 장르, DVD위치, 감독, 상영시간, 연령제한, 설명, 출판일
 
         System.out.println("DVD이름을 입력해주세요.");
-        title = sc.nextLine();
+        title = checkVal();
 
         System.out.println("장르을 입력해주세요.");
-        genre = sc.nextLine();
+        genre = checkVal();
 
         System.out.println("자료위치를 입력해주세요.");
-        localData = sc.nextLine();
+        localData = checkVal();
 
         System.out.println("감독를 입력해주세요");
-        foreman = sc.nextLine();
+        foreman = checkVal();
 
         System.out.println("상영시간을 입력해주세요");
-        runingTime = sc.nextLine();
+        runingTime = checkVal();
 
         while (true) {
             try {
                 System.out.println("연령제한 입력해주세요");
                 limitAge = sc.nextInt();
-                sc.nextLine();
+                checkVal();
             } catch (InputMismatchException e) {
                 System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요");
-                sc.nextLine();
+                checkVal();
             }
 
             System.out.println("설명을 입력해주세요");
-            story = sc.nextLine();    //설명
+            story = checkVal();    //설명
 
             System.out.println("출판일을 입력해주세요");
-            launchDate = sc.nextLine();    //출판일
+            launchDate = checkVal();    //출판일
 
 
             //DVD 클래스로 인스턴스생성
@@ -824,33 +818,33 @@ public class AdminManager {
         // 기본정보 수집: 게임이름, 장르, 게임위치, 제작자, 연령제한, 설명, 출판일
 
         System.out.println("게임이름을 입력해주세요.");
-        title = sc.nextLine();
+        title = checkVal();
 
         System.out.println("장르을 입력해주세요.");
-        genre = sc.nextLine();
+        genre = checkVal();
 
         System.out.println("게임위치를 입력해주세요.");
-        localData = sc.nextLine();
+        localData = checkVal();
 
         System.out.println("제작자를 입력해주세요");
-        producer = sc.nextLine();
+        producer = checkVal();
 
 
         while (true) {
             try {
                 System.out.println("연령제한 입력해주세요");
                 limitAge = sc.nextInt();
-                sc.nextLine();
+                checkVal();
             } catch (InputMismatchException e) {
                 System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요.");
-                sc.nextLine();
+                checkVal();
             }
 
             System.out.println("설명을 입력해주세요");
-            story = sc.nextLine();    //설명
+            story = checkVal();    //설명
 
             System.out.println("출판일을 입력해주세요");
-            launchDate = sc.nextLine();    //출판일
+            launchDate = checkVal();    //출판일
 
 
             //2.2.3 Book 클래스로 인스턴스생성
