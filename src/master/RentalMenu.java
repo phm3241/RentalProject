@@ -164,11 +164,11 @@ public class RentalMenu {
 		//6-4 관리자페이지-대여내역관리
 		public static void rentalListView() {
 			
-			
+			while(true) {
 			System.out.println("대여내역관리 페이지 입니다.");
 			System.out.println("1. 전체 대여내역보기 | 2. 회원 id로 대여내역보기  | 3. 자료명으로 대여내역보기 | 4. 뒤로가기 ");
 			
-			while(true) {
+			
 			int selectNum;
 			try {
 				selectNum = adm.sc.nextInt();

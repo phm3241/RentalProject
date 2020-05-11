@@ -15,6 +15,7 @@ public class RentalList {
 	public String extendDate;	 	// 연장된 반납일#
 	public String overdue;			// 연체일
 	
+	
 	AdminManager admManager=AdminManager.getInstance();
 	
 	RentalList(String id, String title, String start, String end){
