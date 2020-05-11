@@ -4,16 +4,16 @@ import java.time.LocalDateTime;
 
 public class RentalList {
 	
-	String id;      		// 회원ID
-	String title;			// 자료명
-	String rentInfo;		// 대여상태
-	String rentalDate;		// 대여일#
-	String returnDate;		// 반납예정일#
-	String returnLimit;		// 반납일#
-	String reservDate;		// 예약일#
-	String reservId;		// 예약자
-	String extendDate;		// 연장된 반납일#
-	String overdue;			// 연체일
+	public String id;      		// 회원ID
+	public String title;			// 자료명
+	public String rentInfo;		// 대여상태
+	public String rentalDate;		// 대여일#
+	public String returnDate;		// 반납예정일#
+	public String returnLimit;		// 반납일#
+	public String reservDate;		// 예약일#
+	public String reservId;		// 예약자
+	public String extendDate;		// 연장된 반납일#
+	public String overdue;			// 연체일
 	
 	AdminManager admManager=AdminManager.getInstance();
 	
