@@ -19,13 +19,13 @@ public class UserList15 extends RentalList {
 		this.id="lim";  					// 대여한 회원ID
 		this.title="슈퍼마리오";				// 대여한 자료명
 		this.rentInfo="대여중";				// 대여상태
-		this.rentalDate="2020-05-01"; 		// 대여일#
-		this.returnLimit ="2020-05-08";		// 반납예정일#
+		this.rentalDate="2020-05-03"; 		// 대여일#
+		this.returnLimit ="2020-05-10";		// 반납예정일#
 		this.returnDate=" ";				// 반납일#
 		this.reservDate=" ";				// 예약일#
 		this.reservId=" ";					// 예약자
 		this.extendDate=" ";				// 연장된 반납일#
-		this.overdue="4일";					// 연체기간#
+		this.overdue="2일";					// 연체기간#
 	}
 
 }
