@@ -25,7 +25,7 @@ public class Member extends MemberInfo{
 		this.pw = pw;
 		this.level = 1;
 		this.numOfRent = 0;
-		this.rentalAvail = 5-numOfRent;
+		this.rentalAvail = 5;
 		this.numOfExtens = 1;
 		this.overdue = 0;
 		this.rentalDate = 7;

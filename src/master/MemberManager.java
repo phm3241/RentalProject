@@ -160,10 +160,10 @@ public class MemberManager {
 				} // switch : case1(Book) : switch end
 			
 				break;
-				}	
+				} // while end	
+			break;
 				
-				
-			} // switch : case1(Book) : else end
+		} // switch : case1(Book) : else end
 
 			
 			
@@ -263,6 +263,7 @@ public class MemberManager {
 				System.out.println("1~3사이의 숫자를 입력해주세요.");
 				continue;
 		} // switch end
+		break;
 	} // while end
 
 	} // showInfo() end
@@ -310,7 +311,8 @@ public class MemberManager {
 			itemRentalCount();
 
 			// 회원 카운트 변경 : 로그인한 아이디로 회원정보 받아서 카운트 변경
-			loginIdInfo.numOfRent += 1; // 회원정보 : 대여권수 +1
+			loginIdInfo.numOfRent += 1; // 회원정보 : 대여자료수 +1
+			loginIdInfo.rentalAvail -= 1; // 회원정보 : 대여가능 자료수 +1
 
 			// 대여일 생성
 			LocalDate rentalDate = LocalDate.now();
@@ -348,7 +350,7 @@ public class MemberManager {
 				adm.getBooks().get(index).numOfItem -= 1;
 				adm.getBooks().get(index).rentalCount += 1;
 
-				// 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
+			// 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
 			} else if (adm.searchBookInfo(this.title) == 0) {
 				System.out.println("선택하신 자료가 현재 모두 대여중입니다.");
 				System.out.println("(...대여예약 기능을 준비중입니다...)");
@@ -505,7 +507,8 @@ public class MemberManager {
 
 		// 회원 카운트 변경 : 로그인한 아이디로 회원정보 받아서 카운트 변경
 		Member loginIdInfo = getloginIdInfo();
-		loginIdInfo.numOfRent -= 1; // 회원정보 : 대여권수 -1
+		loginIdInfo.numOfRent -= 1; // 회원정보 : 대여한 자료수 -1
+		loginIdInfo.rentalAvail += 1; // 회원정보 : 대여가능 자료수 +1
 
 		// 자료 카운트 변경 : 반납했으니 다시 재고 +1
 		int itemIndex = 0;
@@ -564,20 +567,39 @@ public class MemberManager {
 	// 연장.
 	void extention(int index) {
 
-		// 만약에 연장하려는 내 대여내역에 예약자가 있으면, 연장불가.
+		Member loginIdInfo = getloginIdInfo();
+		System.out.println(rentalList.get(index).reservId);
+		
 		// 만약에 내 연장횟수가 0이면, 연장불가
-
-		// 연장된 반납일 생성 : 나의 대여리스트 중 해당 인덱스의 반납예정일 + 7
-		LocalDate returnLimit0 = LocalDate.parse(rentalList.get(index).returnLimit);
-		LocalDate extendDate1 = returnLimit0.plusDays(7);
-		String extendDate = extendDate1.toString();
-
-		// 나의 대여리스트 중 해당 인덱스의 연장된 반납일 ㅡ > 연장된 반납일로 수정
-		rentalList.get(index).extendDate = extendDate;
-		rentalList.get(index).rentInfo = "연장완료";
-
-		// 나의 대여리스트 중 해당 인덱스 출력. 확인.
-		rentalList.get(index).showRentalListInfo();
+		if(loginIdInfo.numOfExtens==0) {
+			System.out.println("연장가능 횟수가 0입니다.");
+			
+		// 만약에 연장하려는 내 대여내역에 예약자가 있으면, 연장불가.
+		} else if(rentalList.get(index).reservId != " ") {
+			System.out.println("예약자가 있어 연장할 수 없습니다. ");
+		
+		// 연체가 있으면, 연장불가
+		} else if(loginIdInfo.overdue>0) {
+			System.out.println("대여하신 자료 중 연체가 있어 연장을 할 수 없습니다.");
+		
+		// 연장이 되면ㅡ> 연장된 반납일 생성. 카운트 변경
+		} else {
+			// 연장된 반납일 생성 : 나의 대여리스트 중 해당 인덱스의 반납예정일 + 7
+			LocalDate returnLimit0 = LocalDate.parse(rentalList.get(index).returnLimit);
+			LocalDate extendDate1 = returnLimit0.plusDays(7);
+			String extendDate = extendDate1.toString();
+	
+			// 나의 대여리스트 중 해당 인덱스의 연장된 반납일 ㅡ > 연장된 반납일로 수정
+			rentalList.get(index).extendDate = extendDate;
+			rentalList.get(index).rentInfo = "연장완료";
+			
+			// 회원 카운트 변경 : 로그인한 아이디로 회원정보 받아서 카운트 변경
+			loginIdInfo.numOfExtens -= 1; // 회원정보 : 연장가능 횟수 -1
+			
+			// 나의 대여리스트 중 해당 인덱스 출력. 확인.
+	        System.out.println("--------------------------------------------------------------------------------------------------");
+			rentalList.get(index).showRentalListInfo();
+		}
 	}
 
 //			
@@ -612,10 +634,7 @@ public class MemberManager {
 //			}
 //		}
 ////			rentInfo = "대여중";		// 대여상태 대여중으로 바꾼다.
-//			
-//			// 연장기간
-//			//dateOfExtens = returnDate + 7;
-//
+
 //		
 //	} //extention 끝./
 //	
