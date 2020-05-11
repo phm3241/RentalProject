@@ -1,8 +1,8 @@
-package data;
+package jaeyoung96.jy;
 
-import master.RentalList;
+import jaeyoung96.*;
 
-public class UserList13 extends RentalList {
+public class UserList9 extends RentalList {
 	
 	String id;      		// 회원ID
 	String title;			// 자료명
@@ -15,17 +15,17 @@ public class UserList13 extends RentalList {
 	String extendDate;		// 연장된 반납일#
 	String overdue;			// 연체일
 	
-	public UserList13(){
-		this.id="dlawodud1";  						// 대여한 회원ID
-		this.title="포켓몬스터";					// 대여한 자료명
+	public UserList9(){
+		this.id="qkrgpal";  						// 대여한 회원ID
+		this.title="저 산 너머";						// 대여한 자료명
 		this.rentInfo="대여중";						// 대여상태
-		this.rentalDate="2020-05-02"; 				// 대여일#
-		this.returnLimit ="2020-05-09";				// 반납예정일#
+		this.rentalDate="2020-03-01"; 				// 대여일#
+		this.returnLimit ="2020-03-07";				// 반납예정일#
 		this.returnDate=" ";						// 반납일#
-		this.reservDate=" ";		 				// 예약일#
+		this.reservDate=" ";						// 예약일#
 		this.reservId=" ";							// 예약자
-		this.extendDate=" ";						// 연장된 반납일#
-		this.overdue="42일";							// 연체기간#
+		this.extendDate="2020-03-14";				// 연장된 반납일#
+		this.overdue="20일";							// 연체기간#
 	}
 
 }

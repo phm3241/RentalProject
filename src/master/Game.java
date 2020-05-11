@@ -31,14 +31,14 @@ public class Game extends RentalItemInfo{
 	@Override
 	void showBasicInfo() {
 		super.showBasicInfo();
-		System.out.println("제작사 :"+producer);
+		System.out.println("제작사 : "+producer);
 	}
 	
 	@Override
 	void showAllinfo() {
 		super.showBasicInfo();
-		System.out.println("제한연령 :"+limitAge+"\t\t출시일 :"+launchDate+"\r\n설명 :"+story);
-		System.out.println("대여횟수 :"+rentalCount+"\t\t관심수 :"+like);
+		System.out.println("제한연령 : "+limitAge+"\t\t출시일 : "+launchDate+"\r\n설명 : "+story);
+		System.out.println("대여횟수 : "+rentalCount+"\t\t관심수 : "+like);
         System.out.println("----------------------------------------------------------------------------------------------------");
 
 	}

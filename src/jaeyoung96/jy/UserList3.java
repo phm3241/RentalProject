@@ -1,8 +1,7 @@
-package data;
+package jaeyoung96.jy;
 
-import master.RentalList;
-
-public class UserList5 extends RentalList{
+import jaeyoung96.*;
+public class UserList3 extends RentalList {
 	
 	String id;      		// 회원ID
 	String title;			// 자료명
@@ -15,13 +14,13 @@ public class UserList5 extends RentalList{
 	String extendDate;		// 연장된 반납일#
 	String overdue;			// 연체일
 	
-	public UserList5(){
-		this.id="qkrtjdals";  						// 대여한 회원ID
-		this.title="슈퍼마리오";					// 대여한 자료명
+	public UserList3(){
+		this.id="qkraudgns";   						// 대여한 회원ID
+		this.title="젤다의 전설";		// 대여한 자료명
 		this.rentInfo="대여가능";						// 대여상태
-		this.rentalDate="2020-04-17"; 				// 대여일#
-		this.returnLimit ="2020-04-24";				// 반납예정일#
-		this.returnDate="2020-04-21";				// 반납일#
+		this.rentalDate="2020-04-12"; 				// 대여일#
+		this.returnLimit = "2020-04-19";			// 반납예정일#
+		this.returnDate="2020-04-15";				// 반납일#
 		this.reservDate=" ";						// 예약일#
 		this.reservId=" ";							// 예약자
 		this.extendDate=" ";						// 연장된 반납일#

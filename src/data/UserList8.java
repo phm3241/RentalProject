@@ -17,7 +17,7 @@ public class UserList8 extends RentalList{
 	
 	public UserList8(){
 		this.id="qkrgpal";  						// 대여한 회원ID
-		this.title="5년후 나에게 Q&A a day";			// 대여한 자료명
+		this.title="5년후 나에게";			// 대여한 자료명
 		this.rentInfo="대여가능";						// 대여상태
 		this.rentalDate="2020-02-05"; 				// 대여일#
 		this.returnLimit ="2020-02-12";				// 반납예정일#

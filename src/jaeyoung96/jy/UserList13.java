@@ -1,7 +1,6 @@
-package data;
+package jaeyoung96.jy;
 
-import master.RentalList;
-
+import jaeyoung96.*;
 public class UserList13 extends RentalList {
 	
 	String id;      		// 회원ID

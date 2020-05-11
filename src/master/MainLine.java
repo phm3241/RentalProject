@@ -95,7 +95,7 @@ public class MainLine {
 						RentalMenu.gameView();
 						continue;
 					case 5:
-
+						RentalMenu.rentalListView();
 						continue;
 					case 6:
 						break;
