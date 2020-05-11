@@ -533,13 +533,13 @@ public class AdminManager {
 
     //DVD수정
     public void editDvdInfo() {
-        System.out.println("변경하고자하는 DVD 이름을 입력해주세요");
+        System.out.println("변경하고자하는 DVD이름을 입력해주세요");
         String title = sc.nextLine();
 
         int index = searchDvdInfo(title);
 
         if (index < 0) {
-            System.out.println("찾으시는 책의 정보가 존재하지 않습니다.");
+            System.out.println("찾으시는 DVD의 정보가 존재하지 않습니다.");
         } else {
             String editTitle = dvd.get(index).title;
 
@@ -706,18 +706,7 @@ public class AdminManager {
             story = sc.nextLine();    //설명
             System.out.println("출판일을 입력해주세요");
             launchDate = sc.nextLine();    //출판일
-
-//            try {
-//            	if(title.trim().isEmpty()||genre.trim().isEmpty()||
-//            	localData.trim().isEmpty()||author.trim().isEmpty()||
-//            	story.trim().isEmpty()||launchDate.trim().isEmpty()) {
-//            	
-//            	}
-//            	
-//            }catch (Exception e) {
-//				System.out.println("정보는 공백없이 입력되어야 합니다");
-//				continue;
-//			}
+            
             info = new Book(title, genre, localData,
                     author, limitAge, story, launchDate);
 
@@ -742,7 +731,7 @@ public class AdminManager {
 
         // 기본정보 수집: DVD이름, 장르, DVD위치, 감독, 상영시간, 연령제한, 설명, 출판일
 
-        System.out.println("책이름을 입력해주세요.");
+        System.out.println("DVD이름을 입력해주세요.");
         title = sc.nextLine();
 
         System.out.println("장르을 입력해주세요.");

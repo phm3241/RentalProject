@@ -65,13 +65,13 @@ public class RentalMenu {
 		
 			case 1:
 				adm.createBookInfo();
-				break;
+				continue;
 			case 2:
 				adm.editBookInfo();
-				break;
+				continue;
 			case 3:
 				adm.deleteBookInfo();
-				break;	
+				continue;	
 			case 4:
 				break;
 			default:
@@ -103,13 +103,13 @@ public class RentalMenu {
 			switch(selectNum) {
 			case 1:
 				adm.createDvdInfo();
-				break;
+				continue;
 			case 2:
 				adm.editDvdInfo();
-				break;
+				continue;
 			case 3:
 				adm.deleteDvdInfo();
-				break;
+				continue;
 			case 4:
 				
 				break;
@@ -143,13 +143,13 @@ public class RentalMenu {
 			
 			case 1:
 				adm.CreateGameInfo();
-				break;
+				continue;
 			case 2:
 				adm.editGameInfo();
-				break;
+				continue;
 			case 3:
 				adm.deleteGameInfo();
-				break;
+				continue;
 			case 4:
 				
 				break;
