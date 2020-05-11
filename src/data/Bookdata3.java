@@ -15,10 +15,10 @@ public class Bookdata3 extends Book {
 				". 좋은 대학, 이름난 회사, 괜찮은 연봉, 안정적인 가정. 끝이 아닙니다. 내 자식까지 이어지는 좋은 대학, 이름난 회사, 괜찮은\r\n" + 
 				"연봉... 이거... 몇 명이나 가능할까요? 재산이라곤 대출금 밖에 없는 서른 살 예비 신랑과, 2년간 집에만 있던 스물여섯 ..";
 		this.launchDate = "2020.01.21";
-		this.rentalCount = 0;
+		this.rentalCount = 5;
 		this.like = 0;
-		this.numOfItem = 5;
-		this.returnDate = "0";
+		this.numOfItem = 0;
+		this.returnDate = " ";
 		
 		
 	}

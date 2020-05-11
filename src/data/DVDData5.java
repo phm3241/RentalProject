@@ -16,10 +16,10 @@ public class DVDData5 extends DVD{
 				"지금껏 아무도 성공한 적 없는 0%의 확률 속에서 목숨을 건 단 한 번의 기회를 노리는데…";
 		this.launchDate = "2020.05.06";
 		//this.bestTitle = "";
-		this.rentalCount = 0;
+		this.rentalCount = 1;
 		this.like = 0;
-		this.numOfItem = 5;
-		this.returnDate = "0";
+		this.numOfItem = 4;
+		this.returnDate = " ";
 		
 	}
 	

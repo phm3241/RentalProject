@@ -17,7 +17,7 @@ public class UserList2 extends RentalList {
 	
 	public UserList2(){
 		this.id="young";  				// 대여한 회원ID
-		this.title="슈퍼마리오";					// 대여한 자료명
+		this.title="저 산 너머";					// 대여한 자료명
 		this.rentInfo="대여중";				// 대여상태
 		this.rentalDate="2020-05-05"; 		// 대여일#
 		this.returnLimit = "2020-05-12";	// 반납예정일#

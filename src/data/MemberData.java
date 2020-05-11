@@ -14,12 +14,12 @@ public class MemberData extends Member{
 		this.setId("hoon");
 		this.setPw("hoon");
 		this.level = 2;
-		this.numOfRent = 0;
-		this.rentalAvail = 5;
+		this.numOfRent = 2;
+		this.rentalAvail = 3;
 		this.numOfExtens = 1;
 		this.overdue = 0;
 		this.rentalDate = 7;
-		this.returnDate = "0";
+		this.returnDate = " ";
 		this.rentInfo = "없음";
 		this.extenDate = 7;
 		

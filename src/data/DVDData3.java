@@ -15,10 +15,10 @@ public class DVDData3 extends DVD{
 				"1928년 일제강점기, 세상에서 가장 사랑하는 엄마와 아픈 아버지를 위해 신부보다 인삼장수가 되고 싶은 7살 소년 수환은 자신의 마음밭에 심어진 믿음의 씨앗을 키워가며 저 산 너머에 있을 고향을 찾아간다.";
 		this.launchDate = "2020.04.30";
 		//this.bestTitle = "";
-		this.rentalCount = 0;
+		this.rentalCount = 1;
 		this.like = 0;
-		this.numOfItem = 5;
-		this.returnDate = "0";
+		this.numOfItem = 4;
+		this.returnDate = " ";
 		
 	}
 	

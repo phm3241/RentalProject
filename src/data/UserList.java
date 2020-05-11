@@ -17,7 +17,7 @@ public class UserList extends RentalList{
 	
 	public UserList(){
 		this.id="young";  				// 대여한 회원ID
-		this.title="1cm 다이빙";					// 대여한 자료명
+		this.title="프리즌 이스케이프";					// 대여한 자료명
 		this.rentInfo="대여중";				// 대여상태
 		this.rentalDate="2020-05-10"; 		// 대여일#
 		this.returnLimit = "2020-05-17";	// 반납예정일#

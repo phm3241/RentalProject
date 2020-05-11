@@ -19,7 +19,7 @@ public class DVDData extends DVD{
 		this.rentalCount = 0;
 		this.like = 0;
 		this.numOfItem = 5;
-		this.returnDate = "0";
+		this.returnDate = " ";
 		
 	}
 	

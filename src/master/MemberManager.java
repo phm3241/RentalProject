@@ -1,12 +1,8 @@
 package master;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Period;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 
-import master.BadTitleInputException;
 import data.UserList;
 import data.UserList10;
 import data.UserList11;
@@ -379,7 +375,7 @@ public class MemberManager {
 				adm.getBooks().get(index).rentalCount += 1;
 
 				// 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
-			} else if (adm.searchBookInfo(this.title) == 0) {
+			} else if (adm.getBooks().get(index).numOfItem == 0) {
 				System.out.println("선택하신 자료가 현재 모두 대여중입니다.");
 				System.out.println("(...대여예약 기능을 준비중입니다...)");
 				searchItemInfo();
@@ -395,7 +391,7 @@ public class MemberManager {
 				adm.getDvd().get(index).rentalCount += 1;
 
 				// 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
-			} else if (adm.searchDvdInfo(this.title) == 0) {
+			} else if (adm.getDvd().get(index).numOfItem == 0) {
 				System.out.println("선택하신 자료가 현재 모두 대여중입니다.");
 				System.out.println("(...대여예약 기능을 준비중입니다...)");
 				searchItemInfo();
@@ -411,7 +407,7 @@ public class MemberManager {
 				adm.getGame().get(index).rentalCount += 1;
 
 				// 대여불가여부 확인 : 자료의 재고가 0일때 ㅡ> 자료 예약안내
-			} else if (adm.searchDvdInfo(this.title) == 0) {
+			} else if (adm.getGame().get(index).numOfItem == 0) {
 				System.out.println("선택하신 자료가 현재 모두 대여중입니다.");
 				System.out.println("(...대여예약 기능을 준비중입니다...)");
 				searchItemInfo();
@@ -576,7 +572,6 @@ public class MemberManager {
 		// 반납일 = 현재날짜로 생성
 		LocalDate today = LocalDate.now();
 		String returnDate = today.toString();
-		System.out.println("returnDate" + returnDate);
 
 		// 나의 대여리스트 중 해당 인덱스의 반납일이 변경됨.
 		rentalList.get(index).returnDate = returnDate;
@@ -813,7 +808,7 @@ public class MemberManager {
 // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
 	// 이용안내
 	void showGuide() {
-		System.out.println("========================\t\t이\t용\t안\t내\t\t========================");
+		System.out.println("====================\t\t이\t용\t안\t내\t\t========================");
 		System.out.println();
 		System.out.println("1. 비회원은 대여 검색을 하여 대여 가능한 목록을 볼수 있으며, 대여 하기위해서는 회원가입을 해야지만 대여 가능합니다.");
 		System.out.println("2. 회원가입은 이름, 나이, 전화번호, 주소, 이메일 그리고 아이디와 패스워드 입력을 통해서 회원가입이 합니다.");
@@ -830,7 +825,7 @@ public class MemberManager {
 		System.out.println("연체시 연체일수만큼 대여불가");
 
 		System.out.println(
-				"=====================================================================================================");
+				"==================================================================================================");
 
 	}
 } // class end

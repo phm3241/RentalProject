@@ -15,10 +15,10 @@ public class Bookdata2 extends Book {
 				"쟁 지역을 직접 현장에서 취재하며 국제 문제 전문 저널리스트로 활동해온 저자가 중국, 미국, 서유럽, 러시아, 한국과 일본,\r\n" + 
 				"아프리카, 라틴 아메리카, 중동, 인도와 파키스탄, 북극 등 전 세계를 10개의 지역으로 나눠 ‘지리의 힘’이 21세기 현대사에.";
 		this.launchDate = "2016.08.10";
-		this.rentalCount = 0;
+		this.rentalCount = 1;
 		this.like = 0;
-		this.numOfItem = 5;
-		this.returnDate = "0";
+		this.numOfItem = 4;
+		this.returnDate = " ";
 		
 		
 	}
