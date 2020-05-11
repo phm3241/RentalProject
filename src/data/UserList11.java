@@ -10,7 +10,7 @@ public class UserList11 extends RentalList {
 //	String rentalDate;		// 대여일#
 //	String returnDate;		// 반납예정일#
 //	String returnLimit;		// 반납일
-//	String reservDate;		// 예약일#
+//	String reservDate;		// 예약일# 
 //	String reservId;		// 예약자
 //	String extendDate;		// 연장된 반납일#
 //	String overdue;			// 연체일
