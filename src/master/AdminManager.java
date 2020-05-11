@@ -310,10 +310,16 @@ public class AdminManager {
         String id = sc.nextLine();
 
         int index = searchIndex(id);
-        System.out.println("아이디가 삭제되었습니다.");
-        member.remove(index);
+        if(index <0) {
+        	System.out.println("삭제하고자하는 아이디가 존재하지 않습니다");
+        }
+        else {
+        	System.out.println("아이디가 삭제되었습니다.");
+        	member.remove(index);
+        }
 
     }
+    
 
 
     //로그인
@@ -476,6 +482,7 @@ public class AdminManager {
         if (index < 0) {
             System.out.println("삭제하고자 하는 책이 존재하지 않습니다.");
         } else {
+        	System.out.println("선택하신 책이 삭제되었습니다.");
             books.remove(index);
         }
 
@@ -552,6 +559,7 @@ public class AdminManager {
         if (index < 0) {
             System.out.println("삭제하고자 하는 DVD가 존재하지 않습니다.");
         } else {
+        	System.out.println("선택하신 DVD가 삭제되었습니다.");
             dvd.remove(index);
         }
 
@@ -631,6 +639,7 @@ public class AdminManager {
         if (index < 0) {
             System.out.println("삭제하고자 하는 게임이 존재하지 않습니다.");
         } else {
+        	System.out.println("선택하신 게임이 삭제되었습니다.");
             game.remove(index);
         }
 
