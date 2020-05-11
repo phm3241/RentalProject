@@ -45,14 +45,9 @@ public class DVD extends RentalItemInfo{
 	}
 
 
-
 	@Override
 	boolean checkTitle(String title) {
 		return super.checkTitle(title);
 	}
-	
-	
-	
-	
 
 }

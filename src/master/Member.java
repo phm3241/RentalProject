@@ -73,9 +73,4 @@ public class Member extends MemberInfo{
 		this.id = id;
 	}
 	
-	
-	
-	
-
-	
 }
