@@ -1,6 +1,7 @@
 package master;
 
 
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -304,10 +305,10 @@ public class AdminManager {
             boolean check = true;
             int loginCnt = 0;
             int pwCnt = 0;
+
             while (check) {
                 System.out.println("아이디를 입력해 주세요.");
                 String id = checkVal();
-
                 int index = searchIndex(id);
                 if (index >= 0) {
                     System.out.println("비밀번호를 입력해 주세요.");
@@ -319,7 +320,8 @@ public class AdminManager {
                         check = false;
                         break;
                     } else {
-                        System.out.println("비밀번호를 다시 입력해 주세요.");
+                        System.out.println("비밀번호가 다릅니다.");
+                        System.out.println("--------------------");
                         pwCnt++;
                         if(pwCnt == 3){
                             System.out.println("3회 잘못 입력 하셨습니다. 메인으로 돌아갑니다.");
@@ -863,10 +865,10 @@ public class AdminManager {
             try {
                 System.out.println("연령제한 입력해주세요");
                 limitAge = sc.nextInt();
-                checkVal();
+                sc.nextLine();
             } catch (InputMismatchException e) {
                 System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요");
-                checkVal();
+                sc.nextLine();
             }
 
             System.out.println("설명을 입력해주세요");
@@ -916,10 +918,10 @@ public class AdminManager {
             try {
                 System.out.println("연령제한 입력해주세요");
                 limitAge = sc.nextInt();
-                checkVal();
+                sc.nextLine();
             } catch (InputMismatchException e) {
                 System.out.println("연령제한을 잘못입력했습니다. \n 다시 입력해주세요.");
-                checkVal();
+                sc.nextLine();
             }
 
             System.out.println("설명을 입력해주세요");
