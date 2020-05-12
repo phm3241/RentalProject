@@ -66,7 +66,6 @@ public class MainLine {
 				} else {
 					System.out.println("로그인 후 이용가능합니다.");
 					System.out.println("먼저 로그인 해주세요.");
-
 					continue;
 				}
 

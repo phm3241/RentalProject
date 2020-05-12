@@ -200,53 +200,7 @@ public class AdminManager {
     }
 
 
-    // 로그인체크해서 로그인상태인지 아닌지 반환
-    boolean loginCheck() {
 
-        boolean loginCheck = false;
-
-        for (int i = 0; i < this.member.size(); i++) {
-            if ((this.member.get(i).loginCheck) == true) {
-                loginCheck = true;
-
-                break;
-            }
-        }
-
-        return loginCheck;
-    }
-
-
-    // 로그인체크해서 인덱스 반환
-    int loginCheckIndex() {
-
-        int loginCheckIndex = -1;
-
-        for (int i = 0; i < this.member.size(); i++) {
-            if (this.member.get(i).loginCheck == true) {
-                loginCheckIndex = i;
-                break;
-            }
-        }
-
-        return loginCheckIndex;
-    }
-
-
-    int searchIndex(String id) {
-
-        //정상적인 index 값은 0~이상의 값, 찾지 못했을 때 구분 값 -1을 사용
-        int searchIndex = -1;
-
-        //배열의 반복으로 id값을 비교해서 index 값을 찾는다.
-        for (int i = 0; i < member.size(); i++) {
-            if (member.get(i).checkId(id)) {
-                searchIndex = i;
-                break;
-            }
-        }
-        return searchIndex;
-    }
 
     public void editInfo() {
 
@@ -319,6 +273,7 @@ public class AdminManager {
                         System.out.println("1~5사이의 숫자를 입력해주세요");
                         continue;
                 }
+                break;
             }
         } else {
             System.out.println("찾으시는 아이디가 없습니다.");
@@ -326,6 +281,8 @@ public class AdminManager {
         }
     }
 
+
+    //회원정보 삭제
     public void deleteInfo() {
         System.out.println("삭제하실분의 아이디를 입력해 주세요.");
         String id = checkVal();
@@ -337,7 +294,6 @@ public class AdminManager {
             System.out.println("아이디가 삭제되었습니다.");
             member.remove(index);
         }
-
     }
 
 
@@ -398,24 +354,19 @@ public class AdminManager {
 
             System.out.println("비밀번호를 입력해주세요..>>");
             System.out.println("-----------------------");
-
             String adminPw = sc.nextLine();
 
             if (loginPw.equals(adminPw)) {
-
                 loginCheck = false;
                 break;
             } else {
                 System.out.println("비밀번호가 틀립니다. 다시 입력해 주세요.");
                 failCnt++;
-
                 if (failCnt == 3) {
-
                     break;
                 }
                 continue;
             }
-
         }
         return loginCheck;
     }
@@ -490,7 +441,7 @@ public class AdminManager {
         return checkMsg;
     }
 
-    //한글과 숫자만 받는 메소드(id)
+    //한글과 숫자만 받는 메소드
     String checkKnN() {
         String checkMsg = null;
         while (true) {
@@ -525,7 +476,7 @@ public class AdminManager {
     }
 
 
-    //전화번호 입력받는 메소드
+    //이메일 입력받는 메소드
     String checkEmail() {
         String checkMsg = null;
         while (true) {
@@ -543,11 +494,43 @@ public class AdminManager {
     }
 
 
+    // 로그인체크해서 로그인상태인지 아닌지 반환
+    boolean loginCheck() {
+        boolean loginCheck = false;
+        for (int i = 0; i < this.member.size(); i++) {
+            if ((this.member.get(i).loginCheck) == true) {
+                loginCheck = true;
+                break;
+            }
+        }
+        return loginCheck;
+    }
 
-    //
-//    String checkName() {
-//    	Pattern p = Pattern.compile("^+[가-힣]*\/S$");
-//    }
+    // 로그인체크해서 인덱스 반환
+    int loginCheckIndex() {
+        int loginCheckIndex = -1;
+        for (int i = 0; i < this.member.size(); i++) {
+            if (this.member.get(i).loginCheck == true) {
+                loginCheckIndex = i;
+                break;
+            }
+        }
+        return loginCheckIndex;
+    }
+
+    int searchIndex(String id) {
+        //정상적인 index 값은 0~이상의 값, 찾지 못했을 때 구분 값 -1을 사용
+        int searchIndex = -1;
+        //배열의 반복으로 id값을 비교해서 index 값을 찾는다.
+        for (int i = 0; i < member.size(); i++) {
+            if (member.get(i).checkId(id)) {
+                searchIndex = i;
+                break;
+            }
+        }
+        return searchIndex;
+    }
+
 
 
     //책입니다---------------------------------------------
