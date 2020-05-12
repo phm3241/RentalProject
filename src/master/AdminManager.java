@@ -807,11 +807,11 @@ public class AdminManager {
             try {
                 System.out.println("연령제한 입력해주세요");
                 limitAge = sc.nextInt();
-                checkVal();
+                sc.nextLine();
 
             } catch (InputMismatchException e) {
                 System.out.println("연령제한을 잘못입력했습니다. \n다시 입력해주세요.(숫자입력)");
-                checkVal();
+                sc.nextLine();
                 continue;
             }
 
