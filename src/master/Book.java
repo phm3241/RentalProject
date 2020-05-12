@@ -6,7 +6,7 @@ public class Book extends RentalItemInfo{
 	public int limitAge;		//제한연령
 	public String story;		//설명
 	public String launchDate;	//출판일
-	public String bestTitle;	//인기자료	null
+	//public String bestTitle;	//인기자료	null
 	public int like;			//관심수 		0
 	public String returnDate;	//반납예정일 	0
 	
@@ -18,7 +18,6 @@ public class Book extends RentalItemInfo{
 		this.limitAge = limitAge;
 		this.story = story;
 		this.launchDate = launchDate;
-		this.bestTitle = null;
 		this.like = 0;
 		this.returnDate = null;
 		
